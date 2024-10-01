@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="eventing-game"
+run/main_scene="res://Scenes/PrototypeScene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,3 +19,4 @@ config/icon="res://icon.svg"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.991677, 0.94863, 0.853409, 1)
