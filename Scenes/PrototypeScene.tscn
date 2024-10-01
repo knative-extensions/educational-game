@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw61sa574uxqe"]
+
+[ext_resource type="Texture2D" uid="uid://cgxsu5y03vdr3" path="res://isometric boxes - Dani Maccari/boxes_SpriteSheet.png" id="1_xkyfq"]
+
+[node name="PrototypeScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -576.0
+offset_top = -320.0
+offset_right = 578.0
+offset_bottom = 324.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(207, 472)
+scale = Vector2(8, 8)
+texture = ExtResource("1_xkyfq")
+region_enabled = true
+region_rect = Rect2(37, 72, 16, 18)
