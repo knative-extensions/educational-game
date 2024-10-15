@@ -3,6 +3,7 @@ extends Node2D
 var selected
 var destination
 var conveyer
+var dragging
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,5 +17,7 @@ func _process(delta: float) -> void:
 func create_conveyor():
 	conveyer.set_point_position(0, selected.get_position())
 	conveyer.set_point_position(1, destination.get_position())
+	
+func send_event():
 	var tween = get_tree().create_tween()
 	tween.tween_property(selected, "position", destination.get_position(), 2).set_trans(tween.TRANS_LINEAR)

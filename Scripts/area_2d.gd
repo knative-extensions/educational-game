@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var boxType: String
 
 func _input_event(viewport, event, shape_idx):
 	if event.is_pressed():
