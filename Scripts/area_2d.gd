@@ -1,6 +1,10 @@
 extends Area2D
 
 @export var boxType: String
+@export var sending = false
+
+func _ready() -> void:
+	ConveyerController.events.append(get_parent())
 
 func _input_event(viewport, event, shape_idx):
 	if event.is_pressed():
