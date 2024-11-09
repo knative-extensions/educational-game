@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vu61b26gkbjv"
-path="res://.godot/imported/sink.png-bb15315d8fd90250970bccd44c7d5a54.ctex"
+uid="uid://bpkn0kgyf867u"
+path="res://.godot/imported/redFunnel.png-948139d8225d4808eeb6604264dc0241.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Assets/sink.png"
-dest_files=["res://.godot/imported/sink.png-bb15315d8fd90250970bccd44c7d5a54.ctex"]
+source_file="res://2D Assets/funnels/redFunnel.png"
+dest_files=["res://.godot/imported/redFunnel.png-948139d8225d4808eeb6604264dc0241.ctex"]
 
 [params]
 
