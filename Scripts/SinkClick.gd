@@ -1,5 +1,11 @@
 extends Area2D
 
+#var audio_player = $AudioStreamPlayer
+
+var audio_player
+
+func _ready():
+	audio_player = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _input_event(viewport, event, shape_idx):
@@ -8,6 +14,7 @@ func _input_event(viewport, event, shape_idx):
 
 func on_click():
 	print("hey")
+	audio_player.play()
 	ConveyerController.destination = get_parent()
 	transfer_box()
 
