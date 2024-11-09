@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cklr7b8dsbjlt"
-path="res://.godot/imported/redBox.png-158d26f34dbff7312b1b57bcf720fe9c.ctex"
+uid="uid://cgnmmfc1l4d5d"
+path="res://.godot/imported/sink.png-89a2b78f0c93a5f3375946943272aad0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Assets/redBox.png"
-dest_files=["res://.godot/imported/redBox.png-158d26f34dbff7312b1b57bcf720fe9c.ctex"]
+source_file="res://2D Assets/sinks/sink.png"
+dest_files=["res://.godot/imported/sink.png-89a2b78f0c93a5f3375946943272aad0.ctex"]
 
 [params]
 

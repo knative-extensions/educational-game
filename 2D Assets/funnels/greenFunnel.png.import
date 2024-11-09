@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqxpw3kmig3rt"
-path="res://.godot/imported/box.png-99edb7ebcd8c9191f443b44d6082e3a4.ctex"
+uid="uid://dreyprum5m05y"
+path="res://.godot/imported/greenFunnel.png-9b31229a6ae861714dea240c0b8a6cd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Assets/box.png"
-dest_files=["res://.godot/imported/box.png-99edb7ebcd8c9191f443b44d6082e3a4.ctex"]
+source_file="res://2D Assets/funnels/greenFunnel.png"
+dest_files=["res://.godot/imported/greenFunnel.png-9b31229a6ae861714dea240c0b8a6cd6.ctex"]
 
 [params]
 
