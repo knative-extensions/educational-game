@@ -20,13 +20,13 @@ func _process(delta: float) -> void:
 			ConveyerController.dragging = false
 			global_position = get_global_mouse_position()
 
-func _on_mouse_entered():
+func _on_mouse_entered() -> void:
 	if not ConveyerController.dragging:
 		draggable = true
 		scale = Vector2(1.05, 1.05)
 
 
-func _on_mouse_exited():
+func _on_mouse_exited() -> void:
 	if not ConveyerController.dragging:
 		draggable = false
 		scale = Vector2(1, 1)
@@ -34,6 +34,6 @@ func _on_mouse_exited():
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Box"):
-		if area.boxType == "Blue" and area.sending == true:
+		if area.boxType == filterColor and area.sending == true:
 			print("kill it")
 			area.get_parent().queue_free()

@@ -6,6 +6,8 @@ var destination
 var conveyer
 var dragging
 var sendingEnd = false
+var can_send = false
+var started = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +16,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if self.can_send and not self.started and self.destination != null:
+		self.send_event()
 	pass
 
 func create_conveyor():
@@ -21,6 +25,8 @@ func create_conveyor():
 	conveyer.set_point_position(1, destination.get_position())
 	
 func send_event():
+	print("sending events!")
+	self.started = true
 	for n in events.size():
 		events[n].get_child(0).sending = true
 		var tween = get_tree().create_tween()

@@ -6,7 +6,7 @@ extends Area2D
 func _ready() -> void:
 	ConveyerController.events.append(get_parent())
 
-func _input_event(viewport, event, shape_idx):
+func _input_event(viewport, event, shape_idx) -> void:
 	if event.is_pressed():
 		self.on_click()
 		
