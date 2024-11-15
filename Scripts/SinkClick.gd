@@ -15,3 +15,13 @@ func transfer_box():
 	print("sending")
 	ConveyerController.create_conveyor()
 	#draw_line(ConveyerController.selected.get_global_position(), get_global_position(), Color.GREEN)
+
+func _on_body_entered(node: Node2D) -> void:
+	print("body entered")
+
+func _on_area_entered(area: Area2D) -> void:
+	print("area entered")
+	#if area.is_in_group("Box"):
+		#if area.get_parent().boxType != filterColor and area.get_parent().sending == true:
+			#print("kill it")
+			#area.get_parent().queue_free()
