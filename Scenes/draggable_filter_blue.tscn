@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bquha0225l1ju"]
+
+[ext_resource type="Script" path="res://Scripts/draggable_filter.gd" id="1_nmkcu"]
+[ext_resource type="Texture2D" uid="uid://cs6prh1shv4bh" path="res://2D Assets/funnels/blueFunnel.png" id="2_bv34i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8kq8"]
+size = Vector2(160, 185)
+
+[node name="Draggable Filter" type="Area2D"]
+position = Vector2(288.333, 205)
+script = ExtResource("1_nmkcu")
+filterColor = "Blue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.333374, -0.5)
+shape = SubResource("RectangleShape2D_e8kq8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.333374, 0.333313)
+texture = ExtResource("2_bv34i")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

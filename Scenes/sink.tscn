@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://whu4rwgsyl8u"]
+
+[ext_resource type="Texture2D" uid="uid://cgnmmfc1l4d5d" path="res://2D Assets/sinks/sink.png" id="1_0ywo5"]
+[ext_resource type="Script" path="res://Scripts/SinkClick.gd" id="2_16xt0"]
+[ext_resource type="Script" path="res://Scripts/sink.gd" id="2_jjj2o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3ci"]
+size = Vector2(443.333, 408.333)
+
+[node name="Sink" type="Sprite2D"]
+position = Vector2(946.667, 863.333)
+texture = ExtResource("1_0ywo5")
+script = ExtResource("2_jjj2o")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_16xt0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -5.83331)
+shape = SubResource("RectangleShape2D_7l3ci")

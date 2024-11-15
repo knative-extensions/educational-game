@@ -9,6 +9,13 @@ var sendingEnd = false
 var can_send = false
 var started = false
 
+func setup(conveyer) -> void:
+	self.conveyer = conveyer
+	self.can_send = false
+	self.sendingEnd = false
+	self.started = false
+	self.events = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -28,7 +35,7 @@ func send_event():
 	print("sending events!")
 	self.started = true
 	for n in events.size():
-		events[n].get_child(0).sending = true
+		events[n].sending = true
 		var tween = get_tree().create_tween()
 		tween.tween_property(events[n], "position", destination.get_position(), 2).set_trans(tween.TRANS_LINEAR)
 		await tween.finished

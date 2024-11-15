@@ -34,6 +34,6 @@ func _on_mouse_exited() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Box"):
-		if area.boxType == filterColor and area.sending == true:
+		if area.get_parent().boxType != filterColor and area.get_parent().sending == true:
 			print("kill it")
 			area.get_parent().queue_free()
