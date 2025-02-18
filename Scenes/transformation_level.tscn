@@ -1,0 +1,193 @@
+[gd_scene load_steps=17 format=3 uid="uid://ccb20mwdp3vx"]
+
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_2nsuf"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_7lk3q"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="3_87n0d"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="4_nx6gq"]
+[ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="5_v0ss3"]
+[ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="6_4hq0w"]
+[ext_resource type="Script" path="res://Scripts/event_button.gd" id="7_h6cvw"]
+[ext_resource type="Script" path="res://Scripts/restart.gd" id="8_p48yw"]
+[ext_resource type="Script" path="res://Scripts/draggable_filter.gd" id="9_okl60"]
+[ext_resource type="Texture2D" uid="uid://cs6prh1shv4bh" path="res://2D Assets/funnels/blueFunnel.png" id="10_4wmpq"]
+[ext_resource type="FontFile" uid="uid://btxwuo5y3bcni" path="res://Fonts/Sigmar-Regular.ttf" id="11_4p53k"]
+[ext_resource type="Texture2D" uid="uid://bpkn0kgyf867u" path="res://2D Assets/funnels/redFunnel.png" id="12_gbup0"]
+[ext_resource type="PackedScene" uid="uid://cuopmfdfv28sw" path="res://Scenes/draggable_transformer.tscn" id="13_rxesm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5e67m"]
+size = Vector2(160, 185)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkv67"]
+bg_color = Color(0.396802, 0.593587, 0.949038, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06o0u"]
+bg_color = Color(0.900372, 0.458096, 0.249774, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="transformation_level" type="Node2D"]
+scale = Vector2(0.6, 0.6)
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_2nsuf")
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("2_7lk3q")
+texture_mode = 1
+script = ExtResource("3_87n0d")
+
+[node name="Sink" parent="." instance=ExtResource("4_nx6gq")]
+position = Vector2(946.667, 930)
+scale = Vector2(0.7, 0.7)
+expectedType = "Blue"
+
+[node name="BoxA" parent="." instance=ExtResource("5_v0ss3")]
+scale = Vector2(0.7, 0.7)
+
+[node name="BoxB" parent="." instance=ExtResource("6_4hq0w")]
+position = Vector2(948, 110)
+scale = Vector2(0.7, 0.7)
+boxType = "Blue"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1526.67
+offset_top = 761.667
+offset_right = 1566.67
+offset_bottom = 801.667
+script = ExtResource("7_h6cvw")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]START"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1528.33
+offset_top = 915.0
+offset_right = 1568.33
+offset_bottom = 955.0
+script = ExtResource("8_p48yw")
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]RESTART"
+
+[node name="Draggable Filter" type="Area2D" parent="."]
+position = Vector2(288.333, 205)
+script = ExtResource("9_okl60")
+filterColor = "Blue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter"]
+position = Vector2(0.333374, -0.5)
+shape = SubResource("RectangleShape2D_5e67m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Draggable Filter"]
+position = Vector2(0.333374, 0.333313)
+texture = ExtResource("10_4wmpq")
+
+[node name="Panel" type="Panel" parent="Draggable Filter"]
+visible = false
+offset_left = 71.667
+offset_top = -120.0
+offset_right = 249.667
+offset_bottom = -62.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hkv67")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Draggable Filter/Panel"]
+layout_mode = 0
+offset_left = 13.3333
+offset_top = 10.0
+offset_right = 163.333
+offset_bottom = 50.0
+theme_override_fonts/normal_font = ExtResource("11_4p53k")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "BLUE FILTER"
+
+[node name="Draggable Filter2" type="Area2D" parent="."]
+position = Vector2(286.667, 431.667)
+script = ExtResource("9_okl60")
+filterColor = "Red"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter2"]
+position = Vector2(0.333374, -0.5)
+shape = SubResource("RectangleShape2D_5e67m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Draggable Filter2"]
+position = Vector2(0.333374, 0.333313)
+texture = ExtResource("12_gbup0")
+
+[node name="Panel" type="Panel" parent="Draggable Filter2"]
+visible = false
+offset_left = 84.9997
+offset_top = -115.0
+offset_right = 263.0
+offset_bottom = -57.0003
+theme_override_styles/panel = SubResource("StyleBoxFlat_06o0u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Draggable Filter2/Panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 10.0
+offset_right = 175.0
+offset_bottom = 50.0
+theme_override_fonts/normal_font = ExtResource("11_4p53k")
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "RED FILTER"
+
+[node name="DraggableTransformerReder_red" parent="." instance=ExtResource("13_rxesm")]
+position = Vector2(1558, 379)
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
+[connection signal="area_entered" from="Draggable Filter" to="Draggable Filter" method="_on_area_entered"]
+[connection signal="body_shape_exited" from="Draggable Filter" to="Draggable Filter" method="_on_body_shape_exited"]
+[connection signal="mouse_entered" from="Draggable Filter" to="Draggable Filter" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Draggable Filter" to="Draggable Filter" method="_on_mouse_exited"]
+[connection signal="area_entered" from="Draggable Filter2" to="Draggable Filter2" method="_on_area_entered"]
+[connection signal="body_shape_exited" from="Draggable Filter2" to="Draggable Filter2" method="_on_body_shape_exited"]
+[connection signal="mouse_entered" from="Draggable Filter2" to="Draggable Filter2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Draggable Filter2" to="Draggable Filter2" method="_on_mouse_exited"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuopmfdfv28sw"]
+
+[ext_resource type="Script" path="res://Scripts/draggable_transformer.gd" id="1_i1cdg"]
+[ext_resource type="Texture2D" uid="uid://cgl53seeldvkw" path="res://2D Assets/transformers/transformer_A-Photoroom.png" id="2_dxdq5"]
+[ext_resource type="FontFile" uid="uid://btxwuo5y3bcni" path="res://Fonts/Sigmar-Regular.ttf" id="3_5lbdv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p775c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kn82s"]
+bg_color = Color(0.870808, 0, 0.25866, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="DraggableTransformerReder_red" type="Area2D"]
+script = ExtResource("1_i1cdg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_p775c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_dxdq5")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 84.0
+offset_top = -134.0
+offset_right = 234.0
+offset_bottom = -76.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kn82s")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 152.0
+offset_bottom = 144.0
+theme_override_fonts/normal_font = ExtResource("3_5lbdv")
+theme_override_font_sizes/normal_font_size = 22
+text = "Transformer "
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
