@@ -22,6 +22,7 @@ func _on_area_entered(area):
 	if area.is_in_group("Box"):
 		if area.get_parent().boxType != transformerColor and area.get_parent().sending == true:
 			print("make it red")
+			$AnimationPlayer.play("transforming")
 			area.get_parent().boxType = "Red"
 			area.get_parent().set_texture(preload("res://2D Assets/boxes/redBox.png"))
  # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuopmfdfv28sw"]
+[gd_scene load_steps=9 format=3 uid="uid://cuopmfdfv28sw"]
 
 [ext_resource type="Script" path="res://Scripts/draggable_transformer.gd" id="1_i1cdg"]
 [ext_resource type="Texture2D" uid="uid://cgl53seeldvkw" path="res://2D Assets/transformers/transformer_A-Photoroom.png" id="2_dxdq5"]
@@ -12,6 +12,42 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="Animation" id="Animation_ss6uj"]
+resource_name = "transforming"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_heecm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3q77y"]
+_data = {
+"RESET": SubResource("Animation_heecm"),
+"transforming": SubResource("Animation_ss6uj")
+}
 
 [node name="DraggableTransformerReder_red" type="Area2D"]
 script = ExtResource("1_i1cdg")
@@ -40,6 +76,11 @@ offset_bottom = 144.0
 theme_override_fonts/normal_font = ExtResource("3_5lbdv")
 theme_override_font_sizes/normal_font_size = 22
 text = "Transformer "
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3q77y")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
