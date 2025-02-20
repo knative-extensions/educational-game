@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ccb20mwdp3vx"]
+[gd_scene load_steps=19 format=3 uid="uid://ccb20mwdp3vx"]
 
 [ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_2nsuf"]
 [ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_7lk3q"]
@@ -13,6 +13,20 @@
 [ext_resource type="FontFile" uid="uid://btxwuo5y3bcni" path="res://Fonts/Sigmar-Regular.ttf" id="11_4p53k"]
 [ext_resource type="Texture2D" uid="uid://bpkn0kgyf867u" path="res://2D Assets/funnels/redFunnel.png" id="12_gbup0"]
 [ext_resource type="PackedScene" uid="uid://cuopmfdfv28sw" path="res://Scenes/draggable_transformer.tscn" id="13_rxesm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iaucr"]
+bg_color = Color(0.205842, 0.197159, 0.280285, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lih8j"]
+bg_color = Color(0.203922, 0.196078, 0.278431, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5e67m"]
 size = Vector2(160, 185)
@@ -78,13 +92,16 @@ script = ExtResource("7_h6cvw")
 layout_mode = 0
 offset_right = 342.0
 offset_bottom = 132.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_iaucr")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
 layout_mode = 0
-offset_top = 37.0
-offset_right = 338.0
-offset_bottom = 110.0
+offset_left = 4.99652
+offset_top = 23.333
+offset_right = 342.997
+offset_bottom = 125.333
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("11_4p53k")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]START"
@@ -102,13 +119,15 @@ script = ExtResource("8_p48yw")
 layout_mode = 0
 offset_right = 342.0
 offset_bottom = 132.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_lih8j")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
 layout_mode = 0
-offset_top = 37.0
+offset_top = 23.0
 offset_right = 338.0
-offset_bottom = 110.0
+offset_bottom = 118.0
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("11_4p53k")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]RESTART"
