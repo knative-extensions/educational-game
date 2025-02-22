@@ -10,12 +10,26 @@ var sendingEnd = false
 var can_send = false
 var started = false
 
+func initialize() -> void:
+	self.selected
+	self.events = []
+	self.destination = []
+	self.conveyer = []
+	self.conveyerInd = 0
+	self.dragging
+	self.sendingEnd = false
+	self.can_send = false
+	self.started = false
+	
+
 func setup(conveyer) -> void:
 	self.conveyer.append(conveyer)
 	self.can_send = false
 	self.sendingEnd = false
 	self.started = false
 	self.events = []
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
