@@ -1,7 +1,9 @@
 extends Node2D
-
+var source_is_ready = false
 var selected
+var alt_sinks = []
 var events = []
+var random_events = []
 var destination
 var conveyer
 var dragging
@@ -25,11 +27,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if self.can_send and not self.started and self.destination != null:
 		self.send_event()
-	pass
+		
+		pass
 
 func create_conveyor():
 	conveyer.set_point_position(0, selected.get_position())
 	conveyer.set_point_position(1, destination.get_position())
+	
+	
+	
+	
 	
 func send_event():
 	print("sending events!")
@@ -39,3 +46,6 @@ func send_event():
 		var tween = get_tree().create_tween()
 		tween.tween_property(events[n], "position", destination.get_position(), 2).set_trans(tween.TRANS_LINEAR)
 		await tween.finished
+
+
+		

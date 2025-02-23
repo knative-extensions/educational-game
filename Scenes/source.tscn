@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://ow36qogie5w4"]
+
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="1_yedhy"]
+[ext_resource type="Script" path="res://Scripts/source.gd" id="2_b4e2c"]
+[ext_resource type="Script" path="res://Scripts/event_box_clickable.gd" id="3_rq3xr"]
+[ext_resource type="FontFile" uid="uid://btxwuo5y3bcni" path="res://Fonts/Sigmar-Regular.ttf" id="4_ttw4u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uvdh"]
+size = Vector2(211.428, 211.429)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypugr"]
+bg_color = Color(0.31651, 0.60664, 0.963515, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Source" type="Sprite2D" groups=["Box"]]
+position = Vector2(947.833, 182.333)
+texture = ExtResource("1_yedhy")
+script = ExtResource("2_b4e2c")
+
+[node name="source_area" type="Area2D" parent="." groups=["Box"]]
+script = ExtResource("3_rq3xr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="source_area"]
+position = Vector2(0.000366211, 0)
+shape = SubResource("RectangleShape2D_6uvdh")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 52.167
+offset_top = -149.333
+offset_right = 199.167
+offset_bottom = -98.333
+theme_override_styles/panel = SubResource("StyleBoxFlat_ypugr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 190.0
+offset_bottom = 43.0
+theme_override_fonts/normal_font = ExtResource("4_ttw4u")
+theme_override_font_sizes/normal_font_size = 22
+text = "Source
+"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="mouse_entered" from="source_area" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="source_area" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

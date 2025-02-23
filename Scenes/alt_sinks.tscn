@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1aemkotig1oa"]
+
+[ext_resource type="Script" path="res://Scripts/alt_sinks.gd" id="1_x2mkc"]
+[ext_resource type="Script" path="res://Scripts/event_box_clickable.gd" id="2_vwwes"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7ega"]
+size = Vector2(420.37, 243.111)
+
+[node name="Alt_sinks" type="Sprite2D"]
+scale = Vector2(0.54, 0.54)
+script = ExtResource("1_x2mkc")
+sinkType = "Red"
+
+[node name="Alt_sink_area" type="Area2D" parent="."]
+script = ExtResource("2_vwwes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alt_sink_area"]
+position = Vector2(1.85186, -0.462963)
+scale = Vector2(0.995, 0.995)
+shape = SubResource("RectangleShape2D_i7ega")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

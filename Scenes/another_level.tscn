@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://lm132yqd2mok"]
+
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_p2ayk"]
+[ext_resource type="PackedScene" uid="uid://d1aemkotig1oa" path="res://Scenes/alt_sinks.tscn" id="1_ui11a"]
+[ext_resource type="PackedScene" uid="uid://ow36qogie5w4" path="res://Scenes/source.tscn" id="2_nxu3u"]
+[ext_resource type="Script" path="res://Scripts/event_button.gd" id="3_7lcje"]
+[ext_resource type="FontFile" uid="uid://btxwuo5y3bcni" path="res://Fonts/Sigmar-Regular.ttf" id="4_41ki5"]
+[ext_resource type="PackedScene" uid="uid://cuopmfdfv28sw" path="res://Scenes/draggable_transformer.tscn" id="5_vqv0r"]
+[ext_resource type="PackedScene" uid="uid://bquha0225l1ju" path="res://Scenes/draggable_filter_blue.tscn" id="7_u8lon"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vyfm"]
+bg_color = Color(0.205842, 0.197159, 0.280285, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="another_level" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(605, 394)
+texture = ExtResource("1_p2ayk")
+
+[node name="Alt_sinks" parent="." instance=ExtResource("1_ui11a")]
+position = Vector2(981, 552)
+scale = Vector2(0.365, 0.365)
+sourcePosition = Vector2(502.833, 131.333)
+
+[node name="Alt_sinks2" parent="." instance=ExtResource("1_ui11a")]
+position = Vector2(214, 544)
+scale = Vector2(0.365, 0.365)
+sourcePosition = Vector2(502.833, 131.333)
+sinkType = "Green"
+
+[node name="Source" parent="." instance=ExtResource("2_nxu3u")]
+modulate = Color(0.521141, 0.521141, 0.521141, 1)
+position = Vector2(520, 162)
+scale = Vector2(0.6, 0.6)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1526.67
+offset_top = 761.667
+offset_right = 1566.67
+offset_bottom = 801.667
+script = ExtResource("3_7lcje")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -762.67
+offset_top = -684.667
+offset_right = -420.67
+offset_bottom = -552.667
+theme_override_styles/normal = SubResource("StyleBoxFlat_2vyfm")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
+layout_mode = 0
+offset_left = 4.99652
+offset_top = 23.333
+offset_right = 342.997
+offset_bottom = 125.333
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_41ki5")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]START"
+
+[node name="DraggableTransformerReder_red" parent="." instance=ExtResource("5_vqv0r")]
+position = Vector2(278, 298)
+
+[node name="Draggable Filter" parent="." instance=ExtResource("7_u8lon")]
+position = Vector2(800.333, 358)
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
