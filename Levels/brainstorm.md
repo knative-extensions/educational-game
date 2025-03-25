@@ -38,11 +38,6 @@ Concept: Ensures events are reliably recorded before being published, preventing
 
 Concept: Events can be routed through multiple brokers before final processing.
 
-## 10. Autoscaling and High-Throughput Processing
-
-Concept: Systems dynamically scale to handle increased event load.
-
-
 References used:
 
 1. [Declarative Event-Driven-Application Patterns with Knative Eventing - Pierangelo Di Pilato & Matthias Wessendorf](https://www.youtube.com/watch?v=MqRy8J1WI3w)
