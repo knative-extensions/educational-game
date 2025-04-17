@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://cej0qnviiccuf"]
+
+[ext_resource type="Script" path="res://MainMenu/menu.gd" id="1_b4ol1"]
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="2_5fg15"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.920002, 0.72)
+script = ExtResource("1_b4ol1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.662872, 0.888889)
+texture = ExtResource("2_5fg15")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 491.303
+offset_top = 262.5
+offset_right = 813.303
+offset_bottom = 692.5
+scale = Vector2(0.927556, 0.944004)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Play"
+flat = true
+
+[node name="Play2" type="Button" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Quit
+"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play2" to="." method="_on_play_2_pressed"]
