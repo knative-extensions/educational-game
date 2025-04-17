@@ -1,0 +1,237 @@
+# This file is auto-generated from peribolos.
+# Do not modify this file, instead modify peribolos/knative-extensions.yaml
+
+aliases:
+  autoscaler-keda-approvers:
+  - skonto
+  backstage-plugins-reviewers:
+  - aliok
+  - cali0707
+  - leo6leo
+  - pierdipi
+  backstage-plugins-writers:
+  - aliok
+  - cali0707
+  - leo6leo
+  - pierdipi
+  client-wg-leads:
+  - dsimansk
+  - rhuss
+  client-writers:
+  - dsimansk
+  - rhuss
+  discovery-approvers:
+  - lberk
+  docs-writers:
+  - csantanapr
+  - skonto
+  eventing-autoscaler-keda-approvers: []
+  eventing-awssqs-approvers:
+  - lberk
+  - matzew
+  eventing-ceph-approvers:
+  - lberk
+  - matzew
+  eventing-couchdb-approvers:
+  - lberk
+  - lionelvillard
+  - matzew
+  eventing-github-approvers:
+  - lberk
+  - matzew
+  eventing-gitlab-approvers:
+  - lberk
+  - matzew
+  - sebgoa
+  eventing-kafka-approvers:
+  - aliok
+  - lberk
+  - matzew
+  - pierDipi
+  eventing-kafka-broker-approvers:
+  - aliok
+  - matzew
+  - pierDipi
+  eventing-kafka-broker-reviewers:
+  - Leo6Leo
+  - cali0707
+  eventing-kafka-writers: []
+  eventing-natss-approvers:
+  - astelmashenko
+  - dan-j
+  eventing-prometheus-approvers:
+  - lberk
+  - matzew
+  eventing-rabbitmq-approvers:
+  - ikavgo
+  - mkuratczyk
+  eventing-redis-approvers:
+  - aavarghese
+  - lionelvillard
+  - matzew
+  eventing-reviewers:
+  - Leo6Leo
+  - cali0707
+  - creydr
+  eventing-wg-leads:
+  - creydr
+  - pierDipi
+  eventing-writers:
+  - Leo6Leo
+  - aliok
+  - cali0707
+  - creydr
+  - lionelvillard
+  - matzew
+  - pierDipi
+  func-tastic-approvers:
+  - lance
+  - lkingland
+  - matejvasek
+  - nainaz
+  - salaboy
+  functastic-writers:
+  - lance
+  - lkingland
+  - matejvasek
+  - matzew
+  - nainaz
+  - salaboy
+  function-runtime-approvers:
+  - lance
+  - lkingland
+  - matejvasek
+  - matzew
+  - nainaz
+  - salaboy
+  function-runtime-writers:
+  - lance
+  - lkingland
+  - matejvasek
+  - matzew
+  - nainaz
+  - salaboy
+  homebrew-kn-plugins-approvers:
+  - dsimansk
+  - rhuss
+  kn-plugin-admin-approvers:
+  - dsimansk
+  - rhuss
+  kn-plugin-event-approvers:
+  - cardil
+  - rhuss
+  kn-plugin-operator-approvers:
+  - dsimansk
+  - houshengbo
+  - rhuss
+  kn-plugin-quickstart-approvers:
+  - dsimansk
+  - psschwei
+  - rhuss
+  kn-plugin-sample-approvers:
+  - dsimansk
+  - rhuss
+  kn-plugin-service-log-approvers:
+  - rhuss
+  kn-plugin-source-kafka-approvers:
+  - daisy-ycguo
+  - dsimansk
+  - rhuss
+  kn-plugin-source-kamelet-approvers:
+  - christophd
+  - rhuss
+  knative-admin:
+  - aliok
+  - cardil
+  - dprotaso
+  - dsimansk
+  - evankanderson
+  - gauron99
+  - knative-automation
+  - knative-prow-releaser-robot
+  - knative-prow-robot
+  - knative-prow-updater-robot
+  - knative-test-reporter-robot
+  - matzew
+  - nrrso
+  - skonto
+  - upodroid
+  knative-release-leads:
+  - dprotaso
+  - dsimansk
+  - gauron99
+  - skonto
+  knative-robots:
+  - knative-automation
+  - knative-prow-releaser-robot
+  - knative-prow-robot
+  - knative-prow-updater-robot
+  - knative-test-reporter-robot
+  net-contour-approvers:
+  - KauzClay
+  - dprotaso
+  net-gateway-api-approvers:
+  - dprotaso
+  net-http01-approvers: []
+  net-istio-approvers:
+  - skonto
+  net-kourier-approvers:
+  - skonto
+  operations-wg-leads:
+  - houshengbo
+  operations-writers:
+  - dprotaso
+  - houshengbo
+  - upodroid
+  productivity-leads:
+  - cardil
+  - upodroid
+  productivity-wg-leads:
+  - cardil
+  - upodroid
+  productivity-writers:
+  - cardil
+  - upodroid
+  security-guard-approvers:
+  - davidhadas
+  - rhuss
+  security-wg-leads:
+  - davidhadas
+  - evankanderson
+  security-writers:
+  - davidhadas
+  - evankanderson
+  serving-approvers:
+  - dsimansk
+  - skonto
+  serving-progressive-rollout-approvers:
+  - alexagriffith
+  - houshengbo
+  - sukumargaonkar
+  - yuzisun
+  serving-reviewers:
+  - skonto
+  serving-triage:
+  - skonto
+  serving-wg-leads:
+  - dprotaso
+  serving-writers:
+  - dprotaso
+  - dsimansk
+  - skonto
+  steering-committee:
+  - aliok
+  - dprotaso
+  - evankanderson
+  - matzew
+  - nrrso
+  ux-wg-leads:
+  - cali0707
+  - leo6leo
+  - mmejia02
+  - zainabhusain227
+  ux-writers:
+  - cali0707
+  - leo6leo
+  - mmejia02
+  - zainabhusain227
