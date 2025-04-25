@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://1fa5a0jliu6"]
+
+[ext_resource type="Texture2D" uid="uid://dc4bsht7e37uj" path="res://2D Assets/retryAndDLQ/DLQInitial.png" id="1_qpwv7"]
+
+[node name="dls_initial" type="Node2D"]
+
+[node name="DlqInitial" type="Sprite2D" parent="."]
+position = Vector2(291, 451)
+texture = ExtResource("1_qpwv7")
