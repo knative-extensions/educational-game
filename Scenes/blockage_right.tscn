@@ -9,11 +9,11 @@ size = Vector2(76, 142)
 [node name="blockage_right" type="Area2D" groups=["Blockage"]]
 position = Vector2(0, 4)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(518, 133)
+shape = SubResource("RectangleShape2D_uqhoy")
+
 [node name="BlockageRight" type="Sprite2D" parent="."]
 position = Vector2(496, 134)
 texture = ExtResource("1_xbmee")
 script = ExtResource("2_0mbv4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(518, 133)
-shape = SubResource("RectangleShape2D_uqhoy")
