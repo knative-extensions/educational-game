@@ -12,28 +12,31 @@
 size = Vector2(12, 210)
 
 [node name="blockage" type="Area2D"]
+position = Vector2(1, 0)
 collision_layer = 63
 collision_mask = 63
 script = ExtResource("1_o3021")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Blockage"]]
-position = Vector2(798, 222)
+position = Vector2(785, 208)
 shape = SubResource("RectangleShape2D_wk7lx")
+metadata/_edit_group_ = true
 
 [node name="Blockage Left" parent="." groups=["Blockage"] instance=ExtResource("1_xwdju")]
-position = Vector2(381, 60)
+position = Vector2(681, 201)
 collision_layer = 63
 collision_mask = 63
 metadata/name = "blockage_left_area"
 
 [node name="Blockage Right" parent="." instance=ExtResource("2_o1qqi")]
-position = Vector2(381, 92)
+position = Vector2(922, 210)
 metadata/name = "blockage_right_area"
 
 [node name="dls_final" parent="." instance=ExtResource("3_ilnfu")]
 script = ExtResource("4_vdqmc")
 
 [node name="dls_initial" parent="." instance=ExtResource("4_qjp7g")]
+position = Vector2(291, 447)
 script = ExtResource("5_gyjol")
 
 [connection signal="area_entered" from="Blockage Left" to="." method="_on_blockage_left_area_entered"]

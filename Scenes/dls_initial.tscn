@@ -3,7 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://dc4bsht7e37uj" path="res://2D Assets/retryAndDLQ/DLQInitial.png" id="1_qpwv7"]
 
 [node name="dls_initial" type="Node2D"]
+position = Vector2(291, 451)
+metadata/_edit_group_ = true
 
 [node name="DlqInitial" type="Sprite2D" parent="."]
-position = Vector2(291, 451)
+position = Vector2(30, -1)
 texture = ExtResource("1_qpwv7")
+metadata/_edit_group_ = true

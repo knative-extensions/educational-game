@@ -7,13 +7,16 @@
 size = Vector2(76, 142)
 
 [node name="blockage_right" type="Area2D" groups=["Blockage"]]
-position = Vector2(0, 4)
+position = Vector2(487, 181)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(518, 133)
+position = Vector2(-21, 1)
 shape = SubResource("RectangleShape2D_uqhoy")
+metadata/_edit_group_ = true
 
 [node name="BlockageRight" type="Sprite2D" parent="."]
-position = Vector2(496, 134)
+position = Vector2(-40, 3)
 texture = ExtResource("1_xbmee")
 script = ExtResource("2_0mbv4")
+metadata/_edit_group_ = true
