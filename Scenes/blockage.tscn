@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/dls_initial.gd" id="5_gyjol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wk7lx"]
-size = Vector2(127, 210)
+size = Vector2(12, 210)
 
 [node name="blockage" type="Area2D"]
 collision_layer = 63
@@ -33,7 +33,7 @@ script = ExtResource("4_vdqmc")
 script = ExtResource("5_gyjol")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Blockage"]]
-position = Vector2(787.5, 222)
+position = Vector2(798, 222)
 shape = SubResource("RectangleShape2D_wk7lx")
 
 [connection signal="area_entered" from="Blockage Left" to="." method="_on_blockage_left_area_entered"]
