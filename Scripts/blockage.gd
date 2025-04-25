@@ -1,5 +1,4 @@
-extends Node2D
-
+extends Area2D
 
 func _on_blockage_left_area_entered(area: Area2D) -> void:
 		if area.is_in_group("Blockage"):
