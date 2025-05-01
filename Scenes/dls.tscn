@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdog2bwjc5gc6"]
+
+[ext_resource type="Texture2D" uid="uid://dc4bsht7e37uj" path="res://2D Assets/retryAndDLQ/DLQInitial.png" id="1_5pcau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2u7"]
+size = Vector2(111, 83)
+
+[node name="dls" type="Area2D"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5pcau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-132.5, 0.5)
+shape = SubResource("RectangleShape2D_vt2u7")

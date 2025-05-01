@@ -1,44 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgyk5n8hbplfr"]
+[gd_scene load_steps=3 format=3 uid="uid://bxyhlo0v5nqc2"]
 
-[ext_resource type="Script" path="res://Scripts/blockage.gd" id="1_o3021"]
-[ext_resource type="PackedScene" uid="uid://b3wf2lldwe84e" path="res://Scenes/blockage_left.tscn" id="1_xwdju"]
-[ext_resource type="PackedScene" uid="uid://dsxmuwx5gibth" path="res://Scenes/blockage_right.tscn" id="2_o1qqi"]
-[ext_resource type="PackedScene" uid="uid://ic6hiyflchml" path="res://Scenes/dls_final.tscn" id="3_ilnfu"]
-[ext_resource type="PackedScene" uid="uid://1fa5a0jliu6" path="res://Scenes/dls_initial.tscn" id="4_qjp7g"]
-[ext_resource type="Script" path="res://Scripts/dls_final.gd" id="4_vdqmc"]
-[ext_resource type="Script" path="res://Scripts/dls_initial.gd" id="5_gyjol"]
+[ext_resource type="PackedScene" uid="uid://cr48hqg4si1y" path="res://Scenes/BlockageLeft.tscn" id="1_ym8l3"]
+[ext_resource type="PackedScene" uid="uid://dopq3jmwh3euw" path="res://Scenes/BlockageRight.tscn" id="2_8yqbf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wk7lx"]
-size = Vector2(12, 210)
+[node name="Blockage" type="Node2D"]
 
-[node name="blockage" type="Area2D"]
-position = Vector2(851, 191)
-collision_layer = 63
-collision_mask = 63
-script = ExtResource("1_o3021")
-metadata/_edit_group_ = true
+[node name="BlockageLeft" parent="." instance=ExtResource("1_ym8l3")]
+position = Vector2(733, 163)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Blockage"]]
-position = Vector2(0, -5)
-shape = SubResource("RectangleShape2D_wk7lx")
-metadata/_edit_group_ = true
-
-[node name="Blockage Left" parent="." groups=["Blockage"] instance=ExtResource("1_xwdju")]
-position = Vector2(-116, -21)
-collision_layer = 63
-collision_mask = 63
-metadata/name = "blockage_left_area"
-
-[node name="Blockage Right" parent="." instance=ExtResource("2_o1qqi")]
-position = Vector2(136, -7)
-metadata/name = "blockage_right_area"
-
-[node name="dls_final" parent="." instance=ExtResource("3_ilnfu")]
-position = Vector2(-583, 349)
-script = ExtResource("4_vdqmc")
-
-[node name="dls_initial" parent="." instance=ExtResource("4_qjp7g")]
-position = Vector2(-584, 346)
-script = ExtResource("5_gyjol")
-
-[connection signal="area_entered" from="Blockage Left" to="." method="_on_blockage_left_area_entered"]
+[node name="BlockageRight" parent="." instance=ExtResource("2_8yqbf")]
