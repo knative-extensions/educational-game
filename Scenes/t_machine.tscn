@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dansebgwsxywo"]
 
 [ext_resource type="Script" path="res://Scripts/t_machine.gd" id="1_j0eau"]
-[ext_resource type="Texture2D" uid="uid://d34q17073t7b6" path="res://2D Assets/transformation/transformation.png" id="1_y5327"]
+[ext_resource type="Texture2D" uid="uid://b81rxf23g1vwi" path="res://2D Assets/transformation/transformer_machine.png" id="2_y6rcx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75j47"]
 size = Vector2(150, 230)
@@ -12,7 +12,7 @@ script = ExtResource("1_j0eau")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_y5327")
+texture = ExtResource("2_y6rcx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_75j47")
