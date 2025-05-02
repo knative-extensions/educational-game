@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ConveyerController="*res://Scripts/ConveyerController.gd"
+TransformerConveyerController="*res://Scripts/TransformerConveyerController.gd"
 
 [input]
 

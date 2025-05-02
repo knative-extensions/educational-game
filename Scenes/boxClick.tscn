@@ -42,7 +42,6 @@ expectedType = "Blue"
 [node name="BoxA" parent="." instance=ExtResource("6_gdfin")]
 
 [node name="BoxB" parent="." instance=ExtResource("7_j7uju")]
-boxType = "Blue"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
