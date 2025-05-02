@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d34q17073t7b6"
-path="res://.godot/imported/transformation.png-3ed5fa7012e5f585e185cf1fb8ffb39f.ctex"
+uid="uid://bpmgn3uxmkwqs"
+path="res://.godot/imported/DLS.png-30995fa114e8c48ce8300b9b7b96541b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Assets/transformation/transformation.png"
-dest_files=["res://.godot/imported/transformation.png-3ed5fa7012e5f585e185cf1fb8ffb39f.ctex"]
+source_file="res://2D Assets/retryAndDLQ/DLS.png"
+dest_files=["res://.godot/imported/DLS.png-30995fa114e8c48ce8300b9b7b96541b.ctex"]
 
 [params]
 
