@@ -15,4 +15,4 @@ func _on_blockage_left_area_entered(area: Area2D) -> void:
 	var spriteB=$BoxB
 	var target_position=areadls.global_position #+ Vector2(40, 30)
 	spriteA.global_position=target_position
-	spriteB.global_position=target_position+ Vector2(40,0)
+	spriteB.global_position=target_position+ Vector2(180,0)

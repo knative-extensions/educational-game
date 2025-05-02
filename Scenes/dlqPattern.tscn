@@ -41,15 +41,16 @@ scale = Vector2(0.701276, 0.561688)
 expectedType = "Blue"
 
 [node name="dls" parent="." instance=ExtResource("6_yts6n")]
-position = Vector2(198, 478)
+position = Vector2(190, 498)
+scale = Vector2(0.75, 0.75)
 
 [node name="BoxA" parent="." instance=ExtResource("4_wtpug")]
 position = Vector2(529, 80)
-scale = Vector2(0.561, 0.475)
+scale = Vector2(0.531, 0.45)
 
 [node name="BoxB" parent="." instance=ExtResource("5_hpql2")]
 position = Vector2(529, 80)
-scale = Vector2(0.578895, 0.475168)
+scale = Vector2(0.549, 0.45)
 boxType = "Blue"
 
 [node name="BlockageLeft" parent="." instance=ExtResource("8_wx1je")]
