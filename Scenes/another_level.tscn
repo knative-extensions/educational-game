@@ -27,6 +27,11 @@ position = Vector2(981, 552)
 scale = Vector2(0.365, 0.365)
 sourcePosition = Vector2(502.833, 131.333)
 
+[node name="Alt_sinks3" parent="." instance=ExtResource("1_ui11a")]
+position = Vector2(537, 576)
+scale = Vector2(0.365, 0.365)
+sourcePosition = Vector2(502.833, 131.333)
+
 [node name="Alt_sinks2" parent="." instance=ExtResource("1_ui11a")]
 position = Vector2(214, 544)
 scale = Vector2(0.365, 0.365)
