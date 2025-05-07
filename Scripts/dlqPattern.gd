@@ -1,5 +1,5 @@
 extends Node2D
-
+@onready var DLS=$dls
 func _ready() -> void:
 	pass
 	
@@ -8,11 +8,14 @@ func _process(delta: float) -> void:
 	
 func _on_blockage_left_area_entered(area: Area2D) -> void:
 	ConveyerController.can_send=false
-	var areaboxA=$BoxA/Area2D
-	var areaboxB=$BoxB/Area2D
-	var areadls=$dls/CollisionShape2D
-	var spriteA=$BoxA
-	var spriteB=$BoxB
-	var target_position=areadls.global_position #+ Vector2(40, 30)
-	spriteA.global_position=target_position
-	spriteB.global_position=target_position+ Vector2(180,0)
+	var blockedEvents=ConveyerController.events.duplicate()
+	
+	for event in blockedEvents:
+		if event == null or not event.is_inside_tree():
+			continue  # skip already deleted or invalid nodes
+			
+		event.sending = true  # Assuming this is your custom property
+		var tween = get_tree().create_tween()
+		tween.tween_property(event, "position", DLS.position+Vector2(80,0), 2).set_trans(Tween.TRANS_LINEAR)
+		await tween.finished
+		

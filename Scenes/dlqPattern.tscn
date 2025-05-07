@@ -83,9 +83,11 @@ offset_top = 6.0
 offset_right = 71.534
 offset_bottom = 24.984
 scale = Vector2(2, 2)
+mouse_filter = 2
 bbcode_enabled = true
 text = "[center]START"
 
 [connection signal="area_entered" from="BlockageLeft" to="." method="_on_blockage_left_area_entered"]
+[connection signal="input_event" from="BlockageLeft" to="BlockageLeft" method="_on_input_event"]
+[connection signal="input_event" from="BlockageRight" to="BlockageRight" method="_on_input_event"]
 [connection signal="pressed" from="Control/Button" to="BlockageLeft" method="_on_button_pressed"]
-[connection signal="pressed" from="Control/Button" to="BlockageRight" method="_on_button_pressed"]
