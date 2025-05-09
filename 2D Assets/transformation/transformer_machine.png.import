@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d34q17073t7b6"
-path="res://.godot/imported/transformation.png-3ed5fa7012e5f585e185cf1fb8ffb39f.ctex"
+uid="uid://0y2j2aj55dyu"
+path="res://.godot/imported/transformer_machine.png-499d39d6ab2242e7a3735f6eed85ce24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Assets/transformation/transformation.png"
-dest_files=["res://.godot/imported/transformation.png-3ed5fa7012e5f585e185cf1fb8ffb39f.ctex"]
+source_file="res://2D Assets/transformation/transformer_machine.png"
+dest_files=["res://.godot/imported/transformer_machine.png-499d39d6ab2242e7a3735f6eed85ce24.ctex"]
 
 [params]
 
