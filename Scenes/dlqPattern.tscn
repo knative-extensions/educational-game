@@ -35,6 +35,14 @@ texture = ExtResource("1_o080m")
 texture_mode = 1
 script = ExtResource("2_5sfur")
 
+[node name="Conveyor2" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("1_o080m")
+texture_mode = 1
+script = ExtResource("2_5sfur")
+
 [node name="Sink" parent="." instance=ExtResource("3_q7o5m")]
 position = Vector2(529, 531)
 scale = Vector2(0.701276, 0.561688)
@@ -87,6 +95,7 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "[center]START"
 
+[connection signal="input_event" from="dls" to="." method="_on_dls_input_event"]
 [connection signal="area_entered" from="BlockageLeft" to="." method="_on_blockage_left_area_entered"]
 [connection signal="input_event" from="BlockageLeft" to="BlockageLeft" method="_on_input_event"]
 [connection signal="input_event" from="BlockageRight" to="BlockageRight" method="_on_input_event"]
