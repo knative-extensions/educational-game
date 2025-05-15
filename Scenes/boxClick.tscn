@@ -1,21 +1,27 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8lin6dur1umi"]
+[gd_scene load_steps=18 format=3 uid="uid://c8lin6dur1umi"]
 
-[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_fdm6s"]
+[ext_resource type="Texture2D" uid="uid://c5hqlla5086kp" path="res://2D Assets/KNATIVE.png" id="1_tf1jf"]
 [ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_ocbiy"]
 [ext_resource type="Script" path="res://Scripts/conveyor.gd" id="3_5pogt"]
 [ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="4_2wh4q"]
+[ext_resource type="Texture2D" uid="uid://dehcuwck0lv0e" path="res://2D Assets/sinks/redSink.png" id="5_16xat"]
 [ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="6_gdfin"]
+[ext_resource type="Texture2D" uid="uid://w1o1bf6t5054" path="res://2D Assets/sinks/greenSink.png" id="6_l1rfj"]
 [ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="7_j7uju"]
+[ext_resource type="Texture2D" uid="uid://bdn2dphqbqnhh" path="res://2D Assets/boxes/greenBox.png" id="9_37vjj"]
 [ext_resource type="Script" path="res://Scripts/event_button.gd" id="9_va8kg"]
 [ext_resource type="Script" path="res://Scripts/restart.gd" id="10_rwca5"]
 [ext_resource type="Texture2D" uid="uid://cs6prh1shv4bh" path="res://2D Assets/funnels/blueFunnel.png" id="10_w4xqm"]
 [ext_resource type="Script" path="res://Scripts/draggable_filter.gd" id="10_xwwl6"]
 [ext_resource type="Texture2D" uid="uid://bpkn0kgyf867u" path="res://2D Assets/funnels/redFunnel.png" id="11_2hn41"]
+[ext_resource type="AudioStream" uid="uid://8si5vt7ptv0k" path="res://SoundEffects/sfx_click_start.mp3" id="11_vi78o"]
+[ext_resource type="Texture2D" uid="uid://dreyprum5m05y" path="res://2D Assets/funnels/greenFunnel.png" id="16_ucfe2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8kq8"]
 size = Vector2(160, 185)
 
 [node name="base" type="Node2D"]
+position = Vector2(3, 1)
 scale = Vector2(0.6, 0.6)
 
 [node name="Panel" type="Panel" parent="."]
@@ -26,7 +32,8 @@ mouse_filter = 2
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_fdm6s")
+scale = Vector2(1.03659, 0.994286)
+texture = ExtResource("1_tf1jf")
 
 [node name="Conveyor" type="Line2D" parent="."]
 texture_repeat = 2
@@ -36,13 +43,103 @@ texture = ExtResource("2_ocbiy")
 texture_mode = 1
 script = ExtResource("3_5pogt")
 
-[node name="Sink" parent="." instance=ExtResource("4_2wh4q")]
+[node name="Conveyor2" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("2_ocbiy")
+texture_mode = 1
+script = ExtResource("3_5pogt")
+conveyorIndex = 1
+
+[node name="Conveyor3" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("2_ocbiy")
+texture_mode = 1
+script = ExtResource("3_5pogt")
+conveyorIndex = 1
+
+[node name="Sink 1" parent="." instance=ExtResource("4_2wh4q")]
+position = Vector2(301.667, 851.667)
+texture = ExtResource("5_16xat")
+expectedType = "Red"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sink 1"]
+offset_left = -135.0
+offset_top = 88.0
+offset_right = -74.0
+offset_bottom = 106.0
+scale = Vector2(5.36905, 4.76596)
+text = "SINK 1"
+fit_content = true
+scroll_active = false
+
+[node name="Sink2" parent="." instance=ExtResource("4_2wh4q")]
+position = Vector2(781.667, 855)
 expectedType = "Blue"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Sink2"]
+offset_left = -135.0
+offset_top = 88.0
+offset_right = -74.0
+offset_bottom = 106.0
+scale = Vector2(5.36905, 4.76596)
+text = "SINK 2"
+fit_content = true
+scroll_active = false
+
+[node name="Sink 3" parent="." instance=ExtResource("4_2wh4q")]
+position = Vector2(1266.67, 855)
+texture = ExtResource("6_l1rfj")
+expectedType = "Green"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sink 3"]
+offset_left = -135.0
+offset_top = 88.0
+offset_right = -74.0
+offset_bottom = 106.0
+scale = Vector2(5.36905, 4.76596)
+text = "SINK 3"
+fit_content = true
+scroll_active = false
+
 [node name="BoxA" parent="." instance=ExtResource("6_gdfin")]
+position = Vector2(786.167, 120.667)
 
 [node name="BoxB" parent="." instance=ExtResource("7_j7uju")]
+position = Vector2(791.167, 124)
 boxType = "Blue"
+
+[node name="BoxC" parent="." instance=ExtResource("7_j7uju")]
+position = Vector2(785, 121.667)
+texture = ExtResource("9_37vjj")
+boxType = "Green"
+
+[node name="BoxA2" parent="." instance=ExtResource("6_gdfin")]
+position = Vector2(784.5, 129)
+
+[node name="BoxB2" parent="." instance=ExtResource("7_j7uju")]
+position = Vector2(782.833, 127.333)
+boxType = "Blue"
+
+[node name="BoxC2" parent="." instance=ExtResource("7_j7uju")]
+position = Vector2(791.667, 125)
+texture = ExtResource("9_37vjj")
+boxType = "Green"
+
+[node name="BoxA3" parent="." instance=ExtResource("6_gdfin")]
+position = Vector2(786.167, 120.667)
+
+[node name="BoxB3" parent="." instance=ExtResource("7_j7uju")]
+position = Vector2(791.167, 124)
+boxType = "Blue"
+
+[node name="BoxC3" parent="." instance=ExtResource("7_j7uju")]
+position = Vector2(791.667, 126.667)
+texture = ExtResource("9_37vjj")
+boxType = "Green"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -68,6 +165,10 @@ theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]START"
 
+[node name="SfxClickStart" type="AudioStreamPlayer2D" parent="Control"]
+position = Vector2(154.997, 58.3331)
+stream = ExtResource("11_vi78o")
+
 [node name="Control2" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -92,31 +193,42 @@ theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]RESTART"
 
+[node name="SfxClickStart" type="AudioStreamPlayer2D" parent="Control2"]
+position = Vector2(154.997, 58.3331)
+stream = ExtResource("11_vi78o")
+
 [node name="Draggable Filter" type="Area2D" parent="."]
-position = Vector2(288.333, 205)
+position = Vector2(1728.33, 121.667)
 script = ExtResource("10_xwwl6")
 filterColor = "Blue"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter"]
-position = Vector2(0.333374, -0.5)
 shape = SubResource("RectangleShape2D_e8kq8")
 
 [node name="Sprite2D" type="Sprite2D" parent="Draggable Filter"]
-position = Vector2(0.333374, 0.333313)
 texture = ExtResource("10_w4xqm")
 
 [node name="Draggable Filter2" type="Area2D" parent="."]
-position = Vector2(286.667, 431.667)
+position = Vector2(1735, 335)
 script = ExtResource("10_xwwl6")
 filterColor = "Red"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter2"]
-position = Vector2(0.333374, -0.5)
 shape = SubResource("RectangleShape2D_e8kq8")
 
 [node name="Sprite2D" type="Sprite2D" parent="Draggable Filter2"]
-position = Vector2(0.333374, 0.333313)
 texture = ExtResource("11_2hn41")
+
+[node name="Draggable Filter3" type="Area2D" parent="."]
+position = Vector2(1736.67, 545)
+script = ExtResource("10_xwwl6")
+filterColor = "Green"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter3"]
+shape = SubResource("RectangleShape2D_e8kq8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Draggable Filter3"]
+texture = ExtResource("16_ucfe2")
 
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
 [connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
@@ -128,3 +240,7 @@ texture = ExtResource("11_2hn41")
 [connection signal="body_shape_exited" from="Draggable Filter2" to="Draggable Filter2" method="_on_body_shape_exited"]
 [connection signal="mouse_entered" from="Draggable Filter2" to="Draggable Filter2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Draggable Filter2" to="Draggable Filter2" method="_on_mouse_exited"]
+[connection signal="area_entered" from="Draggable Filter3" to="Draggable Filter3" method="_on_area_entered"]
+[connection signal="body_shape_exited" from="Draggable Filter3" to="Draggable Filter3" method="_on_body_shape_exited"]
+[connection signal="mouse_entered" from="Draggable Filter3" to="Draggable Filter3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Draggable Filter3" to="Draggable Filter3" method="_on_mouse_exited"]

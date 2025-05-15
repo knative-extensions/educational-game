@@ -6,9 +6,21 @@ var bodyref
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
+	pass
+	
+#func _input_event(viewport, event, shape_idx):
+	#if event.is_pressed() and ConveyerController.selected != null:
+		#self.on_click()
+#
+#func on_click():
+	#print("hey filter")
+	#ConveyerController.destination = position
+	#transfer_box()
+#
+#func transfer_box():
+	#print("sending")
+	#ConveyerController.create_conveyor()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if draggable:
@@ -32,8 +44,10 @@ func _on_mouse_exited() -> void:
 		scale = Vector2(1, 1)
 
 
+var events = []
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Box"):
+		events.append(area.get_parent())
 		if area.get_parent().boxType != filterColor and area.get_parent().sending == true:
 			print("kill it")
 			area.get_parent().queue_free()
