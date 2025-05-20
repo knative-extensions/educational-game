@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://75lnwxj33066" path="res://2D Assets/retryAndDLQ/DLS.png" id="1_lsi3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2u7"]
-size = Vector2(129, 102)
+size = Vector2(376, 136)
 
 [node name="dls" type="Area2D"]
 metadata/_edit_group_ = true
@@ -12,5 +12,5 @@ metadata/_edit_group_ = true
 texture = ExtResource("1_lsi3q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-123.5, -5)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_vt2u7")

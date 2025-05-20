@@ -17,7 +17,6 @@ func _on_button_pressed() -> void:
 	ConveyerController.can_send=true
 	movement=true
 	BlockageRight.movement=true
-	ConveyerController.conveyerInd-=1
 
 #when left blockage is clicked
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

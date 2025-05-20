@@ -35,7 +35,6 @@ func _on_dls_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> v
 	dlsclicked=true
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
 		#ConveyerController.conveyerInd+=1
-		var dlqTrigger=ConveyerController.conveyer[ConveyerController.conveyerInd]
-		dlqTrigger.set_point_position(0, Vector2(529,300))
+		var dlqTrigger=$dlsconveyor
+		dlqTrigger.set_point_position(0, Vector2(529,250))
 		dlqTrigger.set_point_position(1, DLS.position+Vector2(80,0))
-		ConveyerController.destination.append(DLS.position)

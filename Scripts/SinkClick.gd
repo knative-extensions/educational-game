@@ -8,7 +8,7 @@ func _input_event(viewport, event, shape_idx):
 
 func on_click():
 	print("hey")
-	ConveyerController.destination.append(get_parent().get_position())
+	ConveyerController.destination=get_parent()
 	transfer_box()
 
 func transfer_box():
