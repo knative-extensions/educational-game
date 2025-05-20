@@ -10,7 +10,7 @@ var can_send = false
 var started = false
 
 func setup(conveyer) -> void:
-	self.conveyer=conveyer
+	self.conveyer = conveyer
 	self.can_send = false
 	self.sendingEnd = false
 	self.started = false
@@ -37,6 +37,5 @@ func send_event():
 	for n in events.size():
 		events[n].sending = true
 		var tween = get_tree().create_tween()
-		print("event sent ", n);
 		tween.tween_property(events[n], "position", destination.get_position(), 2).set_trans(tween.TRANS_LINEAR)
 		await tween.finished
