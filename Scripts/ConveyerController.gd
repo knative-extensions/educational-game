@@ -39,3 +39,4 @@ func send_event():
 		var tween = get_tree().create_tween()
 		tween.tween_property(events[n], "position", destination.get_position(), 2).set_trans(tween.TRANS_LINEAR)
 		await tween.finished
+	Level.next_level()

@@ -11,6 +11,7 @@ size = Vector2(211.428, 211.429)
 position = Vector2(947.833, 182.333)
 texture = ExtResource("1_mjw0e")
 script = ExtResource("2_3md8f")
+boxType = "Blue"
 
 [node name="Area2D" type="Area2D" parent="." groups=["Box"]]
 script = ExtResource("2_raetl")

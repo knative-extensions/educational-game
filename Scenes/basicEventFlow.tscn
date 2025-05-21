@@ -33,7 +33,6 @@ script = ExtResource("2_etah7")
 [node name="Sink" parent="." instance=ExtResource("3_y5n06")]
 position = Vector2(536, 487)
 scale = Vector2(0.727273, 0.727273)
-expectedType = "Blue"
 
 [node name="BoxA" parent="." instance=ExtResource("4_fjrb2")]
 position = Vector2(536, 88)
@@ -42,7 +41,6 @@ scale = Vector2(0.698225, 0.698225)
 [node name="BoxB" parent="." instance=ExtResource("5_5su6q")]
 position = Vector2(536, 88)
 scale = Vector2(0.698, 0.698)
-boxType = "Blue"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

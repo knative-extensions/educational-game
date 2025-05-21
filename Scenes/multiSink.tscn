@@ -80,13 +80,13 @@ scale = Vector2(0.6, 0.6)
 boxType = "Blue"
 
 [node name="BoxR" parent="." instance=ExtResource("5_2pbu6")]
-position = Vector2(725, 68)
+position = Vector2(577, 63)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_s4nqt")
 boxType = "Red"
 
 [node name="BoxG" parent="." instance=ExtResource("5_2pbu6")]
-position = Vector2(428, 67)
+position = Vector2(577, 63)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("7_ddj2a")
 boxType = "Green"
@@ -106,7 +106,7 @@ position = Vector2(0.333374, 0.333313)
 texture = ExtResource("11_mf5ap")
 
 [node name="Draggable Filter2" type="Area2D" parent="."]
-position = Vector2(157, 277)
+position = Vector2(158, 137)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("10_oh2sn")
 filterColor = "Red"
@@ -120,7 +120,7 @@ position = Vector2(0.333374, 0.333313)
 texture = ExtResource("12_2vchf")
 
 [node name="Draggable Filter3" type="Area2D" parent="."]
-position = Vector2(247, 225)
+position = Vector2(158, 137)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("10_oh2sn")
 filterColor = "Green"
