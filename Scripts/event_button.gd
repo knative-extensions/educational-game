@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	ConveyerController.can_send = true
 	Level.initialise()
+	ConveyerController.can_send = true

@@ -1,11 +1,11 @@
 extends Node
-var sinkBoxMatchNeeded=[false,true]
+var sinkBoxMatchNeeded=[false,true,true]
 var sinkBoxMatchPresent
-var dlsRequired=[false,false]
+var dlsRequired=[false,false,false]
 var dlsUsed
-var totalbox
+var totalbox=[2,2,3]
 var nextLevel
-var levels=["basicEventFlow","boxClick"]
+var levels=["basicEventFlow","boxClick","multiSink"]
 var levelind=0
 
 func initialise():
@@ -27,6 +27,7 @@ func  next_level():
 		if levelind!=levels.size():
 			var next_level_path="res://Scenes/"+levels[levelind]+".tscn"
 			get_tree().change_scene_to_file(next_level_path)
+			ConveyerController.initialise()
 		else:
 			print("End of Levels.")
 	else:

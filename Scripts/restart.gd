@@ -16,3 +16,4 @@ func _on_button_pressed() -> void:
 		#Level.levelind-=1
 	Level.initialise()
 	get_tree().reload_current_scene()
+	ConveyerController.initialise()
