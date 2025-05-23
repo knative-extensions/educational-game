@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtw62fpf26cjh"]
+[gd_scene load_steps=12 format=3 uid="uid://dtw62fpf26cjh"]
 
 [ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="1_o080m"]
 [ext_resource type="Script" path="res://Scripts/dlqPattern.gd" id="1_tk71p"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdog2bwjc5gc6" path="res://Scenes/dls.tscn" id="6_yts6n"]
 [ext_resource type="PackedScene" uid="uid://cr48hqg4si1y" path="res://Scenes/BlockageLeft.tscn" id="8_wx1je"]
 [ext_resource type="PackedScene" uid="uid://dopq3jmwh3euw" path="res://Scenes/BlockageRight.tscn" id="9_0d774"]
+[ext_resource type="Script" path="res://Scripts/restart.gd" id="11_pd3ou"]
 
 [node name="dlqPattern" type="Node2D"]
 script = ExtResource("1_tk71p")
@@ -80,22 +81,45 @@ offset_top = 1.0
 offset_right = 151.0
 offset_bottom = 65.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.046
-anchor_bottom = 0.094
-offset_left = 7.0
-offset_top = 6.0
-offset_right = 71.534
-offset_bottom = 24.984
-scale = Vector2(2, 2)
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control/Button"]
+offset_left = -10.0
+offset_top = 16.0
+offset_right = 328.0
+offset_bottom = 89.0
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]START"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 824.0
+offset_top = 559.0
+offset_right = 864.0
+offset_bottom = 599.0
+script = ExtResource("11_pd3ou")
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+scale = Vector2(0.45, 0.45)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]RESTART"
 
 [connection signal="input_event" from="dls" to="." method="_on_dls_input_event"]
 [connection signal="area_entered" from="BlockageLeft" to="." method="_on_blockage_left_area_entered"]
 [connection signal="input_event" from="BlockageLeft" to="BlockageLeft" method="_on_input_event"]
 [connection signal="input_event" from="BlockageRight" to="BlockageRight" method="_on_input_event"]
 [connection signal="pressed" from="Control/Button" to="BlockageLeft" method="_on_button_pressed"]
+[connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
