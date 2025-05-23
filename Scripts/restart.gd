@@ -12,4 +12,8 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	print("restart clicked")
+	#if not Level.nextLevel:
+		#Level.levelind-=1
+	Level.initialise()
 	get_tree().reload_current_scene()
+	ConveyerController.initialise()
