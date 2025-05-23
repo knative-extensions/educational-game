@@ -47,10 +47,10 @@ func create_conveyor():
 func send_event():
 	print("sending events!")
 	self.started = true
-
-	for n in events.size():
-		events[n].sending = true
-		var tween = get_tree().create_tween()
-		tween.tween_property(events[n], "position", destination[n%conveyerInd], 2).set_trans(tween.TRANS_LINEAR)
-		await tween.finished
+	if conveyerInd!=0:
+		for n in events.size():
+			events[n].sending = true
+			var tween = get_tree().create_tween()
+			tween.tween_property(events[n], "position", destination[n%conveyerInd], 2).set_trans(tween.TRANS_LINEAR)
+			await tween.finished
 	Level.next_level()

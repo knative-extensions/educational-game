@@ -20,6 +20,7 @@ func _on_body_entered(node: Node2D) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	print("area entered")
 	if area.is_in_group("Box"):
+		Level.sinkUsed=true
 		print(get_parent().expectedType)
 		if area.get_parent().boxType != get_parent().expectedType:
 			print("Not Expected Box")

@@ -1,6 +1,7 @@
 extends Node
 var sinkBoxMatchNeeded=[false,true,true]
 var sinkBoxMatchPresent
+var sinkUsed
 var dlsRequired=[false,false,false]
 var dlsUsed
 var totalbox=[2,2,3]
@@ -10,16 +11,18 @@ var levelind=0
 
 func initialise():
 	sinkBoxMatchPresent=true
+	sinkUsed=false
 	totalbox=0
 	nextLevel=false
 
 func  next_level():
-	if not sinkBoxMatchNeeded[levelind] and not dlsRequired[levelind]:
-		print("if next level entered",sinkBoxMatchNeeded,dlsRequired)
-		nextLevel=true
-	elif sinkBoxMatchNeeded[levelind] and sinkBoxMatchPresent:
-		print("elif next level entered",sinkBoxMatchNeeded,sinkBoxMatchPresent)
-		nextLevel=true
+	if sinkUsed:
+		if not sinkBoxMatchNeeded[levelind] and not dlsRequired[levelind]:
+			print("if next level entered",sinkBoxMatchNeeded,dlsRequired)
+			nextLevel=true
+		elif sinkBoxMatchNeeded[levelind] and sinkBoxMatchPresent:
+			print("elif next level entered",sinkBoxMatchNeeded,sinkBoxMatchPresent)
+			nextLevel=true
 	
 	if nextLevel:
 		print("success")
