@@ -52,5 +52,6 @@ func send_event():
 			events[n].sending = true
 			var tween = get_tree().create_tween()
 			tween.tween_property(events[n], "position", destination[n%conveyerInd], 2).set_trans(tween.TRANS_LINEAR)
-			await tween.finished
+			if n%conveyerInd==conveyerInd-1:
+				await tween.finished
 	Level.next_level()
