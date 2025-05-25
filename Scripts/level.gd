@@ -24,8 +24,14 @@ func  next_level():
 			print("elif next level entered",sinkBoxMatchNeeded,sinkBoxMatchPresent)
 			nextLevel=true
 	
+	var message_display = preload("res://Scenes/message_display.tscn").instantiate()
+	add_child(message_display)
+	message_display.z_index = 999 
 	if nextLevel:
 		print("success")
+		message_display.show_message("Success")
+		await message_display.show_message_for_duration(2.0)
+		message_display.visible = false
 		levelind+=1
 		if levelind!=levels.size():
 			var next_level_path="res://Scenes/"+levels[levelind]+".tscn"
@@ -33,5 +39,9 @@ func  next_level():
 			ConveyerController.initialise()
 		else:
 			print("End of Levels.")
+			get_tree().change_scene_to_file("res://Scenes/end_of_all_levels.tscn")
 	else:
 		print("Failed. Try Again")
+		message_display.show_message("Failed. Try Again")
+		await message_display.show_message_for_duration(2.0)
+		message_display.visible = false
