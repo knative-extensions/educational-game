@@ -23,13 +23,13 @@ func _process(delta: float) -> void:
 func _on_mouse_entered() -> void:
 	if not ConveyerController.dragging:
 		draggable = true
-		scale = Vector2(1.05, 1.05)
+		#scale = Vector2(1.05, 1.05)
 
 
 func _on_mouse_exited() -> void:
 	if not ConveyerController.dragging:
 		draggable = false
-		scale = Vector2(1, 1)
+		#scale = Vector2(1, 1)
 
 
 func _on_area_entered(area: Area2D) -> void:

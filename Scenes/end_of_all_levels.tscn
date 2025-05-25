@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cadyrskwpfaja"]
+
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_sak8n"]
+
+[node name="EndOfAllLevels" type="Sprite2D"]
+position = Vector2(582.5, 329)
+scale = Vector2(0.606771, 0.62037)
+texture = ExtResource("1_sak8n")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -960.0
+offset_top = -529.0
+offset_right = 934.0
+offset_bottom = 521.0
+theme_override_colors/font_color = Color(0.121569, 0.533333, 0.819608, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.94902, 0.870588, 1)
+theme_override_font_sizes/font_size = 100
+text = "Congratulations! 
+You Have Successfully Completed All The Levels!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
