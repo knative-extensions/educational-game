@@ -3,7 +3,7 @@ var movement
 var canMove
 @onready var BlockageRight = get_node("../BlockageRight")
 func _process(delta: float) -> void:
-	if canMove and movement:
+	if movement:
 		position.x+=100*delta
 
 func _on_area_entered(area: Area2D) -> void:

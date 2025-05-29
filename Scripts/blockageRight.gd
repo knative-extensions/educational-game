@@ -3,7 +3,7 @@ var movement
 var canMove
 @onready var BlockageLeft = get_node("../BlockageLeft")
 func _process(delta: float) -> void:
-	if canMove and movement:
+	if movement:
 		position.x-=100*delta
 
 
