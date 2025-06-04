@@ -78,7 +78,33 @@ Concept: Events can be routed through multiple brokers before final processing.
 ## Level 6- Transformation Pattern
 ![Transformation Pattern](./Level%20Transitions/Knative%20Level%20Transitions-6.png)
 
-References used:
+# New Assets Created
+### Representation of Blockage and Dead Letter Sink. ([#25](https://github.com/knative-extensions/educational-game/pull/25) [#34](https://github.com/knative-extensions/educational-game/pull/34))
+### Representation of Transformation Function. ([#25](https://github.com/knative-extensions/educational-game/pull/25) [#34](https://github.com/knative-extensions/educational-game/pull/34))
+
+# Levels Implemented
+
+### Level 1- Basic Event Flow ([#36](https://github.com/knative-extensions/educational-game/pull/36))
+### Level 2- Using Filters ([#36](https://github.com/knative-extensions/educational-game/pull/36))
+### Level 3- Using Filters With Multiple Sinks ([#36](https://github.com/knative-extensions/educational-game/pull/36))
+### Level 4- DLQ Pattern ([#28](https://github.com/knative-extensions/educational-game/pull/28))
+
+# Future Works
+## Design a representation of Broker
+Currently, the game has all the logic of a broker, however, it lacks a representation. The next task could be designing a representation of a broker and attach the necessary scripts containing the logic to the asset representing the broker.
+
+## Implement the Patterns and Levels already designed
+The Transformation and Sequence pattern were designed in the mentorship, along with level transition ideas for these patterns. The level combining Multi Sink and DLQ Pattern was also designed. These patterns and levels will be implemented in the future.
+
+## Design and Implement the remaining key EDA Patterns
+Other EDA Patterns like the DataRef Pattern and Outbox Pattern will be designed and implemented in the future.
+
+<br> <br>
+This is the summary of the work done during a [LFX Mentorship](https://github.com/knative-extensions/educational-game/issues/8).<br>
+Mentee- [Ankita Jana](https://github.com/ankitajana21).<br>
+Mentor(s)- [Calum Murray](https://github.com/Cali0707), [Zainab Husain](https://github.com/zainabhusain227), [Angelina Zhai](https://github.com/AngelinaZhai).
+
+# References used:
 
 1. [Declarative Event-Driven-Application Patterns with Knative Eventing - Pierangelo Di Pilato & Matthias Wessendorf](https://www.youtube.com/watch?v=MqRy8J1WI3w)
 2. [Enterprise Integration Patterns- Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/)
