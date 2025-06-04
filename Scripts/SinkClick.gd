@@ -8,7 +8,7 @@ func _input_event(viewport, event, shape_idx):
 
 func on_click():
 	print("hey")
-	ConveyerController.destination = get_parent()
+	ConveyerController.destination.append(get_parent().get_position())
 	transfer_box()
 
 func transfer_box():
@@ -21,6 +21,7 @@ func _on_body_entered(node: Node2D) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	print("area entered")
+	#$SfxClickStart.play()
 	#if area.is_in_group("Box"):
 		#if area.get_parent().boxType != filterColor and area.get_parent().sending == true:
 			#print("kill it")

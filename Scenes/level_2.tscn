@@ -1,0 +1,183 @@
+[gd_scene load_steps=17 format=3 uid="uid://b7i7uwwh5gws0"]
+
+[ext_resource type="Texture2D" uid="uid://c5hqlla5086kp" path="res://2D Assets/KNATIVE.png" id="1_3xhnk"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_ftlb3"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="3_w6ghk"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="4_tayrs"]
+[ext_resource type="Texture2D" uid="uid://dehcuwck0lv0e" path="res://2D Assets/sinks/redSink.png" id="5_asxcm"]
+[ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="6_uymyw"]
+[ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="7_p78om"]
+[ext_resource type="Script" path="res://Scripts/draggable_filter.gd" id="8_wcxw1"]
+[ext_resource type="Texture2D" uid="uid://cs6prh1shv4bh" path="res://2D Assets/funnels/blueFunnel.png" id="9_u3257"]
+[ext_resource type="Texture2D" uid="uid://bpkn0kgyf867u" path="res://2D Assets/funnels/redFunnel.png" id="10_6ry73"]
+[ext_resource type="Script" path="res://Scripts/event_button.gd" id="11_y5isn"]
+[ext_resource type="AudioStream" uid="uid://8si5vt7ptv0k" path="res://SoundEffects/sfx_click_start.mp3" id="12_fyq5q"]
+[ext_resource type="Script" path="res://Scripts/restart.gd" id="13_tpbi4"]
+[ext_resource type="Script" path="res://Scenes/next_level.gd" id="14_ecjk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf1qi"]
+size = Vector2(160, 185)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syija"]
+size = Vector2(160, 185)
+
+[node name="level_2" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(1.03659, 0.994286)
+texture = ExtResource("1_3xhnk")
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("2_ftlb3")
+texture_mode = 1
+script = ExtResource("3_w6ghk")
+
+[node name="Sink 1" parent="." instance=ExtResource("4_tayrs")]
+position = Vector2(1024, 852)
+texture = ExtResource("5_asxcm")
+expectedType = "Red"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sink 1"]
+offset_left = -135.0
+offset_top = 88.0
+offset_right = -74.0
+offset_bottom = 106.0
+scale = Vector2(5.36905, 4.76596)
+text = "SINK 1"
+fit_content = true
+scroll_active = false
+
+[node name="BoxA" parent="." instance=ExtResource("6_uymyw")]
+position = Vector2(1016, 143)
+
+[node name="BoxB" parent="." instance=ExtResource("7_p78om")]
+position = Vector2(1013, 132)
+boxType = "Blue"
+
+[node name="Draggable Filter" type="Area2D" parent="."]
+position = Vector2(1728.33, 121.667)
+script = ExtResource("8_wcxw1")
+filterColor = "Blue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter"]
+shape = SubResource("RectangleShape2D_yf1qi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Draggable Filter"]
+texture = ExtResource("9_u3257")
+
+[node name="Draggable Filter2" type="Area2D" parent="."]
+position = Vector2(1735, 335)
+script = ExtResource("8_wcxw1")
+filterColor = "Red"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter2"]
+shape = SubResource("RectangleShape2D_syija")
+
+[node name="Sprite2D" type="Sprite2D" parent="Draggable Filter2"]
+texture = ExtResource("10_6ry73")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1526.67
+offset_top = 761.667
+offset_right = 1566.67
+offset_bottom = 801.667
+script = ExtResource("11_y5isn")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]START"
+
+[node name="SfxClickStart" type="AudioStreamPlayer2D" parent="Control"]
+position = Vector2(154.997, 58.3331)
+stream = ExtResource("12_fyq5q")
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1528.33
+offset_top = 915.0
+offset_right = 1568.33
+offset_bottom = 955.0
+script = ExtResource("13_tpbi4")
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]RESTART"
+
+[node name="SfxClickStart" type="AudioStreamPlayer2D" parent="Control2"]
+position = Vector2(154.997, 58.3331)
+stream = ExtResource("12_fyq5q")
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1521.0
+offset_top = 612.0
+offset_right = 1561.0
+offset_bottom = 652.0
+script = ExtResource("14_ecjk5")
+
+[node name="Button" type="Button" parent="Control3"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control3/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]NEXT LEVEL"
+
+[node name="SfxClickStart" type="AudioStreamPlayer2D" parent="Control3"]
+position = Vector2(154.997, 58.3331)
+stream = ExtResource("12_fyq5q")
+
+[connection signal="area_entered" from="Draggable Filter" to="Draggable Filter" method="_on_area_entered"]
+[connection signal="body_shape_exited" from="Draggable Filter" to="Draggable Filter" method="_on_body_shape_exited"]
+[connection signal="mouse_entered" from="Draggable Filter" to="Draggable Filter" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Draggable Filter" to="Draggable Filter" method="_on_mouse_exited"]
+[connection signal="area_entered" from="Draggable Filter2" to="Draggable Filter2" method="_on_area_entered"]
+[connection signal="body_shape_exited" from="Draggable Filter2" to="Draggable Filter2" method="_on_body_shape_exited"]
+[connection signal="mouse_entered" from="Draggable Filter2" to="Draggable Filter2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Draggable Filter2" to="Draggable Filter2" method="_on_mouse_exited"]
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
+[connection signal="pressed" from="Control3/Button" to="Control3" method="_on_button_pressed"]

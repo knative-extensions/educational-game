@@ -1,0 +1,143 @@
+[gd_scene load_steps=12 format=3 uid="uid://go1b4vg4a8gd"]
+
+[ext_resource type="Texture2D" uid="uid://c5hqlla5086kp" path="res://2D Assets/KNATIVE.png" id="1_ir6yh"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_j0eir"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="3_afdw0"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="4_excbp"]
+[ext_resource type="Texture2D" uid="uid://dehcuwck0lv0e" path="res://2D Assets/sinks/redSink.png" id="5_wl6ei"]
+[ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="6_w4kyr"]
+[ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="7_ay6y1"]
+[ext_resource type="Script" path="res://Scripts/event_button.gd" id="8_2hjnv"]
+[ext_resource type="AudioStream" uid="uid://8si5vt7ptv0k" path="res://SoundEffects/sfx_click_start.mp3" id="9_iwqbg"]
+[ext_resource type="Script" path="res://Scripts/restart.gd" id="10_326y7"]
+[ext_resource type="Script" path="res://Scenes/next_level.gd" id="11_2get3"]
+
+[node name="level_1" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(1.03659, 0.994286)
+texture = ExtResource("1_ir6yh")
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("2_j0eir")
+texture_mode = 1
+script = ExtResource("3_afdw0")
+
+[node name="Sink 1" parent="." instance=ExtResource("4_excbp")]
+position = Vector2(1024, 852)
+texture = ExtResource("5_wl6ei")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sink 1"]
+offset_left = -135.0
+offset_top = 88.0
+offset_right = -74.0
+offset_bottom = 106.0
+scale = Vector2(5.36905, 4.76596)
+text = "SINK 1"
+fit_content = true
+scroll_active = false
+
+[node name="BoxA" parent="." instance=ExtResource("6_w4kyr")]
+position = Vector2(1016, 143)
+
+[node name="BoxB" parent="." instance=ExtResource("7_ay6y1")]
+position = Vector2(1013, 132)
+boxType = "Blue"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1526.67
+offset_top = 761.667
+offset_right = 1566.67
+offset_bottom = 801.667
+script = ExtResource("8_2hjnv")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]START"
+
+[node name="SfxClickStart" type="AudioStreamPlayer2D" parent="Control"]
+position = Vector2(154.997, 58.3331)
+stream = ExtResource("9_iwqbg")
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1528.33
+offset_top = 915.0
+offset_right = 1568.33
+offset_bottom = 955.0
+script = ExtResource("10_326y7")
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]RESTART"
+
+[node name="SfxClickStart" type="AudioStreamPlayer2D" parent="Control2"]
+position = Vector2(154.997, 58.3331)
+stream = ExtResource("9_iwqbg")
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1521.0
+offset_top = 612.0
+offset_right = 1561.0
+offset_bottom = 652.0
+script = ExtResource("11_2get3")
+
+[node name="Button" type="Button" parent="Control3"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control3/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]NEXT LEVEL"
+
+[node name="SfxClickStart" type="AudioStreamPlayer2D" parent="Control3"]
+position = Vector2(154.997, 58.3331)
+stream = ExtResource("9_iwqbg")
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
+[connection signal="pressed" from="Control3/Button" to="Control3" method="_on_button_pressed"]

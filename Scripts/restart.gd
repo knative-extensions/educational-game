@@ -12,4 +12,6 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	print("restart clicked")
+	$SfxClickStart.play()
 	get_tree().reload_current_scene()
+	ConveyerController.initialize()
