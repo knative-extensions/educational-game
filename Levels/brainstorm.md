@@ -38,6 +38,46 @@ Concept: Ensures events are reliably recorded before being published, preventing
 
 Concept: Events can be routed through multiple brokers before final processing.
 
+# Rough Sketches for EDA Patterns
+
+## 1. Transformation Pattern
+### Sketch
+![Transformation Pattern Sketch](./Rough%20Sketches%20for%20EDA%20Patterns/Rough%20Sketches%201.png)
+### Reference
+![Transformation Pattern Reference](./Rough%20Sketches%20for%20EDA%20Patterns/Rough%20Sketches%202.png)
+
+## 2. Sequence Pattern
+### Sketch
+![Transformation Pattern Sketch](./Rough%20Sketches%20for%20EDA%20Patterns/Rough%20Sketches%203.png)
+### Reference
+![Transformation Pattern Reference](./Rough%20Sketches%20for%20EDA%20Patterns/Rough%20Sketches%204.png)
+
+## 2. Dead Letter Queue Pattern
+### Sketch
+![Transformation Pattern Sketch](./Rough%20Sketches%20for%20EDA%20Patterns/Rough%20Sketches%205.png)
+### Reference
+![Transformation Pattern Reference](./Rough%20Sketches%20for%20EDA%20Patterns/Rough%20Sketches%206.png)
+
+# Level Transition Ideas
+
+## Level 1- Basic Event Flow
+![Basic Event Flow Level](./Level%20Transitions/Knative%20Level%20Transitions-1.png)
+
+## Level 2- Using Filters
+![Using Filters](./Level%20Transitions/Knative%20Level%20Transitions-2.png)
+
+## Level 3- Using Filters With Multiple Sinks
+![Using Filters With Multiple Sinks](./Level%20Transitions/Knative%20Level%20Transitions-3.png)
+
+## Level 4- DLQ Pattern
+![DLQ Pattern](./Level%20Transitions/Knative%20Level%20Transitions-4.png)
+
+## Level 5- Using Filters With Multiple Sinks and DLQ Pattern
+![Using Filters With Multiple Sinks and DLQ Pattern](./Level%20Transitions/Knative%20Level%20Transitions-5.png)
+
+## Level 6- Transformation Pattern
+![Transformation Pattern](./Level%20Transitions/Knative%20Level%20Transitions-6.png)
+
 References used:
 
 1. [Declarative Event-Driven-Application Patterns with Knative Eventing - Pierangelo Di Pilato & Matthias Wessendorf](https://www.youtube.com/watch?v=MqRy8J1WI3w)
