@@ -87,8 +87,8 @@ Concept: Events can be routed through multiple brokers before final processing.
 ![Transformation Pattern](./Level%20Transitions/Knative%20Level%20Transitions-6.png)
 
 # D. New Assets Created
-### Representation of Blockage and Dead Letter Sink. ([#25](https://github.com/knative-extensions/educational-game/pull/25) [#34](https://github.com/knative-extensions/educational-game/pull/34))
-### Representation of Transformation Function. ([#25](https://github.com/knative-extensions/educational-game/pull/25) [#34](https://github.com/knative-extensions/educational-game/pull/34))
+### Representation of Blockage and Dead Letter Sink. ([#25](https://github.com/knative-extensions/educational-game/pull/25) , [#34](https://github.com/knative-extensions/educational-game/pull/34))
+### Representation of Transformation Function. ([#25](https://github.com/knative-extensions/educational-game/pull/25) , [#34](https://github.com/knative-extensions/educational-game/pull/34))
 
 # E. Levels Implemented
 
