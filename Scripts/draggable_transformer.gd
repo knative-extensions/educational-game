@@ -1,11 +1,9 @@
 extends Area2D
 
+@export var transformerColor: String
 var draggable = false
-var bodyref
-@export var filterColor: String
-
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
 	pass # Replace with function body.
 
 
@@ -20,22 +18,25 @@ func _process(delta: float) -> void:
 			ConveyerController.dragging = false
 			global_position = get_global_mouse_position()
 
-func _on_mouse_entered() -> void:
+func _on_area_entered(area):
+	if area.is_in_group("Box"):
+		if area.get_parent().boxType != transformerColor and area.get_parent().sending == true:
+			print("make it red")
+			$AnimationPlayer.play("transforming")
+			area.get_parent().boxType = "Red"
+			area.get_parent().set_texture(preload("res://2D Assets/boxes/redBox.png"))
+ # Replace with function body.
+
+
+func _on_mouse_entered():
 	if not ConveyerController.dragging:
 		draggable = true
 		scale = Vector2(1.05, 1.05)
 		$Panel.show()
 
 
-func _on_mouse_exited() -> void:
+func _on_mouse_exited():
 	if not ConveyerController.dragging:
 		draggable = false
 		scale = Vector2(1, 1)
 		$Panel.hide()
-
-
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Box"):
-		if area.get_parent().boxType != filterColor and area.get_parent().sending == true:
-			print("kill it")
-			area.get_parent().queue_free()
