@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0tbklomfxglt"]
+
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="1_7bjaj"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="2_etah7"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="3_y5n06"]
+[ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="4_fjrb2"]
+[ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="5_5su6q"]
+[ext_resource type="Script" path="res://Scripts/event_button.gd" id="6_xyb5q"]
+[ext_resource type="Script" path="res://Scripts/restart.gd" id="7_3f2sq"]
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="8_lhevx"]
+
+[node name="basicEventFlow" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("8_lhevx")
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("1_7bjaj")
+texture_mode = 1
+script = ExtResource("2_etah7")
+
+[node name="Sink" parent="." instance=ExtResource("3_y5n06")]
+position = Vector2(558, 495)
+scale = Vector2(0.7, 0.7)
+
+[node name="BoxA" parent="." instance=ExtResource("4_fjrb2")]
+position = Vector2(558, 88)
+scale = Vector2(0.698225, 0.698225)
+
+[node name="BoxB" parent="." instance=ExtResource("5_5su6q")]
+position = Vector2(558, 88)
+scale = Vector2(0.698, 0.698)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 893.0
+offset_top = 398.0
+offset_right = 933.0
+offset_bottom = 438.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("6_xyb5q")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]START"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 893.0
+offset_top = 517.0
+offset_right = 933.0
+offset_bottom = 557.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("7_3f2sq")
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]RESTART"
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
