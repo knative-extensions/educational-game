@@ -1,0 +1,128 @@
+[gd_scene load_steps=13 format=3 uid="uid://dtw62fpf26cjh"]
+
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="1_o080m"]
+[ext_resource type="Script" path="res://Scripts/dlqPattern.gd" id="1_tk71p"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="2_5sfur"]
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="2_fipgd"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="3_q7o5m"]
+[ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="4_wtpug"]
+[ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="5_hpql2"]
+[ext_resource type="PackedScene" uid="uid://cdog2bwjc5gc6" path="res://Scenes/dls.tscn" id="6_yts6n"]
+[ext_resource type="PackedScene" uid="uid://cr48hqg4si1y" path="res://Scenes/BlockageLeft.tscn" id="8_wx1je"]
+[ext_resource type="PackedScene" uid="uid://dopq3jmwh3euw" path="res://Scenes/BlockageRight.tscn" id="9_0d774"]
+[ext_resource type="Script" path="res://Scripts/event_button.gd" id="11_fwn7q"]
+[ext_resource type="Script" path="res://Scripts/restart.gd" id="11_pd3ou"]
+
+[node name="dlqPattern" type="Node2D"]
+script = ExtResource("1_tk71p")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -2
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 2316.0
+offset_bottom = 1306.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fipgd")
+
+[node name="dlsconveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("1_o080m")
+texture_mode = 1
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("1_o080m")
+texture_mode = 1
+script = ExtResource("2_5sfur")
+
+[node name="Sink" parent="." instance=ExtResource("3_q7o5m")]
+position = Vector2(529, 531)
+scale = Vector2(0.701276, 0.561688)
+
+[node name="dls" parent="." instance=ExtResource("6_yts6n")]
+position = Vector2(190, 498)
+scale = Vector2(0.75, 0.75)
+
+[node name="BoxA" parent="." instance=ExtResource("4_wtpug")]
+position = Vector2(529, 80)
+scale = Vector2(0.531, 0.45)
+
+[node name="BoxB" parent="." instance=ExtResource("5_hpql2")]
+position = Vector2(529, 80)
+scale = Vector2(0.549, 0.45)
+
+[node name="BlockageLeft" parent="." instance=ExtResource("8_wx1je")]
+position = Vector2(359, 257)
+
+[node name="BlockageRight" parent="." instance=ExtResource("9_0d774")]
+position = Vector2(673, 268)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 825.0
+offset_top = 473.0
+offset_right = 865.0
+offset_bottom = 513.0
+script = ExtResource("11_fwn7q")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 151.0
+offset_bottom = 65.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control/Button"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 16.0
+offset_right = 328.0
+offset_bottom = 89.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]START"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 824.0
+offset_top = 559.0
+offset_right = 864.0
+offset_bottom = 599.0
+script = ExtResource("11_pd3ou")
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+scale = Vector2(0.45, 0.45)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]RESTART"
+
+[connection signal="area_entered" from="dls" to="." method="_on_dls_area_entered"]
+[connection signal="input_event" from="dls" to="." method="_on_dls_input_event"]
+[connection signal="area_entered" from="BlockageLeft" to="." method="_on_blockage_left_area_entered"]
+[connection signal="input_event" from="BlockageLeft" to="BlockageLeft" method="_on_input_event"]
+[connection signal="input_event" from="BlockageRight" to="BlockageRight" method="_on_input_event"]
+[connection signal="pressed" from="Control/Button" to="BlockageLeft" method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
