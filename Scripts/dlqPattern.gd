@@ -38,3 +38,9 @@ func _on_dls_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> v
 		var dlqTrigger=$dlsconveyor
 		dlqTrigger.set_point_position(0, Vector2(529,250))
 		dlqTrigger.set_point_position(1, DLS.position+Vector2(80,0))
+
+
+func _on_dls_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Box"):
+		print("box in DLS")
+		Level.dlsUsed=true

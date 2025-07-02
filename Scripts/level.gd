@@ -1,12 +1,12 @@
 extends Node
-var sinkBoxMatchNeeded=[false,true,true]
+var sinkBoxMatchNeeded=[false,true,true,false]
 var sinkBoxMatchPresent
 var sinkUsed
-var dlsRequired=[false,false,false]
+var dlsRequired=[false,false,false,true]
 var dlsUsed
 var totalbox=[2,2,3]
 var nextLevel
-var levels=["basicEventFlow","boxClick","multiSink"]
+var levels=["basicEventFlow","boxClick","multiSink","dlqPattern"]
 var levelind=0
 
 func initialise():
@@ -14,6 +14,7 @@ func initialise():
 	sinkUsed=false
 	totalbox=0
 	nextLevel=false
+	dlsUsed=false
 
 func  next_level():
 	if sinkUsed:
@@ -22,6 +23,9 @@ func  next_level():
 			nextLevel=true
 		elif sinkBoxMatchNeeded[levelind] and sinkBoxMatchPresent:
 			print("elif next level entered",sinkBoxMatchNeeded,sinkBoxMatchPresent)
+			nextLevel=true
+		elif dlsRequired[levelind] and dlsUsed:
+			print("elif dls",dlsUsed)
 			nextLevel=true
 	
 	var message_display = preload("res://Scenes/message_display.tscn").instantiate()
