@@ -18,7 +18,7 @@ func start1():
 			print(box)
 			ConveyerController.events.insert(Start[i],box)
 	print("No of events: ",ConveyerController.events.size())
-	ConveyerController.can_send=true
+	ConveyerController.can_send= true
 
 
 func _on_button_pressed() -> void:
