@@ -49,7 +49,7 @@ position = Vector2(529, 531)
 scale = Vector2(0.701276, 0.561688)
 
 [node name="dls" parent="." instance=ExtResource("6_yts6n")]
-position = Vector2(190, 498)
+position = Vector2(185, 479)
 scale = Vector2(0.75, 0.75)
 
 [node name="BoxA" parent="." instance=ExtResource("4_wtpug")]
