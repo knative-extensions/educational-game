@@ -1,9 +1,9 @@
 extends Node2D
 
-
+var consumed 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	consumed = false# Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,4 +17,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 
 
 func _on_area_2d_area_entered(area):
-	$AnimationPlayer.play("crush") # Replace with function body.
+	if( consumed == false):
+		$AnimationPlayer.play("crush") 
+		consumed = true
+		# Replace with function body.
