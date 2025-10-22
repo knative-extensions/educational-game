@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="4_wtpug"]
 [ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="5_hpql2"]
 [ext_resource type="PackedScene" uid="uid://cdog2bwjc5gc6" path="res://Scenes/dls.tscn" id="6_yts6n"]
-[ext_resource type="PackedScene" uid="uid://cr48hqg4si1y" path="res://Scenes/BlockageLeft.tscn" id="8_wx1je"]
-[ext_resource type="PackedScene" uid="uid://dopq3jmwh3euw" path="res://Scenes/BlockageRight.tscn" id="9_0d774"]
 [ext_resource type="Script" path="res://Scripts/event_button.gd" id="11_fwn7q"]
 [ext_resource type="Script" path="res://Scripts/restart.gd" id="11_pd3ou"]
+[ext_resource type="PackedScene" uid="uid://cd34jg1k76o78" path="res://Scenes/both_blockage.tscn" id="13_cjnva"]
+[ext_resource type="Script" path="res://Scripts/both_blockage.gd" id="14_a43iy"]
 
 [node name="dlqPattern" type="Node2D"]
 script = ExtResource("1_tk71p")
@@ -49,7 +49,7 @@ position = Vector2(529, 531)
 scale = Vector2(0.701276, 0.561688)
 
 [node name="dls" parent="." instance=ExtResource("6_yts6n")]
-position = Vector2(190, 498)
+position = Vector2(185, 479)
 scale = Vector2(0.75, 0.75)
 
 [node name="BoxA" parent="." instance=ExtResource("4_wtpug")]
@@ -59,12 +59,6 @@ scale = Vector2(0.531, 0.45)
 [node name="BoxB" parent="." instance=ExtResource("5_hpql2")]
 position = Vector2(529, 80)
 scale = Vector2(0.549, 0.45)
-
-[node name="BlockageLeft" parent="." instance=ExtResource("8_wx1je")]
-position = Vector2(359, 257)
-
-[node name="BlockageRight" parent="." instance=ExtResource("9_0d774")]
-position = Vector2(673, 268)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -118,11 +112,18 @@ theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]RESTART"
 
+[node name="Blockage" parent="." instance=ExtResource("13_cjnva")]
+position = Vector2(516, 270)
+script = ExtResource("14_a43iy")
+
+[node name="CollisionShape2D" parent="Blockage/Area2D" index="0"]
+position = Vector2(0, 0)
+
 [connection signal="area_entered" from="dls" to="." method="_on_dls_area_entered"]
 [connection signal="input_event" from="dls" to="." method="_on_dls_input_event"]
-[connection signal="area_entered" from="BlockageLeft" to="." method="_on_blockage_left_area_entered"]
-[connection signal="input_event" from="BlockageLeft" to="BlockageLeft" method="_on_input_event"]
-[connection signal="input_event" from="BlockageRight" to="BlockageRight" method="_on_input_event"]
-[connection signal="pressed" from="Control/Button" to="BlockageLeft" method="_on_button_pressed"]
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
 [connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
+[connection signal="area_entered" from="Blockage/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Blockage/Area2D" to="Blockage" method="_on_area_2d_area_entered"]
+
+[editable path="Blockage"]

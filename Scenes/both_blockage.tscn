@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://cd34jg1k76o78"]
+
+[ext_resource type="Texture2D" uid="uid://dlyo7xymbghp2" path="res://2D Assets/retryAndDLQ/blockageRight.png" id="1_e4lxe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iko5p"]
+size = Vector2(370, 210)
+
+[sub_resource type="Animation" id="Animation_ler3u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlockageRight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlockageRight2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-160, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_y1lgl"]
+resource_name = "crush"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlockageRight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, -1), Vector2(60, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlockageRight2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-160, 2), Vector2(-60, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kntol"]
+_data = {
+"RESET": SubResource("Animation_ler3u"),
+"crush": SubResource("Animation_y1lgl")
+}
+
+[node name="Blockage" type="Node2D"]
+
+[node name="BlockageRight" type="Sprite2D" parent="."]
+position = Vector2(160, -1)
+texture = ExtResource("1_e4lxe")
+
+[node name="BlockageRight2" type="Sprite2D" parent="."]
+position = Vector2(-160, 2)
+texture = ExtResource("1_e4lxe")
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 12)
+shape = SubResource("RectangleShape2D_iko5p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kntol")
+}
+speed_scale = 1.421
