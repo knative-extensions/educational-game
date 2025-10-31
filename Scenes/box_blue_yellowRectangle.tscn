@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmp4cyyqrju41"]
+
+[ext_resource type="Texture2D" uid="uid://isfnvlbckumn" path="res://2D Assets/boxes/blueBoxYellowRectangle.png" id="1_lhoi2"]
+[ext_resource type="Script" path="res://Scripts/event_box.gd" id="2_1noyf"]
+[ext_resource type="Script" path="res://Scripts/event_box_clickable.gd" id="3_x11c3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uvdh"]
+size = Vector2(211.428, 211.429)
+
+[node name="BoxBlueYellowRect" type="Sprite2D" groups=["Box"]]
+position = Vector2(947.833, 182.333)
+texture = ExtResource("1_lhoi2")
+script = ExtResource("2_1noyf")
+boxType = "BlueYellowRectangle"
+
+[node name="Area2D" type="Area2D" parent="." groups=["Box"]]
+script = ExtResource("3_x11c3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.000366211, 0)
+shape = SubResource("RectangleShape2D_6uvdh")

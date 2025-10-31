@@ -1,23 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi4a6dl8q6rnj"]
+[gd_scene load_steps=4 format=3 uid="uid://dwhx0fa435eyg"]
 
-[ext_resource type="Script" path="res://Scripts/draggable_filter.gd" id="1_rdiht"]
-[ext_resource type="Texture2D" uid="uid://bpkn0kgyf867u" path="res://2D Assets/funnels/redFunnel.png" id="2_vef61"]
+[ext_resource type="Script" path="res://Scripts/draggable_filter.gd" id="1_ddqtv"]
+[ext_resource type="Texture2D" uid="uid://bqv0boinhil7v" path="res://2D Assets/funnels/blueFunnelYellowRectangle.png" id="2_hvfgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8kq8"]
-size = Vector2(160, 185)
+size = Vector2(137.666, 156)
 
 [node name="Draggable Filter" type="Area2D"]
 position = Vector2(288.333, 205)
-script = ExtResource("1_rdiht")
-filterColor = "Red"
+script = ExtResource("1_ddqtv")
+filterColor = "BlueYellowRectangle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.333374, -0.5)
+position = Vector2(11.5002, 14)
 shape = SubResource("RectangleShape2D_e8kq8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.333374, 0.333313)
-texture = ExtResource("2_vef61")
+position = Vector2(9.16699, 14.4468)
+scale = Vector2(0.645, 0.589513)
+texture = ExtResource("2_hvfgn")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5b7xf85myl0r"]
+
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="1_75ps4"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="2_p8f8c"]
+[ext_resource type="Script" path="res://Scripts/transformer_conveyor.gd" id="3_xxqlo"]
+[ext_resource type="PackedScene" uid="uid://dansebgwsxywo" path="res://Scenes/t_machine.tscn" id="4_m0sje"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="5_24luo"]
+[ext_resource type="PackedScene" uid="uid://bmp4cyyqrju41" path="res://Scenes/box_blue_yellowRectangle.tscn" id="6_dgbej"]
+
+[node name="transformationPattern" type="Node2D"]
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("1_75ps4")
+texture_mode = 1
+script = ExtResource("2_p8f8c")
+
+[node name="TransformerConveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("1_75ps4")
+texture_mode = 1
+script = ExtResource("3_xxqlo")
+
+[node name="t_Machine" parent="." instance=ExtResource("4_m0sje")]
+position = Vector2(748, 280)
+
+[node name="Sink" parent="." instance=ExtResource("5_24luo")]
+position = Vector2(474, 568)
+scale = Vector2(0.4, 0.4)
+
+[node name="BoxBlueYellowRect" parent="." instance=ExtResource("6_dgbej")]
+position = Vector2(450, 75)
+scale = Vector2(0.3, 0.3)
