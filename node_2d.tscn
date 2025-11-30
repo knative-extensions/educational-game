@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtpwl37ofmtjb"]
+
+[sub_resource type="GDScript" id="GDScript_02pai"]
+script/source = "extends Node
+
+func _ready():
+	
+	var cmd = \"bash\"
+	var args = [\"-c\", \"kn version | grep 'Version' | awk '{print $2}'\"]
+
+	
+	var output = []
+	var exit_code = OS.execute(cmd, args, output, true)
+
+	if exit_code == 0:
+		var knative_version = output[0].strip_edges()
+		print( knative_version)
+		$Label.set_text(\"knative  \" + knative_version)
+	else:
+		print( \"fail\")
+	
+	
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_02pai")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 225.0
+offset_top = 127.0
+offset_right = 791.0
+offset_bottom = 365.0
+text = "kn version : "

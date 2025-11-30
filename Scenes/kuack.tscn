@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://bidujc42uhqt3"]
+
+[ext_resource type="Texture2D" uid="uid://dv3da6b01nl2w" path="res://Kuack/new1.png" id="1_207yj"]
+[ext_resource type="Texture2D" uid="uid://dtgwf6uqr3o48" path="res://Kuack/new2.png" id="2_cmpdx"]
+[ext_resource type="Texture2D" uid="uid://bqrvhjba3vjnl" path="res://Kuack/new3.png" id="3_2dk0p"]
+[ext_resource type="Texture2D" uid="uid://bvkuwfvfpssar" path="res://Kuack/new4.png" id="4_18ktl"]
+[ext_resource type="Texture2D" uid="uid://cht6baxtlwur1" path="res://Kuack/frame 11.png" id="5_aobws"]
+[ext_resource type="Texture2D" uid="uid://bkhtw7281epkv" path="res://Kuack/frame 12.png" id="6_tfxmv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_whj6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_207yj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cmpdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2dk0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_18ktl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_aobws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tfxmv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="Animation" id="Animation_k01b4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.190241]
+}
+
+[sub_resource type="Animation" id="Animation_hmr8w"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.633333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.190241, -0.102974, 0.190241]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ht28"]
+_data = {
+"RESET": SubResource("Animation_k01b4"),
+"new_animation": SubResource("Animation_hmr8w")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(221, 455)
+rotation = 0.190241
+scale = Vector2(0.22, 0.22)
+sprite_frames = SubResource("SpriteFrames_whj6p")
+autoplay = "default"
+frame_progress = 0.785014
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6ht28")
+}
+autoplay = "new_animation"
