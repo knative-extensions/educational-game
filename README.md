@@ -2,7 +2,7 @@
 
 An educational game to teach Knative Eventing concepts through interactive gameplay, primarily focused around Event Driven Architectures.
 
-[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://knative.slack.com)
+[![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://communityinviter.com/apps/cloud-native/cncf)
 
 ## Overview
 
