@@ -10,6 +10,11 @@ func on_click():
 	transfer_box()
 
 func transfer_box():
+	# SAFETY CHECK:
+	if ConveyerController.conveyerInd >= ConveyerController.conveyer.size():
+		print("No more conveyors available! Cannot send.")
+		return
+
 	print("sending")
 	ConveyerController.create_conveyor()
 	#draw_line(ConveyerController.selected.get_global_position(), get_global_position(), Color.GREEN)
