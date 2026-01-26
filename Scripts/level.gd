@@ -1,12 +1,12 @@
 extends Node
-var sinkBoxMatchNeeded=[false,true,true,false]
+var sinkBoxMatchNeeded=[false,true,true,false,false]
 var sinkBoxMatchPresent
 var sinkUsed
-var dlsRequired=[false,false,false,true]
+var dlsRequired=[false,false,false,true,false]
 var dlsUsed
 var totalbox=[2,2,3]
 var nextLevel
-var levels=["basicEventFlow","boxClick","multiSink","dlqPattern"]
+var levels=["basicEventFlow","boxClick","multiSink","dlqPattern","outboxPattern"]
 var levelind=0
 
 func initialise():
