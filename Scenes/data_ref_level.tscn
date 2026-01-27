@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2p013ln8kxsd"]
+
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_isa87"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_4y18a"]
+[ext_resource type="Script" path="res://Scripts/warehouse.gd" id="3_ciowh"]
+[ext_resource type="Texture2D" uid="uid://cgnmmfc1l4d5d" path="res://2D Assets/sinks/sink.png" id="4_ao2h6"]
+[ext_resource type="Script" path="res://Scripts/big_data_box.gd" id="5_kau4t"]
+[ext_resource type="Texture2D" uid="uid://b00w453hqw7wx" path="res://2D Assets/boxes/redBox.png" id="5_skd7t"]
+[ext_resource type="Texture2D" uid="uid://bdn2dphqbqnhh" path="res://2D Assets/boxes/greenBox.png" id="6_1d1gn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sckek"]
+size = Vector2(132, 209.419)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2baaf"]
+size = Vector2(31.5, 47.5)
+
+[node name="DataRefLevel" type="Node2D"]
+position = Vector2(-524, -285)
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1100, 613)
+scale = Vector2(0.618229, 0.625926)
+texture = ExtResource("1_isa87")
+
+[node name="ConveyerTexture" type="Sprite2D" parent="."]
+position = Vector2(1392.02, 545.998)
+rotation = 1.57058
+scale = Vector2(0.964395, 5.9889)
+texture = ExtResource("2_4y18a")
+
+[node name="warehouse" type="Area2D" parent="." node_paths=PackedStringArray("token_object")]
+position = Vector2(1014, 362)
+scale = Vector2(0.839, 8.375)
+script = ExtResource("3_ciowh")
+token_object = NodePath("../Token")
+
+[node name="Sink" type="Sprite2D" parent="warehouse"]
+position = Vector2(11, 23.6473)
+scale = Vector2(0.55, 0.055)
+texture = ExtResource("4_ao2h6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warehouse"]
+position = Vector2(6, 23.6974)
+scale = Vector2(1, 0.1)
+shape = SubResource("RectangleShape2D_sckek")
+
+[node name="BigDataBox" type="Area2D" parent="." groups=["BigData"]]
+position = Vector2(682, 1092)
+disable_mode = 2
+script = ExtResource("5_kau4t")
+
+[node name="RedBox" type="Sprite2D" parent="BigDataBox"]
+position = Vector2(-14, -501)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_skd7t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigDataBox"]
+position = Vector2(-14.5, -502.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_2baaf")
+
+[node name="Token" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1023, 555)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_1d1gn")
+
+[connection signal="area_entered" from="warehouse" to="warehouse" method="_on_area_entered"]
