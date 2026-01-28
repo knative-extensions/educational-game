@@ -120,8 +120,15 @@ func start_success_flow():
 	# Step 5: Sink Receives Reference -> Retrieves Data from Store
 	# Create a visual for the data retrieval
 	var retrieval_pkg = Sprite2D.new()
-	# Use the texture of the event box or a generic box
-	retrieval_pkg.texture = event.get_node("Sprite2D").texture if event.has_node("Sprite2D") else preload("res://2D Assets/boxes/blueBox.png")
+	
+	# Cleanly determine texture
+	if event is Sprite2D:
+		retrieval_pkg.texture = event.texture
+	elif event.has_node("Sprite2D"):
+		retrieval_pkg.texture = event.get_node("Sprite2D").texture
+	else:
+		retrieval_pkg.texture = preload("res://2D Assets/boxes/blueBox.png")
+		
 	retrieval_pkg.scale = Vector2(0.3, 0.3)
 	retrieval_pkg.position = data_store_node.position
 	retrieval_pkg.modulate = Color(0, 0.5, 1, 0.8) # Data Color
