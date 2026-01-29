@@ -2,12 +2,19 @@ extends Sprite2D
 
 @export var expectedType: String
 
+@export var available: bool = true:
+	set(value):
+		available = value
+		if indicator_light:
+			indicator_light.visible = value
 
-# Called when the node enters the scene tree for the first time.
+@onready var indicator_light: Control = $IndicatorLight
+
 func _ready() -> void:
-	pass # Replace with function body.
+	if indicator_light:
+		indicator_light.visible = available
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(_delta: float) -> void:
+	if available and indicator_light:
+		var time = Time.get_ticks_msec() / 200.0
+		indicator_light.modulate.a = 0.6 + (sin(time) * 0.4)
