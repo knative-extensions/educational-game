@@ -38,9 +38,10 @@ func  next_level():
 		message_display.visible = false
 		levelind+=1
 		if levelind!=levels.size():
+			# CRITICAL FIXInitialize BEFORE changing scene, not after!
+			ConveyerController.initialise()
 			var next_level_path="res://Scenes/"+levels[levelind]+".tscn"
 			get_tree().change_scene_to_file(next_level_path)
-			ConveyerController.initialise()
 		else:
 			print("End of Levels.")
 			get_tree().change_scene_to_file("res://Scenes/end_of_all_levels.tscn")
