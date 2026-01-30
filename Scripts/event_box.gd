@@ -16,3 +16,4 @@ func _input_event(viewport, event, shape_idx) -> void:
 func on_click():
 	print("hi")
 	ConveyerController.selected = self
+	AudioManager.play_click_start()
