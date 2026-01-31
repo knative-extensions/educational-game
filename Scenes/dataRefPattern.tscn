@@ -1,0 +1,146 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdatarefpatscene"]
+
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="1_conveyor"]
+[ext_resource type="Script" path="res://Scripts/dataRefPattern.gd" id="2_levelscript"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="3_convscript"]
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="4_background"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="5_sink"]
+[ext_resource type="Texture2D" uid="uid://b00w453hqw7wx" path="res://2D Assets/boxes/redBox.png" id="6_largebox"]
+[ext_resource type="Texture2D" uid="uid://cgnmmfc1l4d5d" path="res://2D Assets/sinks/sink.png" id="7_storageimg"]
+[ext_resource type="Texture2D" uid="uid://bdn2dphqbqnhh" path="res://2D Assets/boxes/greenBox.png" id="8_refbox"]
+[ext_resource type="Script" path="res://Scripts/event_button.gd" id="9_startbtn"]
+[ext_resource type="Script" path="res://Scripts/restart.gd" id="10_restartbtn"]
+[ext_resource type="Script" path="res://Scripts/reference_box.gd" id="11_refscript"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_storage"]
+size = Vector2(300, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_large"]
+size = Vector2(180, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ref"]
+size = Vector2(140, 140)
+
+[node name="dataRefPattern" type="Node2D"]
+script = ExtResource("2_levelscript")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("4_background")
+
+[node name="Conveyor" type="Line2D" parent="."]
+z_index = 1
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("1_conveyor")
+texture_mode = 1
+script = ExtResource("3_convscript")
+
+[node name="StorageNode" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(150, 300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_storageimg")
+
+[node name="Area2D" type="Area2D" parent="StorageNode"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StorageNode/Area2D"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_storage")
+
+[node name="LargeBox" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(550, 80)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_largebox")
+
+[node name="Area2D" type="Area2D" parent="LargeBox"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LargeBox/Area2D"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_large")
+
+[node name="ReferenceBox" type="Sprite2D" parent="." groups=["Box", "ReferenceBox"]]
+z_index = 15
+visible = false
+position = Vector2(300, 200)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_refbox")
+script = ExtResource("11_refscript")
+
+[node name="Area2D" type="Area2D" parent="ReferenceBox" groups=["Box", "ReferenceBox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReferenceBox/Area2D"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_ref")
+
+[node name="Sink" parent="." instance=ExtResource("5_sink")]
+z_index = 5
+position = Vector2(550, 480)
+scale = Vector2(0.65, 0.65)
+
+[node name="Control" type="Control" parent="."]
+z_index = 20
+layout_mode = 3
+anchors_preset = 0
+offset_left = 893.0
+offset_top = 398.0
+offset_right = 933.0
+offset_bottom = 438.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("9_startbtn")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]START"
+
+[node name="Control2" type="Control" parent="."]
+z_index = 20
+layout_mode = 3
+anchors_preset = 0
+offset_left = 893.0
+offset_top = 517.0
+offset_right = 933.0
+offset_bottom = 557.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("10_restartbtn")
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]RESTART"
+
+[connection signal="input_event" from="StorageNode/Area2D" to="." method="_on_storage_input_event"]
+[connection signal="input_event" from="ReferenceBox/Area2D" to="." method="_on_reference_input_event"]
+[connection signal="area_entered" from="Sink/Area2D" to="." method="_on_sink_area_entered"]
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]

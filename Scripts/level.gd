@@ -1,32 +1,50 @@
 extends Node
-var sinkBoxMatchNeeded=[false,true,true,false]
+
+# Level configuration arrays
+# sinkBoxMatchNeeded: whether the box type must match the sink type
+# dlsRequired: whether DLS (Dead Letter Sink) must be used
+# storageRequired: whether storage node must be used (for DataRef pattern)
+var sinkBoxMatchNeeded = [false, true, true, false, true]
 var sinkBoxMatchPresent
 var sinkUsed
-var dlsRequired=[false,false,false,true]
+var dlsRequired = [false, false, false, true, false]
+var storageRequired = [false, false, false, false, true]
+var storageUsed = false
 var dlsUsed
-var totalbox=[2,2,3]
+var totalbox = [2, 2, 3]
 var nextLevel
-var levels=["basicEventFlow","boxClick","multiSink","dlqPattern"]
-var levelind=0
+
+# Level scene names in order
+var levels = ["basicEventFlow", "boxClick", "multiSink", "dlqPattern", "dataRefPattern"]
+var levelind = 0
 
 func initialise():
-	sinkBoxMatchPresent=true
-	sinkUsed=false
-	totalbox=0
-	nextLevel=false
-	dlsUsed=false
+	sinkBoxMatchPresent = true
+	sinkUsed = false
+	totalbox = 0
+	nextLevel = false
+	dlsUsed = false
+	storageUsed = false
 
-func  next_level():
+func next_level():
+	# Check win conditions based on level requirements
 	if sinkUsed:
-		if not sinkBoxMatchNeeded[levelind] and not dlsRequired[levelind]:
-			print("if next level entered",sinkBoxMatchNeeded,dlsRequired)
-			nextLevel=true
-		elif sinkBoxMatchNeeded[levelind] and sinkBoxMatchPresent:
-			print("elif next level entered",sinkBoxMatchNeeded,sinkBoxMatchPresent)
-			nextLevel=true
+		# Basic level - just need sink
+		if not sinkBoxMatchNeeded[levelind] and not dlsRequired[levelind] and not storageRequired[levelind]:
+			print("Basic level passed - sink used")
+			nextLevel = true
+		# Filter level - box type must match
+		elif sinkBoxMatchNeeded[levelind] and sinkBoxMatchPresent and not storageRequired[levelind]:
+			print("Filter level passed - box matched sink")
+			nextLevel = true
+		# DLQ level - dead letter sink must be used
 		elif dlsRequired[levelind] and dlsUsed:
-			print("elif dls",dlsUsed)
-			nextLevel=true
+			print("DLQ level passed - dead letter sink used")
+			nextLevel = true
+		# DataRef level - storage must be used and reference delivered
+		elif storageRequired[levelind] and storageUsed and sinkBoxMatchPresent:
+			print("DataRef level passed - storage used and reference delivered")
+			nextLevel = true
 	
 	var message_display = preload("res://Scenes/message_display.tscn").instantiate()
 	add_child(message_display)
