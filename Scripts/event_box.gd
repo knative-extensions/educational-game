@@ -16,14 +16,14 @@ func _ready() -> void:
 			stylebox = stylebox.duplicate()
 			stylebox.bg_color = Color(1.0, 0.424, 0.475)
 			$hoverlabel.add_theme_stylebox_override("normal", stylebox)
-			$hoverlabel.set_text("[center]EVENT R")
+			$hoverlabel.set_text("[center][b]EVENT R")
 			
 	elif boxType == "Blue":
 		$hoverlabel.position.x += 300
 		if stylebox is StyleBoxFlat:
 			stylebox = stylebox.duplicate()
 			stylebox.bg_color = Color(0.431, 0.565, 1.0)
-			$hoverlabel.set_text("[center]EVENT B")
+			$hoverlabel.set_text("[center][b]EVENT B")
 			$hoverlabel.add_theme_stylebox_override("normal", stylebox)
 		
 	elif boxType == "Green":
@@ -33,7 +33,7 @@ func _ready() -> void:
 			stylebox = stylebox.duplicate()
 			stylebox.bg_color = Color(0.31, 0.553, 0.204)
 			$hoverlabel.add_theme_stylebox_override("normal", stylebox)
-			$hoverlabel.set_text("[center]EVENT G")
+			$hoverlabel.set_text("[center][b]EVENT G")
 			
 
 func _input_event(viewport, event, shape_idx) -> void:

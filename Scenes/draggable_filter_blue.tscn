@@ -36,7 +36,7 @@ offset_right = 178.667
 offset_bottom = -72.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_hhdk1")
 bbcode_enabled = true
-text = "[center]FILTER B[/center]
+text = "[center][b]FILTER B
 "
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

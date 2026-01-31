@@ -30,14 +30,14 @@ position = Vector2(0.333374, 0.333313)
 texture = ExtResource("2_vef61")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 offset_left = 70.667
 offset_top = -114.0
 offset_right = 177.667
 offset_bottom = -68.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_miwhb")
 bbcode_enabled = true
-text = "[center]FILTER R[/center]
-"
+text = "[center][b]FILTER R"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

@@ -30,14 +30,13 @@ scale = Vector2(0.7, 0.7)
 shape = SubResource("RectangleShape2D_6uvdh")
 
 [node name="hoverlabel" type="RichTextLabel" parent="."]
-visible = false
 offset_left = -208.833
 offset_top = -76.333
 offset_right = -101.833
 offset_bottom = -30.333
 theme_override_styles/normal = SubResource("StyleBoxFlat_5pura")
 bbcode_enabled = true
-text = "[center]Event B[/center]
+text = "[center][b]EVENT B
 "
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

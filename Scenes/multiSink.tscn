@@ -114,7 +114,6 @@ texture = ExtResource("3_73ykg")
 expectedType = "Red"
 
 [node name="hoverlabel" parent="SinkR" index="1"]
-visible = false
 theme_override_styles/normal = SubResource("StyleBoxFlat_b2e8j")
 
 [node name="SinkG" parent="." instance=ExtResource("2_bxkek")]
@@ -124,7 +123,6 @@ texture = ExtResource("4_4jj2d")
 expectedType = "Green"
 
 [node name="hoverlabel" parent="SinkG" index="1"]
-visible = false
 theme_override_styles/normal = SubResource("StyleBoxFlat_fcsfa")
 
 [node name="BoxB" parent="." instance=ExtResource("5_2pbu6")]
@@ -166,7 +164,7 @@ offset_right = 211.0
 offset_bottom = -41.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_wwsvk")
 bbcode_enabled = true
-text = "[center]FILTER B
+text = "[center][b]FILTER B
 "
 
 [node name="Draggable Filter2" type="Area2D" parent="."]
@@ -192,7 +190,7 @@ offset_right = 196.0
 offset_bottom = -19.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_qk3t7")
 bbcode_enabled = true
-text = "[center] FILTER R"
+text = "[center] [b]FILTER R"
 
 [node name="Draggable Filter3" type="Area2D" parent="."]
 position = Vector2(78, 349)
@@ -217,7 +215,7 @@ offset_right = 187.714
 offset_bottom = -45.7143
 theme_override_styles/normal = SubResource("StyleBoxFlat_4cu8a")
 bbcode_enabled = true
-text = "[center] FILTER G"
+text = "[center] [b]FILTER G"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

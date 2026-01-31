@@ -130,7 +130,7 @@ offset_right = 178.334
 offset_bottom = -70.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_qgft8")
 bbcode_enabled = true
-text = "[center] FILTER B
+text = "[center] [b]FILTER B
 "
 
 [node name="Draggable Filter2" type="Area2D" parent="."]
@@ -154,7 +154,7 @@ offset_right = 182.0
 offset_bottom = -74.0004
 theme_override_styles/normal = SubResource("StyleBoxFlat_tqu56")
 bbcode_enabled = true
-text = "[center]FILTER R[/center]
+text = "[center][b]FILTER R
 "
 
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
