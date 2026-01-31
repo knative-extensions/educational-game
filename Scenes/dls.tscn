@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdog2bwjc5gc6"]
 
-[ext_resource type="Script" path="res://Scenes/dls.gd" id="1_fmv86"]
+[ext_resource type="Script" path="res://Scripts/dls.gd" id="1_fmv86"]
 [ext_resource type="Texture2D" uid="uid://75lnwxj33066" path="res://2D Assets/retryAndDLQ/DLS.png" id="1_lsi3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2u7"]

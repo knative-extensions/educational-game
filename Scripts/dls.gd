@@ -13,9 +13,8 @@ func _process(delta):
 
 
 func _on_mouse_entered():
-	$hoverlabel.visible = true # Replace with function body.
-
-
+	$hoverlabel.visible = true 
+	
 
 func _on_mouse_exited():
-	$hoverlabel.visible = false # Replace with function body.
+	$hoverlabel.visible = false 
