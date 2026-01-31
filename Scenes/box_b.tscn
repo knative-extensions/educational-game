@@ -19,12 +19,14 @@ corner_radius_bottom_left = 5
 position = Vector2(947.833, 182.333)
 texture = ExtResource("1_mjw0e")
 script = ExtResource("2_3md8f")
+boxType = "Blue"
 
 [node name="Area2D" type="Area2D" parent="." groups=["Box"]]
 script = ExtResource("2_raetl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.000366211, 0)
+scale = Vector2(0.7, 0.7)
 shape = SubResource("RectangleShape2D_6uvdh")
 
 [node name="Panel" type="Panel" parent="."]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgyk5n8hbplfr"]
+
+[ext_resource type="Script" path="res://Scripts/blockage.gd" id="1_o3021"]
+[ext_resource type="PackedScene" uid="uid://b3wf2lldwe84e" path="res://Scenes/blockage_left.tscn" id="1_xwdju"]
+[ext_resource type="PackedScene" uid="uid://dsxmuwx5gibth" path="res://Scenes/blockage_right.tscn" id="2_o1qqi"]
+[ext_resource type="PackedScene" uid="uid://ic6hiyflchml" path="res://Scenes/dls_final.tscn" id="3_ilnfu"]
+[ext_resource type="PackedScene" uid="uid://1fa5a0jliu6" path="res://Scenes/dls_initial.tscn" id="4_qjp7g"]
+[ext_resource type="Script" path="res://Scripts/dls_final.gd" id="4_vdqmc"]
+[ext_resource type="Script" path="res://Scripts/dls_initial.gd" id="5_gyjol"]
+
+[node name="blockage" type="Node2D"]
+script = ExtResource("1_o3021")
+
+[node name="Blockage Left" parent="." instance=ExtResource("1_xwdju")]
+position = Vector2(381, 60)
+
+[node name="Blockage Right" parent="." instance=ExtResource("2_o1qqi")]
+position = Vector2(381, 92)
+
+[node name="dls_final" parent="." instance=ExtResource("3_ilnfu")]
+script = ExtResource("4_vdqmc")
+
+[node name="dls_initial" parent="." instance=ExtResource("4_qjp7g")]
+script = ExtResource("5_gyjol")
+
+[connection signal="body_entered" from="Blockage Left" to="." method="_on_blockage_left_body_entered"]

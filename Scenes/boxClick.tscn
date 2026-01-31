@@ -52,12 +52,10 @@ texture_mode = 1
 script = ExtResource("3_5pogt")
 
 [node name="Sink" parent="." instance=ExtResource("4_2wh4q")]
-expectedType = "Blue"
 
 [node name="BoxA" parent="." instance=ExtResource("6_gdfin")]
 
 [node name="BoxB" parent="." instance=ExtResource("7_j7uju")]
-boxType = "Blue"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

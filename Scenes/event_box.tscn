@@ -20,6 +20,7 @@ boxType = "Red"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.000366211, 0)
+scale = Vector2(0.7, 0.7)
 shape = SubResource("RectangleShape2D_6uvdh")
 
 [node name="Panel" type="Panel" parent="."]

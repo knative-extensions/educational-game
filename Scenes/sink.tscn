@@ -12,6 +12,7 @@ size = Vector2(443.333, 408.333)
 position = Vector2(946.667, 863.333)
 texture = ExtResource("1_0ywo5")
 script = ExtResource("2_jjj2o")
+expectedType = "Blue"
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("2_16xt0")

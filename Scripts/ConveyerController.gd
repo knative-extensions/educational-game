@@ -11,8 +11,19 @@ var sendingEnd = false
 var can_send = false
 var started = false
 
+func initialise():
+	self.selected
+	self.events = []
+	self.destination = []
+	self.conveyer = []
+	self.conveyerInd = 0
+	self.dragging
+	self.sendingEnd = false
+	self.can_send = false
+	self.started = false
+
 func setup(conveyer) -> void:
-	self.conveyer = conveyer
+	self.conveyer.append(conveyer)
 	self.can_send = false
 	self.sendingEnd = false
 	self.started = false
@@ -31,8 +42,9 @@ func _process(delta: float) -> void:
 		pass
 
 func create_conveyor():
-	conveyer.set_point_position(0, selected.get_position())
-	conveyer.set_point_position(1, destination.get_position())
+	conveyer[conveyerInd].set_point_position(0, selected.get_position())
+	conveyer[conveyerInd].set_point_position(1, destination[conveyerInd])
+	conveyerInd+=1
 	
 	
 	
