@@ -42,6 +42,11 @@ func _input_event(viewport, event, shape_idx) -> void:
 		self.on_click()
 		
 func on_click():
-	print("hi")
+	
+	if ConveyerController.selected != null and ConveyerController.selected != self:
+		ConveyerController.selected.modulate = Color(1, 1, 1, 1)  # reset to normal
+	# Highlight this box
+	self.modulate = Color(1.2, 1.2, 0.8, 1)  
 	ConveyerController.selected = self
 	AudioManager.play_click_start()
+	print("[EventBox] Selected:", boxType)
