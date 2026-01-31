@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://p2kk0a6bpmai"]
+[gd_scene load_steps=5 format=3 uid="uid://p2kk0a6bpmai"]
 
 [ext_resource type="Texture2D" uid="uid://b00w453hqw7wx" path="res://2D Assets/boxes/redBox.png" id="1_7cv2t"]
 [ext_resource type="Script" path="res://Scripts/event_box.gd" id="2_3qheb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6uvdh"]
 size = Vector2(211.428, 211.429)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhd45"]
+content_margin_top = 10.0
+bg_color = Color(1, 0.423529, 0.47451, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [node name="BoxA" type="Sprite2D" groups=["Box"]]
 position = Vector2(947.833, 182.333)
@@ -18,3 +26,17 @@ boxType = "Red"
 position = Vector2(0.000366211, 0)
 scale = Vector2(0.7, 0.7)
 shape = SubResource("RectangleShape2D_6uvdh")
+
+[node name="hoverlabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 73.167
+offset_top = -125.333
+offset_right = 180.167
+offset_bottom = -79.333
+theme_override_styles/normal = SubResource("StyleBoxFlat_fhd45")
+bbcode_enabled = true
+text = "[center]Event R[/center]
+"
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

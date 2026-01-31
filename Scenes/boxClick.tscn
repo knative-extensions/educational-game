@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8lin6dur1umi"]
+[gd_scene load_steps=15 format=3 uid="uid://c8lin6dur1umi"]
 
 [ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_fdm6s"]
 [ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_ocbiy"]
@@ -14,6 +14,25 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8kq8"]
 size = Vector2(160, 185)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgft8"]
+bg_color = Color(0.262745, 0.545098, 0.8, 1)
+border_width_top = 7
+border_color = Color(0.254902, 0.537255, 0.792157, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqu56"]
+bg_color = Color(1, 0.423529, 0.47451, 1)
+border_width_top = 9
+border_width_bottom = 4
+border_color = Color(1, 0.431373, 0.482353, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [node name="base" type="Node2D"]
 scale = Vector2(0.6, 0.6)
@@ -103,6 +122,17 @@ shape = SubResource("RectangleShape2D_e8kq8")
 position = Vector2(0.333374, 0.333313)
 texture = ExtResource("10_w4xqm")
 
+[node name="hoverlabel" type="RichTextLabel" parent="Draggable Filter"]
+visible = false
+offset_left = 73.3336
+offset_top = -110.0
+offset_right = 178.334
+offset_bottom = -70.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_qgft8")
+bbcode_enabled = true
+text = "[center] FILTER B
+"
+
 [node name="Draggable Filter2" type="Area2D" parent="."]
 position = Vector2(286.667, 431.667)
 script = ExtResource("10_xwwl6")
@@ -115,6 +145,17 @@ shape = SubResource("RectangleShape2D_e8kq8")
 [node name="Sprite2D" type="Sprite2D" parent="Draggable Filter2"]
 position = Vector2(0.333374, 0.333313)
 texture = ExtResource("11_2hn41")
+
+[node name="hoverlabel" type="RichTextLabel" parent="Draggable Filter2"]
+visible = false
+offset_left = 74.9997
+offset_top = -120.0
+offset_right = 182.0
+offset_bottom = -74.0004
+theme_override_styles/normal = SubResource("StyleBoxFlat_tqu56")
+bbcode_enabled = true
+text = "[center]FILTER R[/center]
+"
 
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
 [connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]

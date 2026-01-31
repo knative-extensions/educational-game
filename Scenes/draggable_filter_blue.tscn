@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bquha0225l1ju"]
+[gd_scene load_steps=5 format=3 uid="uid://bquha0225l1ju"]
 
 [ext_resource type="Script" path="res://Scripts/draggable_filter.gd" id="1_nmkcu"]
 [ext_resource type="Texture2D" uid="uid://cs6prh1shv4bh" path="res://2D Assets/funnels/blueFunnel.png" id="2_bv34i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8kq8"]
 size = Vector2(160, 185)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhdk1"]
+bg_color = Color(0.254902, 0.537255, 0.788235, 1)
+border_width_top = 9
+border_width_bottom = 4
+border_color = Color(0.235294, 0.517647, 0.772549, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [node name="Draggable Filter" type="Area2D"]
 position = Vector2(288.333, 205)
@@ -18,6 +28,16 @@ shape = SubResource("RectangleShape2D_e8kq8")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.333374, 0.333313)
 texture = ExtResource("2_bv34i")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 71.667
+offset_top = -118.0
+offset_right = 178.667
+offset_bottom = -72.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hhdk1")
+bbcode_enabled = true
+text = "[center]FILTER B[/center]
+"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
