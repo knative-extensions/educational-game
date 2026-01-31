@@ -45,7 +45,40 @@ func  next_level():
 			print("End of Levels.")
 			get_tree().change_scene_to_file("res://Scenes/end_of_all_levels.tscn")
 	else:
-		print("Failed. Try Again")
-		message_display.show_message("Failed. Try Again")
-		await message_display.show_message_for_duration(2.0)
+		var failure_data = analyze_failure()
+		show_educational_failure(failure_data, message_display)
+		await message_display.show_message_for_duration(4.0)
 		message_display.visible = false
+
+func analyze_failure() -> Dictionary:
+	var reason = ""
+	var hint = ""
+	var lesson = ""
+	
+	if not sinkUsed:
+		reason = "No events were delivered to any sink"
+		hint = "Click an event to select it, then click a sink to route it"
+		lesson = "In Knative, events must be routed from sources to sinks through triggers"
+	
+	elif sinkBoxMatchNeeded[levelind] and not sinkBoxMatchPresent:
+		reason = "Wrong event type delivered to sink"
+		hint = "Use filters to match event colors with sink colors"
+		lesson = "Knative Triggers use filters to ensure events reach the correct subscribers based on event attributes"
+	
+	elif dlsRequired[levelind] and not dlsUsed:
+		reason = "Failed events were not routed to Dead Letter Sink"
+		hint = "Click the DLS to catch events that hit the blockage"
+		lesson = "Dead Letter Sinks prevent data loss by catching events that fail to process"
+	
+	return {
+		"reason": reason,
+		"hint": hint,
+		"lesson": lesson
+	}
+
+func show_educational_failure(data: Dictionary, message_display: Control):
+	message_display.show_failure_with_lesson(
+		data.reason,
+		data.hint,
+		data.lesson
+	)
