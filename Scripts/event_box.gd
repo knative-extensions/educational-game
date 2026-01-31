@@ -16,3 +16,18 @@ func _input_event(viewport, event, shape_idx) -> void:
 func on_click():
 	print("hi")
 	ConveyerController.selected = self
+	
+
+
+
+
+func _on_area_2d_mouse_entered():
+	$Panel.show() # Replace with function body.
+
+
+func _on_area_2d_mouse_exited():
+	$Panel.hide() # Replace with function body.
+
+
+
+	# Replace with function body.

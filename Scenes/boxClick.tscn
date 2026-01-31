@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8lin6dur1umi"]
+[gd_scene load_steps=16 format=3 uid="uid://c8lin6dur1umi"]
 
 [ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_fdm6s"]
 [ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_ocbiy"]
@@ -11,9 +11,24 @@
 [ext_resource type="Texture2D" uid="uid://cs6prh1shv4bh" path="res://2D Assets/funnels/blueFunnel.png" id="10_w4xqm"]
 [ext_resource type="Script" path="res://Scripts/draggable_filter.gd" id="10_xwwl6"]
 [ext_resource type="Texture2D" uid="uid://bpkn0kgyf867u" path="res://2D Assets/funnels/redFunnel.png" id="11_2hn41"]
+[ext_resource type="FontFile" uid="uid://btxwuo5y3bcni" path="res://Fonts/Sigmar-Regular.ttf" id="11_qmrvh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8kq8"]
 size = Vector2(160, 185)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yukuu"]
+bg_color = Color(0.396802, 0.593587, 0.949038, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahp62"]
+bg_color = Color(0.900372, 0.458096, 0.249774, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="base" type="Node2D"]
 scale = Vector2(0.6, 0.6)
@@ -103,6 +118,25 @@ shape = SubResource("RectangleShape2D_e8kq8")
 position = Vector2(0.333374, 0.333313)
 texture = ExtResource("10_w4xqm")
 
+[node name="Panel" type="Panel" parent="Draggable Filter"]
+visible = false
+offset_left = 71.667
+offset_top = -120.0
+offset_right = 249.667
+offset_bottom = -62.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yukuu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Draggable Filter/Panel"]
+layout_mode = 0
+offset_left = 13.3333
+offset_top = 10.0
+offset_right = 163.333
+offset_bottom = 50.0
+theme_override_fonts/normal_font = ExtResource("11_qmrvh")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "BLUE FILTER"
+
 [node name="Draggable Filter2" type="Area2D" parent="."]
 position = Vector2(286.667, 431.667)
 script = ExtResource("10_xwwl6")
@@ -115,6 +149,26 @@ shape = SubResource("RectangleShape2D_e8kq8")
 [node name="Sprite2D" type="Sprite2D" parent="Draggable Filter2"]
 position = Vector2(0.333374, 0.333313)
 texture = ExtResource("11_2hn41")
+
+[node name="Panel" type="Panel" parent="Draggable Filter2"]
+visible = false
+offset_left = 84.9997
+offset_top = -115.0
+offset_right = 263.0
+offset_bottom = -57.0003
+theme_override_styles/panel = SubResource("StyleBoxFlat_ahp62")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Draggable Filter2/Panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 10.0
+offset_right = 175.0
+offset_bottom = 50.0
+theme_override_fonts/normal_font = ExtResource("11_qmrvh")
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "RED FILTER"
 
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
 [connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]

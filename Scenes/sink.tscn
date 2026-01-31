@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://whu4rwgsyl8u"]
+[gd_scene load_steps=6 format=3 uid="uid://whu4rwgsyl8u"]
 
 [ext_resource type="Texture2D" uid="uid://cgnmmfc1l4d5d" path="res://2D Assets/sinks/sink.png" id="1_0ywo5"]
 [ext_resource type="Script" path="res://Scripts/SinkClick.gd" id="2_16xt0"]
 [ext_resource type="Script" path="res://Scripts/sink.gd" id="2_jjj2o"]
+[ext_resource type="FontFile" uid="uid://btxwuo5y3bcni" path="res://Fonts/Sigmar-Regular.ttf" id="4_0xkgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3ci"]
 size = Vector2(443.333, 408.333)
@@ -20,4 +21,22 @@ script = ExtResource("2_16xt0")
 position = Vector2(0, -5.83331)
 shape = SubResource("RectangleShape2D_7l3ci")
 
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 150.333
+offset_top = -243.333
+offset_right = 328.333
+offset_bottom = -158.333
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 54.333
+offset_top = 18.667
+offset_right = 274.333
+offset_bottom = 94.667
+theme_override_fonts/normal_font = ExtResource("4_0xkgb")
+theme_override_font_sizes/normal_font_size = 26
+text = "SINK"
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cslgikttjtw4u"]
+
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="1_hsuso"]
+
+[node name="conveyerline" type="Line2D"]
+z_index = -1
+texture_repeat = 2
+width = 100.0
+texture = ExtResource("1_hsuso")
+texture_mode = 1

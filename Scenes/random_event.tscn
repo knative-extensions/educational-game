@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw65q31av0bkb"]
+
+[ext_resource type="Script" path="res://Scripts/random_event.gd" id="1_qgvmb"]
+[ext_resource type="FontFile" uid="uid://btxwuo5y3bcni" path="res://Fonts/Sigmar-Regular.ttf" id="3_m8q84"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2f0g"]
+size = Vector2(211.428, 211.429)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4rqk"]
+bg_color = Color(0.31651, 0.60664, 0.963515, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="random_event" type="Sprite2D"]
+z_index = 2
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_qgvmb")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Box"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.000366211, 0)
+shape = SubResource("RectangleShape2D_r2f0g")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 52.167
+offset_top = -149.333
+offset_right = 199.167
+offset_bottom = -98.333
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4rqk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 190.0
+offset_bottom = 43.0
+theme_override_fonts/normal_font = ExtResource("3_m8q84")
+theme_override_font_sizes/normal_font_size = 22
+text = "Event B"
