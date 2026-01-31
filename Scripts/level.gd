@@ -10,14 +10,14 @@ var nextLevel
 var levels=["basicEventFlow","boxClick","multiSink","dlqPattern"]
 var levelind=0
 
-# HUD Handling
-var hud_scene = preload("res://Scenes/LevelHUD.tscn")
-var hud_instance
+# Level Display Handling
+var level_display_scene = preload("res://Scenes/level_display.tscn")
+var level_display_instance
 
 func _ready():
-	hud_instance = hud_scene.instantiate()
-	add_child(hud_instance)
-	update_hud()
+	level_display_instance = level_display_scene.instantiate()
+	add_child(level_display_instance)
+	update_level_display()
 
 func initialise():
 	sinkBoxMatchPresent=true
@@ -26,14 +26,14 @@ func initialise():
 	nextLevel=false
 	dlsUsed=false
 	
-	# Make sure HUD is visible again if we restarted
-	if hud_instance:
-		hud_instance.show()
-	update_hud()
+	# Make sure Level Display is visible again if we restarted
+	if level_display_instance:
+		level_display_instance.show()
+	update_level_display()
 
-func update_hud():
-	if hud_instance:
-		hud_instance.update_display(levelind + 1, levels.size())
+func update_level_display():
+	if level_display_instance:
+		level_display_instance.update_display(levelind + 1, levels.size())
 
 func next_level():
 	if sinkUsed:
@@ -57,7 +57,7 @@ func next_level():
 		message_display.visible = false
 		
 		levelind+=1
-		update_hud()
+		update_level_display()
 		
 		if levelind!=levels.size():
 			var next_level_path="res://Scenes/"+levels[levelind]+".tscn"
@@ -65,9 +65,9 @@ func next_level():
 			ConveyerController.initialise()
 		else:
 			print("End of Levels.")
-			# --- HIDE HUD HERE ---
-			if hud_instance:
-				hud_instance.hide()
+			# --- HIDE LEVEL DISPLAY HERE ---
+			if level_display_instance:
+				level_display_instance.hide()
 			get_tree().change_scene_to_file("res://Scenes/end_of_all_levels.tscn")
 	else:
 		print("Failed. Try Again")
