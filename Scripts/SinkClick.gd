@@ -7,6 +7,7 @@ func _input_event(viewport, event, shape_idx):
 func on_click():
 	print("hey")
 	AudioManager.play_click_end() 
+	ToastManager.toast("Route connected!")
 	ConveyerController.destination.append(get_parent().get_position())
 	transfer_box()
 
@@ -25,4 +26,7 @@ func _on_area_entered(area: Area2D) -> void:
 		print(get_parent().expectedType)
 		if area.get_parent().boxType != get_parent().expectedType:
 			print("Not Expected Box")
+			ToastManager.warning("⚠️ Type mismatch!")
 			Level.sinkBoxMatchPresent=false
+		else:
+			ToastManager.success("✅ Delivered!")
