@@ -1,0 +1,10 @@
+max-line-length: 120
+disable:
+  - class-variable-name
+  - function-variable-name
+  - function-argument-name
+  - unused-argument
+  - load-constant-name
+  - class-definitions-order
+  - unnecessary-pass
+  - expression-not-assigned
