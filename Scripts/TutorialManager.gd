@@ -31,13 +31,19 @@ func show_current_step():
 	show_tooltip(step.text, step.get("highlight", ""))
 
 func show_tooltip(text: String, highlight_target: String = ""):
-	var tooltip = preload("res://Scenes/TutorialTooltip.tscn").instantiate()
-	tooltip.set_text(text)
-	if highlight_target != "":
-		var target = get_tree().get_first_node_in_group(highlight_target)
-		if target:
-			tooltip.point_to(target)
-	add_child(tooltip)
+	if not ResourceLoader.exists("res://Scenes/TutorialTooltip.tscn"):
+		print("TutorialTooltip scene not found - skipping tutorial step")
+		return
+		
+	var tooltip_scene = load("res://Scenes/TutorialTooltip.tscn")
+	if tooltip_scene:
+		var tooltip = tooltip_scene.instantiate()
+		tooltip.set_text(text)
+		if highlight_target != "":
+			var target = get_tree().get_first_node_in_group(highlight_target)
+			if target:
+				tooltip.point_to(target)
+		add_child(tooltip)
 
 func next_step():
 	current_step += 1
@@ -50,3 +56,19 @@ func finish_tutorial():
 	tutorials_completed[current_tutorial.level] = true
 	emit_signal("tutorial_finished", current_tutorial.level)
 	current_tutorial = {}
+
+func open_glossary(term: String = ""):
+	var glossary = get_tree().get_first_node_in_group("Glossary")
+	
+	if not glossary:
+		# Auto-instantiate if missing
+		var glossary_scene = load("res://Scenes/ConceptGlossary.tscn")
+		if glossary_scene:
+			glossary = glossary_scene.instantiate()
+			get_tree().root.add_child(glossary)
+	
+	if glossary:
+		if term != "":
+			glossary.open_to_term(term)
+		else:
+			glossary.open()

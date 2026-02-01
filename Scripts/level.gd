@@ -15,6 +15,35 @@ func initialise():
 	totalbox=0
 	nextLevel=false
 	dlsUsed=false
+	
+func _ready():
+	_create_help_button()
+
+func _create_help_button():
+	# Create a CanvasLayer so button stays on top of everything
+	var canvas = CanvasLayer.new()
+	add_child(canvas)
+	
+	var help_btn = Button.new()
+	help_btn.text = "?"
+	help_btn.name = "GlobalHelpButton"
+	
+	# Style the button to look like a circle/help icon
+	help_btn.custom_minimum_size = Vector2(40, 40)
+	help_btn.position = Vector2(get_viewport().get_visible_rect().size.x - 60, 20) # Top right
+	
+	# Connect signal
+	help_btn.pressed.connect(_on_help_pressed)
+	
+	canvas.add_child(help_btn)
+
+func _on_help_pressed():
+	print("Help button pressed!")
+	# Try access via singleton name directly first (if autoloaded)
+	if has_node("/root/TutorialManager"):
+		get_node("/root/TutorialManager").open_glossary()
+	else:
+		print("CRITICAL ERROR: TutorialManager not found in /root. Please add 'Scripts/TutorialManager.gd' to Project Settings -> Autoload as 'TutorialManager'")
 
 func  next_level():
 	if sinkUsed:
