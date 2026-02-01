@@ -1,9 +1,11 @@
 extends Control
 
+
 func show_message(text):
 	print("Message displayed")
-	$Label.text=text
-	
+	$Label.text = text
+
+
 func show_message_for_duration(duration: float) -> void:
 	var timer := Timer.new()
 	timer.wait_time = duration

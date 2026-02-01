@@ -1,17 +1,18 @@
 extends Sprite2D
 
-
 const event_script = preload("res://Scripts/event_box.gd")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	create_event("")
-	pass # Replace with function body.
+	pass  # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
 
 func create_event(color: String) -> void:
 	var event = Sprite2D.new()

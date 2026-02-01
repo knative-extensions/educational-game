@@ -1,0 +1,13 @@
+repos:
+  - repo: https://github.com/Scony/godot-gdscript-toolkit
+    rev: 4.2.2
+    hooks:
+      # 1. gdformat: Automatically fixes spacing, indentation, and line breaks
+      - id: gdformat
+        files: \.gd$
+        additional_dependencies: [setuptools]
+
+      # 2. gdlint: Checks for naming conventions and unused variables
+      - id: gdlint
+        files: \.gd$
+        additional_dependencies: [setuptools]
