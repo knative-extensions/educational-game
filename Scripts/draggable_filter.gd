@@ -24,16 +24,19 @@ func _on_mouse_entered() -> void:
 	if not ConveyerController.dragging:
 		draggable = true
 		#scale = Vector2(1.05, 1.05)
-
+		$hoverlabel.visible = true
+	
 
 func _on_mouse_exited() -> void:
 	if not ConveyerController.dragging:
 		draggable = false
 		#scale = Vector2(1, 1)
+	$hoverlabel.visible = false
 
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Box"):
 		if area.get_parent().boxType != filterColor and area.get_parent().sending == true:
 			print("kill it")
+			AudioManager.play_poof()
 			area.get_parent().queue_free()

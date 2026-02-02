@@ -6,6 +6,7 @@ func _input_event(viewport, event, shape_idx):
 
 func on_click():
 	print("hey")
+	AudioManager.play_click_end() 
 	ConveyerController.destination.append(get_parent().get_position())
 	transfer_box()
 
