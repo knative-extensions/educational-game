@@ -33,6 +33,7 @@ func  next_level():
 	message_display.z_index = 999 
 	if nextLevel:
 		print("success")
+		AudioManager.play_level_clear() 
 		message_display.show_message("Success")
 		await message_display.show_message_for_duration(2.0)
 		message_display.visible = false
@@ -47,6 +48,7 @@ func  next_level():
 			get_tree().change_scene_to_file("res://Scenes/end_of_all_levels.tscn")
 	else:
 		print("Failed. Try Again")
+		AudioManager.play_level_fail() 
 		message_display.show_message("Failed. Try Again")
 		await message_display.show_message_for_duration(2.0)
 		message_display.visible = false

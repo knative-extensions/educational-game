@@ -62,6 +62,7 @@ func create_conveyor():
 	
 	conveyer[conveyerInd].set_point_position(0, selected.get_position())
 	conveyer[conveyerInd].set_point_position(1, destination[conveyerInd])
+	AudioManager.play_construction()
 	conveyerInd+=1
 	
 func send_event():

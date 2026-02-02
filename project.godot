@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ConveyerController="*res://Scripts/ConveyerController.gd"
 Level="*res://Scripts/level.gd"
+AudioManager="*res://Scripts/AudioManager.gd"
 
 [input]
 
