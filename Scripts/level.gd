@@ -62,14 +62,16 @@ func  next_level():
 	message_display.z_index = 999 
 	if nextLevel:
 		print("success")
+		AudioManager.play_level_clear() 
 		message_display.show_message("Success")
 		await message_display.show_message_for_duration(2.0)
 		message_display.visible = false
 		levelind+=1
 		if levelind!=levels.size():
+			# CRITICAL FIXInitialize BEFORE changing scene, not after!
+			ConveyerController.initialise()
 			var next_level_path="res://Scenes/"+levels[levelind]+".tscn"
 			get_tree().change_scene_to_file(next_level_path)
-			ConveyerController.initialise()
 		else:
 			print("End of Levels.")
 			get_tree().change_scene_to_file("res://Scenes/end_of_all_levels.tscn")
@@ -77,6 +79,10 @@ func  next_level():
 		var failure_data = analyze_failure()
 		show_educational_failure(failure_data, message_display)
 		await message_display.show_message_for_duration(4.0)
+		print("Failed. Try Again")
+		AudioManager.play_level_fail() 
+		message_display.show_message("Failed. Try Again")
+		await message_display.show_message_for_duration(2.0)
 		message_display.visible = false
 
 func analyze_failure() -> Dictionary:

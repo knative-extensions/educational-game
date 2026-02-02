@@ -25,3 +25,12 @@ func _process(delta: float) -> void:
 				indicator_light.visible = !indicator_light.visible
 		else:
 			indicator_light.visible = false
+	pass
+
+
+func _on_area_2d_mouse_entered():
+	$hoverlabel.visible = true # Replace with function body.
+
+
+func _on_area_2d_mouse_exited():
+	$hoverlabel.visible = false# Replace with function body.
