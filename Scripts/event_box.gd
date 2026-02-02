@@ -44,14 +44,4 @@ func _input_event(viewport, event, shape_idx) -> void:
 func on_click():
 	print("hi")
 	ConveyerController.selected = self
-
-
-func _on_area_2d_mouse_entered():
-	$hoverlabel.visible = true; 
-
-
-
-
-
-func _on_area_2d_mouse_exited():
-	$hoverlabel.visible = false# Replace with function body.
+	AudioManager.play_click_start()
