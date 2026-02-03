@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://Scripts/introduction_scene.gd" id="1_script"]
 [ext_resource type="Texture2D" path="res://Kuack/new1.png" id="2_mascot"]
@@ -7,24 +7,25 @@
 [ext_resource type="Texture2D" path="res://2D Assets/sinks/sink.png" id="5_sink"]
 [ext_resource type="Texture2D" path="res://2D Assets/transformation/transformer_machine.png" id="6_trans"]
 [ext_resource type="Texture2D" path="res://2D Assets/retryAndDLQ/DLS.png" id="7_dlq"]
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="8_bg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Card"]
-bg_color = Color(0.168627, 0.2, 0.270588, 1)
+bg_color = Color(0.921569, 0.94902, 0.968627, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.27, 0.3, 0.4, 1)
+border_color = Color(0.82, 0.85, 0.9, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
-shadow_color = Color(0, 0, 0, 0.3)
-shadow_size = 5
-shadow_offset = Vector2(0, 4)
+shadow_color = Color(0, 0, 0, 0.05)
+shadow_size = 4
+shadow_offset = Vector2(0, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_BtnNormal"]
-bg_color = Color(0.2, 0.6, 0.8, 1)
+bg_color = Color(0.1, 0.5, 0.75, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -33,7 +34,7 @@ shadow_size = 2
 shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_BtnHover"]
-bg_color = Color(0.3, 0.7, 0.9, 1)
+bg_color = Color(0.15, 0.6, 0.85, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -42,12 +43,17 @@ shadow_size = 3
 shadow_offset = Vector2(0, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Bubble"]
-bg_color = Color(1, 1, 1, 0.9)
+bg_color = Color(0.95, 0.95, 0.95, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.85, 0.85, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 0
-shadow_color = Color(0, 0, 0, 0.2)
+shadow_color = Color(0, 0, 0, 0.05)
 shadow_size = 4
 
 [node name="introduction_scene" type="Control"]
@@ -59,14 +65,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.1, 0.11, 0.15, 1)
+texture = ExtResource("8_bg")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="MainLayout" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -75,14 +83,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
 [node name="VBox" type="VBoxContainer" parent="MainLayout"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 30
 
 [node name="Header" type="VBoxContainer" parent="MainLayout/VBox"]
 layout_mode = 2
@@ -90,25 +98,21 @@ theme_override_constants/separation = 5
 
 [node name="Title" type="Label" parent="MainLayout/VBox/Header"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/font_size = 52
 text = "Event Driven Architecture"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Subtitle" type="Label" parent="MainLayout/VBox/Header"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 22
 text = "Guide the events to their destinations!"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ContentScroll" type="ScrollContainer" parent="MainLayout/VBox"]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="CardsGrid" type="GridContainer" parent="MainLayout/VBox/ContentScroll"]
+[node name="CardsGrid" type="GridContainer" parent="MainLayout/VBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -116,24 +120,24 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 3
 
-[node name="Card_Event" type="PanelContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid"]
+[node name="Card_Event" type="PanelContainer" parent="MainLayout/VBox/CardsGrid"]
 custom_minimum_size = Vector2(200, 160)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_Card")
 
-[node name="Margin" type="MarginContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Event"]
+[node name="Margin" type="MarginContainer" parent="MainLayout/VBox/CardsGrid/Card_Event"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBox" type="HBoxContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Event/Margin"]
+[node name="HBox" type="HBoxContainer" parent="MainLayout/VBox/CardsGrid/Card_Event/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Icon" type="TextureRect" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Event/Margin/HBox"]
+[node name="Icon" type="TextureRect" parent="MainLayout/VBox/CardsGrid/Card_Event/Margin/HBox"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 4
@@ -141,42 +145,43 @@ texture = ExtResource("3_box")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Texts" type="VBoxContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Event/Margin/HBox"]
+[node name="Texts" type="VBoxContainer" parent="MainLayout/VBox/CardsGrid/Card_Event/Margin/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="LabelTitle" type="Label" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Event/Margin/HBox/Texts"]
+[node name="LabelTitle" type="Label" parent="MainLayout/VBox/CardsGrid/Card_Event/Margin/HBox/Texts"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.8, 0.4, 1)
+theme_override_colors/font_color = Color(0.85, 0.6, 0.0, 1)
 theme_override_font_sizes/font_size = 18
 text = "EVENTS"
 
-[node name="LabelDesc" type="Label" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Event/Margin/HBox/Texts"]
+[node name="LabelDesc" type="Label" parent="MainLayout/VBox/CardsGrid/Card_Event/Margin/HBox/Texts"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 13
 text = "These boxes hold data. Move them through the system to score points."
 autowrap_mode = 3
 
-[node name="Card_Filter" type="PanelContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid"]
+[node name="Card_Filter" type="PanelContainer" parent="MainLayout/VBox/CardsGrid"]
 custom_minimum_size = Vector2(200, 160)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_Card")
 
-[node name="Margin" type="MarginContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Filter"]
+[node name="Margin" type="MarginContainer" parent="MainLayout/VBox/CardsGrid/Card_Filter"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBox" type="HBoxContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Filter/Margin"]
+[node name="HBox" type="HBoxContainer" parent="MainLayout/VBox/CardsGrid/Card_Filter/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Icon" type="TextureRect" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Filter/Margin/HBox"]
+[node name="Icon" type="TextureRect" parent="MainLayout/VBox/CardsGrid/Card_Filter/Margin/HBox"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 4
@@ -184,42 +189,43 @@ texture = ExtResource("4_funnel")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Texts" type="VBoxContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Filter/Margin/HBox"]
+[node name="Texts" type="VBoxContainer" parent="MainLayout/VBox/CardsGrid/Card_Filter/Margin/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="LabelTitle" type="Label" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Filter/Margin/HBox/Texts"]
+[node name="LabelTitle" type="Label" parent="MainLayout/VBox/CardsGrid/Card_Filter/Margin/HBox/Texts"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 0.8, 1, 1)
+theme_override_colors/font_color = Color(0.0, 0.5, 0.8, 1)
 theme_override_font_sizes/font_size = 18
 text = "FILTERS"
 
-[node name="LabelDesc" type="Label" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Filter/Margin/HBox/Texts"]
+[node name="LabelDesc" type="Label" parent="MainLayout/VBox/CardsGrid/Card_Filter/Margin/HBox/Texts"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 13
 text = "Funnels inspect events. Only matching colors or shapes can pass through."
 autowrap_mode = 3
 
-[node name="Card_Sink" type="PanelContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid"]
+[node name="Card_Sink" type="PanelContainer" parent="MainLayout/VBox/CardsGrid"]
 custom_minimum_size = Vector2(200, 160)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_Card")
 
-[node name="Margin" type="MarginContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Sink"]
+[node name="Margin" type="MarginContainer" parent="MainLayout/VBox/CardsGrid/Card_Sink"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBox" type="HBoxContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Sink/Margin"]
+[node name="HBox" type="HBoxContainer" parent="MainLayout/VBox/CardsGrid/Card_Sink/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Icon" type="TextureRect" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Sink/Margin/HBox"]
+[node name="Icon" type="TextureRect" parent="MainLayout/VBox/CardsGrid/Card_Sink/Margin/HBox"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 4
@@ -227,42 +233,43 @@ texture = ExtResource("5_sink")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Texts" type="VBoxContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Sink/Margin/HBox"]
+[node name="Texts" type="VBoxContainer" parent="MainLayout/VBox/CardsGrid/Card_Sink/Margin/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="LabelTitle" type="Label" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Sink/Margin/HBox/Texts"]
+[node name="LabelTitle" type="Label" parent="MainLayout/VBox/CardsGrid/Card_Sink/Margin/HBox/Texts"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
+theme_override_colors/font_color = Color(0.0, 0.6, 0.2, 1)
 theme_override_font_sizes/font_size = 18
 text = "SINKS"
 
-[node name="LabelDesc" type="Label" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Sink/Margin/HBox/Texts"]
+[node name="LabelDesc" type="Label" parent="MainLayout/VBox/CardsGrid/Card_Sink/Margin/HBox/Texts"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 13
 text = "The destination! Match the Event color to the Sink color to win."
 autowrap_mode = 3
 
-[node name="Card_Trans" type="PanelContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid"]
+[node name="Card_Trans" type="PanelContainer" parent="MainLayout/VBox/CardsGrid"]
 custom_minimum_size = Vector2(200, 160)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_Card")
 
-[node name="Margin" type="MarginContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Trans"]
+[node name="Margin" type="MarginContainer" parent="MainLayout/VBox/CardsGrid/Card_Trans"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBox" type="HBoxContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Trans/Margin"]
+[node name="HBox" type="HBoxContainer" parent="MainLayout/VBox/CardsGrid/Card_Trans/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Icon" type="TextureRect" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Trans/Margin/HBox"]
+[node name="Icon" type="TextureRect" parent="MainLayout/VBox/CardsGrid/Card_Trans/Margin/HBox"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 4
@@ -270,42 +277,43 @@ texture = ExtResource("6_trans")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Texts" type="VBoxContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Trans/Margin/HBox"]
+[node name="Texts" type="VBoxContainer" parent="MainLayout/VBox/CardsGrid/Card_Trans/Margin/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="LabelTitle" type="Label" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Trans/Margin/HBox/Texts"]
+[node name="LabelTitle" type="Label" parent="MainLayout/VBox/CardsGrid/Card_Trans/Margin/HBox/Texts"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.4, 1, 1)
+theme_override_colors/font_color = Color(0.6, 0.2, 0.6, 1)
 theme_override_font_sizes/font_size = 18
 text = "TRANSFORMERS"
 
-[node name="LabelDesc" type="Label" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_Trans/Margin/HBox/Texts"]
+[node name="LabelDesc" type="Label" parent="MainLayout/VBox/CardsGrid/Card_Trans/Margin/HBox/Texts"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 13
 text = "Machines that change data. Example: Turning a Red Box into a Blue Box."
 autowrap_mode = 3
 
-[node name="Card_DLQ" type="PanelContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid"]
+[node name="Card_DLQ" type="PanelContainer" parent="MainLayout/VBox/CardsGrid"]
 custom_minimum_size = Vector2(200, 160)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_Card")
 
-[node name="Margin" type="MarginContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_DLQ"]
+[node name="Margin" type="MarginContainer" parent="MainLayout/VBox/CardsGrid/Card_DLQ"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBox" type="HBoxContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_DLQ/Margin"]
+[node name="HBox" type="HBoxContainer" parent="MainLayout/VBox/CardsGrid/Card_DLQ/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Icon" type="TextureRect" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_DLQ/Margin/HBox"]
+[node name="Icon" type="TextureRect" parent="MainLayout/VBox/CardsGrid/Card_DLQ/Margin/HBox"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 4
@@ -313,21 +321,22 @@ texture = ExtResource("7_dlq")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Texts" type="VBoxContainer" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_DLQ/Margin/HBox"]
+[node name="Texts" type="VBoxContainer" parent="MainLayout/VBox/CardsGrid/Card_DLQ/Margin/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="LabelTitle" type="Label" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_DLQ/Margin/HBox/Texts"]
+[node name="LabelTitle" type="Label" parent="MainLayout/VBox/CardsGrid/Card_DLQ/Margin/HBox/Texts"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
+theme_override_colors/font_color = Color(0.8, 0.2, 0.2, 1)
 theme_override_font_sizes/font_size = 18
 text = "DEAD LETTER QUEUE"
 autowrap_mode = 2
 
-[node name="LabelDesc" type="Label" parent="MainLayout/VBox/ContentScroll/CardsGrid/Card_DLQ/Margin/HBox/Texts"]
+[node name="LabelDesc" type="Label" parent="MainLayout/VBox/CardsGrid/Card_DLQ/Margin/HBox/Texts"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 13
 text = "The trash bin. Events go here if they fail or have nowhere else to go."
 autowrap_mode = 3
@@ -375,7 +384,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_font_sizes/font_size = 16
-text = "Hi, I'm Kuack! 
+text = "Hi, I'm Kuack! 
 I'm here to help you learn."
 vertical_alignment = 1
 
@@ -388,3 +397,5 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_BtnNormal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_BtnHover")
 text = "START GAME"
+
+[connection signal="pressed" from="MainLayout/VBox/Footer/StartButton" to="." method="_on_start_button_pressed"]
