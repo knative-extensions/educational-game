@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdog2bwjc5gc6"]
+[gd_scene load_steps=5 format=3 uid="uid://cdog2bwjc5gc6"]
 
+[ext_resource type="Script" path="res://Scripts/dls.gd" id="1_fmv86"]
 [ext_resource type="Texture2D" uid="uid://75lnwxj33066" path="res://2D Assets/retryAndDLQ/DLS.png" id="1_lsi3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2u7"]
 size = Vector2(376, 136)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_op0rl"]
+content_margin_top = 23.0
+bg_color = Color(0.833186, 0.613107, 3.08037e-06, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
 [node name="dls" type="Area2D"]
+script = ExtResource("1_fmv86")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,3 +24,17 @@ texture = ExtResource("1_lsi3q")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_vt2u7")
+
+[node name="hoverlabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 186.0
+offset_top = -152.0
+offset_right = 351.0
+offset_bottom = -81.0
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_op0rl")
+bbcode_enabled = true
+text = "[center][b]DEAD LETTER SINK"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
