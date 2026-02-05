@@ -8,6 +8,11 @@ func on_click():
 	print("hey")
 	ConveyerController.destination.append(get_parent().get_position())
 	transfer_box()
+	
+	# Enable START button now that a route is connected
+	var start_button = get_tree().get_root().find_child("Control", true, false)
+	if start_button and start_button.has_method("enable_start"):
+		start_button.enable_start()
 
 func transfer_box():
 	print("sending")
