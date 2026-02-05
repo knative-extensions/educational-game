@@ -46,9 +46,9 @@ scale = Vector2(0.698, 0.698)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 893.0
-offset_top = 398.0
+offset_top = 440.0
 offset_right = 933.0
-offset_bottom = 438.0
+offset_bottom = 480.0
 scale = Vector2(0.7, 0.7)
 script = ExtResource("6_xyb5q")
 
@@ -56,24 +56,16 @@ script = ExtResource("6_xyb5q")
 layout_mode = 0
 offset_right = 342.0
 offset_bottom = 132.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
-layout_mode = 0
-offset_top = 37.0
-offset_right = 338.0
-offset_bottom = 110.0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 50
-bbcode_enabled = true
-text = "[center]START"
+theme_override_font_sizes/font_size = 50
+text = "START"
 
 [node name="Control2" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 893.0
-offset_top = 517.0
+offset_top = 540.0
 offset_right = 933.0
-offset_bottom = 557.0
+offset_bottom = 580.0
 scale = Vector2(0.7, 0.7)
 script = ExtResource("7_3f2sq")
 
@@ -81,16 +73,8 @@ script = ExtResource("7_3f2sq")
 layout_mode = 0
 offset_right = 342.0
 offset_bottom = 132.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
-layout_mode = 0
-offset_top = 37.0
-offset_right = 338.0
-offset_bottom = 110.0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 50
-bbcode_enabled = true
-text = "[center]RESTART"
+theme_override_font_sizes/font_size = 50
+text = "RESTART"
 
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
 [connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]

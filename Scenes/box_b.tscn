@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cg1qlr4r42xs6"]
 
 [ext_resource type="Texture2D" uid="uid://cjn14twvcwa8y" path="res://2D Assets/boxes/blueBox.png" id="1_mjw0e"]
-[ext_resource type="Script" path="res://Scripts/event_box.gd" id="2_3md8f"]
-[ext_resource type="Script" path="res://Scripts/event_box_clickable.gd" id="2_raetl"]
+[ext_resource type="Script" uid="uid://dytl3q2sat4ew" path="res://Scripts/event_box.gd" id="2_3md8f"]
+[ext_resource type="Script" uid="uid://5ydkp5vyru6l" path="res://Scripts/event_box_clickable.gd" id="2_raetl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6uvdh"]
 size = Vector2(211.428, 211.429)
@@ -35,6 +35,7 @@ offset_left = -208.833
 offset_top = -76.333
 offset_right = -101.833
 offset_bottom = -30.333
+mouse_filter = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_5pura")
 bbcode_enabled = true
 text = "[center][b]EVENT B

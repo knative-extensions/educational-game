@@ -11,12 +11,12 @@ var can_send = false
 var started = false
 
 func initialise():
-	self.selected
+	self.selected = null
 	self.events = []
 	self.destination = []
 	self.conveyer = []
 	self.conveyerInd = 0
-	self.dragging
+	self.dragging = null
 	self.sendingEnd = false
 	self.can_send = false
 	self.started = false
@@ -41,11 +41,19 @@ func _process(delta: float) -> void:
 	pass
 
 func create_conveyor():
-
-	conveyer[conveyerInd].set_point_position(0, selected.get_position())
-	conveyer[conveyerInd].set_point_position(1, destination[conveyerInd])
+	if conveyer.size() == 0:
+		print("ERROR: No conveyor Line2D found in scene!")
+		return
+		
+	# We use min() to ensure we don't go out of bounds of the actual Line2D nodes
+	# but we let conveyerInd grow so that destination and events indexing works.
+	var line_idx = min(conveyerInd, conveyer.size() - 1)
+	
+	conveyer[line_idx].set_point_position(0, selected.get_position())
+	conveyer[line_idx].set_point_position(1, destination[conveyerInd])
+	
 	AudioManager.play_construction()
-	conveyerInd+=1
+	conveyerInd += 1
 	
 func send_event():
 	print("sending events!")
