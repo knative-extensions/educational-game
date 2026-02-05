@@ -1,0 +1,25 @@
+{
+    "level": "boxClick",
+    "steps": [
+        {
+            "text": "Level 2: Triggers & Filters. In Knative, Triggers use filters to route events based on their attributes.",
+            "highlight": ""
+        },
+        {
+            "text": "Notice the colored events. Each has a different 'type' attribute.",
+            "highlight": "EventBox"
+        },
+        {
+            "text": "Drag a filter onto the conveyor to filter events by color",
+            "highlight": "Filter"
+        },
+        {
+            "text": "Route matching events to the correct colored sink",
+            "highlight": "Sink"
+        },
+        {
+            "text": "Perfect! Knative Triggers work the same way - filtering events by attributes like type, source, or custom fields.",
+            "highlight": ""
+        }
+    ]
+}
