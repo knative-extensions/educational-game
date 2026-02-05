@@ -37,8 +37,8 @@ func _ready() -> void:
 			
 
 func _input_event(viewport, event, shape_idx) -> void:
-	print(event)
-	if event.is_pressed():
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		get_viewport().set_input_as_handled()
 		self.on_click()
 		
 func on_click():

@@ -72,20 +72,10 @@ script = ExtResource("11_fwn7q")
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 0
 offset_top = 1.0
-offset_right = 151.0
-offset_bottom = 65.0
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="Control/Button"]
-layout_mode = 0
-offset_left = -10.0
-offset_top = 16.0
-offset_right = 328.0
-offset_bottom = 89.0
-scale = Vector2(0.5, 0.5)
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 50
-bbcode_enabled = true
-text = "[center]START"
+offset_right = 200.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 30
+text = "START"
 
 [node name="Control2" type="Control" parent="."]
 layout_mode = 3
@@ -98,19 +88,10 @@ script = ExtResource("11_pd3ou")
 
 [node name="Button" type="Button" parent="Control2"]
 layout_mode = 0
-offset_right = 342.0
-offset_bottom = 132.0
-scale = Vector2(0.45, 0.45)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
-layout_mode = 0
-offset_top = 37.0
-offset_right = 338.0
-offset_bottom = 110.0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 50
-bbcode_enabled = true
-text = "[center]RESTART"
+offset_right = 200.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 30
+text = "RESTART"
 
 [node name="Blockage" parent="." instance=ExtResource("13_cjnva")]
 position = Vector2(516, 270)
