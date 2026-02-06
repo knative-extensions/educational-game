@@ -12,5 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
+	ToastManager.info("▶️ Started!")
 	Level.initialise()
 	ConveyerController.can_send = true
