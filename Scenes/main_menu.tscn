@@ -1,0 +1,131 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkma5qeckpdwa"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_wur5c"]
+[ext_resource type="Texture2D" uid="uid://cht6baxtlwur1" path="res://Kuack/frame 11.png" id="2_ypx7w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmg1c"]
+bg_color = Color(0.160784, 0.501961, 0.72549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3sdr1"]
+bg_color = Color(0.203922, 0.596078, 0.858824, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_wur5c")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 652.0
+color = Color(0.815029, 0.90622, 0.970514, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ColorRect"]
+amount = 100
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(960, 1000)
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, -50)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(0.160784, 0.501961, 0.72549, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.376471, 0.321569, 0.815686, 1)
+theme_override_colors/font_shadow_color = Color(0.964712, 0.966903, 0.996199, 1)
+theme_override_colors/font_outline_color = Color(0.27572, 0.294126, 0.487245, 1)
+theme_override_constants/line_spacing = -24
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 48
+text = "KNATIVE "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Label"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 53.0
+offset_right = 278.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0.894129, 0.872763, 0.954355, 1)
+theme_override_colors/font_shadow_color = Color(0.376471, 0.321569, 0.815686, 1)
+theme_override_colors/font_outline_color = Color(0.319585, 0.397045, 0.939566, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Event-Driven Architecture"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_dmg1c")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3sdr1")
+text = "Start Game"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_dmg1c")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3sdr1")
+text = "⚙️Settings"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_dmg1c")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3sdr1")
+text = "Quit❌"
+
+[node name="Frame11" type="Sprite2D" parent="."]
+position = Vector2(237.44, 500)
+scale = Vector2(0.3, 0.302094)
+texture = ExtResource("2_ypx7w")
