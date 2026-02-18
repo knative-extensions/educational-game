@@ -29,6 +29,13 @@ script = ExtResource("2_16xt0")
 position = Vector2(0, -5.83331)
 shape = SubResource("RectangleShape2D_7l3ci")
 
+[node name="IndicatorLight" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -220.0
+offset_right = 10.0
+offset_bottom = -200.0
+color = Color(0, 1, 0, 1)
+z_index = 1
 [node name="hoverlabel" type="RichTextLabel" parent="."]
 visible = false
 offset_left = 180.0
