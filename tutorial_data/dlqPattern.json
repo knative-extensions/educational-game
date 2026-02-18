@@ -1,0 +1,21 @@
+{
+    "level": "dlqPattern",
+    "steps": [
+        {
+            "text": "Level 4: Dead Letter Queue. When events fail to process, they need somewhere to go.",
+            "highlight": ""
+        },
+        {
+            "text": "Notice the blockage - events will fail here",
+            "highlight": "Blockage"
+        },
+        {
+            "text": "Click the Dead Letter Sink (DLS) to route failed events there",
+            "highlight": "DLS"
+        },
+        {
+            "text": "Perfect! In Knative, Dead Letter Sinks prevent data loss by catching failed events for debugging or retry.",
+            "highlight": ""
+        }
+    ]
+}
