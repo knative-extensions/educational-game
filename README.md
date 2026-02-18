@@ -14,11 +14,11 @@ This game teaches fundamental Event Driven Architecture (EDA) patterns through h
 
 ## Requirements
 
-- [Godot Engine 4.3](https://godotengine.org/download/) or later
+- [Godot Engine 4.3](https://godotengine.org/download/archive/4.3-stable/)
 
 ## Running the Game
 
-1. **Download Godot Engine 4.3** from [godotengine.org/download](https://godotengine.org/download/)
+1. **Download Godot Engine 4.3** from [godotengine.org/download](https://godotengine.org/download/archive/4.3-stable)
    - Select the **Standard** version for your operating system
    - Extract the downloaded zip file
 
