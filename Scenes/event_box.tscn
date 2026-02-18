@@ -33,6 +33,7 @@ offset_left = 73.167
 offset_top = -125.333
 offset_right = 180.167
 offset_bottom = -79.333
+mouse_filter = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_fhd45")
 bbcode_enabled = true
 text = "[center][b]EVENT  R[/b][/center]

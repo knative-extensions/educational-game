@@ -74,16 +74,8 @@ script = ExtResource("9_va8kg")
 layout_mode = 0
 offset_right = 342.0
 offset_bottom = 132.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
-layout_mode = 0
-offset_top = 37.0
-offset_right = 338.0
-offset_bottom = 110.0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 50
-bbcode_enabled = true
-text = "[center]START"
+theme_override_font_sizes/font_size = 50
+text = "START"
 
 [node name="Control2" type="Control" parent="."]
 layout_mode = 3
@@ -98,16 +90,8 @@ script = ExtResource("10_rwca5")
 layout_mode = 0
 offset_right = 342.0
 offset_bottom = 132.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
-layout_mode = 0
-offset_top = 37.0
-offset_right = 338.0
-offset_bottom = 110.0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 50
-bbcode_enabled = true
-text = "[center]RESTART"
+theme_override_font_sizes/font_size = 50
+text = "RESTART"
 
 [node name="Draggable Filter" type="Area2D" parent="."]
 position = Vector2(288.333, 205)

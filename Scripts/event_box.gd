@@ -37,11 +37,17 @@ func _ready() -> void:
 			
 
 func _input_event(viewport, event, shape_idx) -> void:
-	print(event)
-	if event.is_pressed():
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		get_viewport().set_input_as_handled()
 		self.on_click()
 		
 func on_click():
 	print("hi")
 	ConveyerController.selected = self
 	AudioManager.play_click_start()
+
+func _on_area_2d_mouse_entered():
+	$hoverlabel.visible = true 
+
+func _on_area_2d_mouse_exited():
+	$hoverlabel.visible = false
