@@ -1,8 +1,10 @@
 extends Area2D
 # Called when the node enters the scene tree for the first time.
 func _input_event(viewport, event, shape_idx):
-	if event.is_pressed() and ConveyerController.selected != null:
-		self.on_click()
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if ConveyerController.selected != null:
+			get_viewport().set_input_as_handled()
+			self.on_click()
 
 func on_click():
 	print("hey")

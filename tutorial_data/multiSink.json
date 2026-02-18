@@ -1,0 +1,21 @@
+{
+    "level": "multiSink",
+    "steps": [
+        {
+            "text": "Level 3: Multiple Sinks. In Knative, one Broker can route events to multiple subscribers.",
+            "highlight": ""
+        },
+        {
+            "text": "You have multiple sinks. Each needs matching events.",
+            "highlight": "Sink"
+        },
+        {
+            "text": "Use filters to route each event type to its matching sink",
+            "highlight": "Filter"
+        },
+        {
+            "text": "Excellent! This is how Knative enables fan-out patterns - one event source, multiple subscribers.",
+            "highlight": ""
+        }
+    ]
+}

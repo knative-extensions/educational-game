@@ -1,12 +1,14 @@
+[gd_scene format=3 uid="uid://cg1qlr4r42xs6"]
 [gd_scene load_steps=6 format=3 uid="uid://cg1qlr4r42xs6"]
 
 [ext_resource type="Texture2D" uid="uid://cjn14twvcwa8y" path="res://2D Assets/boxes/blueBox.png" id="1_mjw0e"]
-[ext_resource type="Script" path="res://Scripts/event_box.gd" id="2_3md8f"]
-[ext_resource type="Script" path="res://Scripts/event_box_clickable.gd" id="2_raetl"]
+[ext_resource type="Script" uid="uid://dytl3q2sat4ew" path="res://Scripts/event_box.gd" id="2_3md8f"]
+[ext_resource type="Script" uid="uid://5ydkp5vyru6l" path="res://Scripts/event_box_clickable.gd" id="2_raetl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6uvdh"]
 size = Vector2(211.428, 211.429)
 
+[node name="BoxB" type="Sprite2D" unique_id=1375488351 groups=["Box"]]
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pura"]
 content_margin_top = 9.0
 bg_color = Color(0.431373, 0.564706, 1, 1)
@@ -21,10 +23,10 @@ texture = ExtResource("1_mjw0e")
 script = ExtResource("2_3md8f")
 boxType = "Blue"
 
-[node name="Area2D" type="Area2D" parent="." groups=["Box"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=1970047476 groups=["Box"]]
 script = ExtResource("2_raetl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=650521939]
 position = Vector2(0.000366211, 0)
 scale = Vector2(0.7, 0.7)
 shape = SubResource("RectangleShape2D_6uvdh")

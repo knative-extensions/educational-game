@@ -1,0 +1,21 @@
+{
+  "level": "basicEventFlow",
+  "steps": [
+    {
+      "text": "Welcome! In Knative, events flow from Sources to Sinks through Brokers.",
+      "highlight": ""
+    },
+    {
+      "text": "Click this event to select it",
+      "highlight": "EventBox"
+    },
+    {
+      "text": "Now click the sink to route the event",
+      "highlight": "Sink"
+    },
+    {
+      "text": "Great! You just created a basic Knative event flow. This is like a Trigger connecting a Broker to a Sink.",
+      "highlight": ""
+    }
+  ]
+}
