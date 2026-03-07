@@ -45,3 +45,12 @@ func on_click():
 	print("hi")
 	ConveyerController.selected = self
 	AudioManager.play_click_start()
+
+
+func _on_area_2d_mouse_entered():
+	$hoverlabel.show() # Replace with function body.
+
+
+
+func _on_area_2d_mouse_exited():
+	$hoverlabel.hide() # Replace with function body.

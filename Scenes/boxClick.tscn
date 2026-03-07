@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8lin6dur1umi"]
+[gd_scene load_steps=11 format=3 uid="uid://c8lin6dur1umi"]
 
 [ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_fdm6s"]
 [ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_ocbiy"]
@@ -7,32 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="6_gdfin"]
 [ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="7_j7uju"]
 [ext_resource type="Script" path="res://Scripts/event_button.gd" id="9_va8kg"]
+[ext_resource type="PackedScene" uid="uid://bquha0225l1ju" path="res://Scenes/draggable_filter_blue.tscn" id="9_wshn7"]
+[ext_resource type="PackedScene" uid="uid://bi4a6dl8q6rnj" path="res://Scenes/draggable_filter_red.tscn" id="10_d1jj7"]
 [ext_resource type="Script" path="res://Scripts/restart.gd" id="10_rwca5"]
-[ext_resource type="Texture2D" uid="uid://cs6prh1shv4bh" path="res://2D Assets/funnels/blueFunnel.png" id="10_w4xqm"]
-[ext_resource type="Script" path="res://Scripts/draggable_filter.gd" id="10_xwwl6"]
-[ext_resource type="Texture2D" uid="uid://bpkn0kgyf867u" path="res://2D Assets/funnels/redFunnel.png" id="11_2hn41"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8kq8"]
-size = Vector2(160, 185)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgft8"]
-bg_color = Color(0.262745, 0.545098, 0.8, 1)
-border_width_top = 7
-border_color = Color(0.254902, 0.537255, 0.792157, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqu56"]
-bg_color = Color(1, 0.423529, 0.47451, 1)
-border_width_top = 9
-border_width_bottom = 4
-border_color = Color(1, 0.431373, 0.482353, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
 
 [node name="base" type="Node2D"]
 scale = Vector2(0.6, 0.6)
@@ -109,61 +86,11 @@ theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]RESTART"
 
-[node name="Draggable Filter" type="Area2D" parent="."]
-position = Vector2(288.333, 205)
-script = ExtResource("10_xwwl6")
-filterColor = "Blue"
+[node name="Draggable Filter3" parent="." instance=ExtResource("9_wshn7")]
+position = Vector2(283.333, 205)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter"]
-position = Vector2(0.333374, -0.5)
-shape = SubResource("RectangleShape2D_e8kq8")
-
-[node name="Sprite2D" type="Sprite2D" parent="Draggable Filter"]
-position = Vector2(0.333374, 0.333313)
-texture = ExtResource("10_w4xqm")
-
-[node name="hoverlabel" type="RichTextLabel" parent="Draggable Filter"]
-visible = false
-offset_left = 73.3336
-offset_top = -110.0
-offset_right = 178.334
-offset_bottom = -70.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_qgft8")
-bbcode_enabled = true
-text = "[center] [b]FILTER B
-"
-
-[node name="Draggable Filter2" type="Area2D" parent="."]
-position = Vector2(286.667, 431.667)
-script = ExtResource("10_xwwl6")
-filterColor = "Red"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter2"]
-position = Vector2(0.333374, -0.5)
-shape = SubResource("RectangleShape2D_e8kq8")
-
-[node name="Sprite2D" type="Sprite2D" parent="Draggable Filter2"]
-position = Vector2(0.333374, 0.333313)
-texture = ExtResource("11_2hn41")
-
-[node name="hoverlabel" type="RichTextLabel" parent="Draggable Filter2"]
-visible = false
-offset_left = 74.9997
-offset_top = -120.0
-offset_right = 182.0
-offset_bottom = -74.0004
-theme_override_styles/normal = SubResource("StyleBoxFlat_tqu56")
-bbcode_enabled = true
-text = "[center][b]FILTER R
-"
+[node name="Draggable Filter" parent="." instance=ExtResource("10_d1jj7")]
+position = Vector2(278.333, 418.333)
 
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
 [connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
-[connection signal="area_entered" from="Draggable Filter" to="Draggable Filter" method="_on_area_entered"]
-[connection signal="body_shape_exited" from="Draggable Filter" to="Draggable Filter" method="_on_body_shape_exited"]
-[connection signal="mouse_entered" from="Draggable Filter" to="Draggable Filter" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Draggable Filter" to="Draggable Filter" method="_on_mouse_exited"]
-[connection signal="area_entered" from="Draggable Filter2" to="Draggable Filter2" method="_on_area_entered"]
-[connection signal="body_shape_exited" from="Draggable Filter2" to="Draggable Filter2" method="_on_body_shape_exited"]
-[connection signal="mouse_entered" from="Draggable Filter2" to="Draggable Filter2" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Draggable Filter2" to="Draggable Filter2" method="_on_mouse_exited"]
