@@ -29,7 +29,8 @@ shape = SubResource("RectangleShape2D_e8kq8")
 position = Vector2(0.333374, 0.333313)
 texture = ExtResource("2_bv34i")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="hoverlabel" type="RichTextLabel" parent="."]
+visible = false
 offset_left = 71.667
 offset_top = -118.0
 offset_right = 178.667

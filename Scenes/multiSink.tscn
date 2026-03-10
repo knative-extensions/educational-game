@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://drhixkbg1n4sa"]
+[gd_scene load_steps=19 format=3 uid="uid://drhixkbg1n4sa"]
 
 [ext_resource type="Script" path="res://Scripts/multi_sink.gd" id="1_x4ymc"]
 [ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_x35ji"]
@@ -10,12 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bdn2dphqbqnhh" path="res://2D Assets/boxes/greenBox.png" id="7_ddj2a"]
 [ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="8_wibrt"]
 [ext_resource type="Script" path="res://Scripts/conveyor.gd" id="9_s7axg"]
-[ext_resource type="Script" path="res://Scripts/draggable_filter.gd" id="10_oh2sn"]
-[ext_resource type="Texture2D" uid="uid://cs6prh1shv4bh" path="res://2D Assets/funnels/blueFunnel.png" id="11_mf5ap"]
-[ext_resource type="Texture2D" uid="uid://bpkn0kgyf867u" path="res://2D Assets/funnels/redFunnel.png" id="12_2vchf"]
-[ext_resource type="Texture2D" uid="uid://dreyprum5m05y" path="res://2D Assets/funnels/greenFunnel.png" id="13_fp6xy"]
+[ext_resource type="PackedScene" uid="uid://bquha0225l1ju" path="res://Scenes/draggable_filter_blue.tscn" id="13_w7pdg"]
 [ext_resource type="Script" path="res://Scripts/multi_sink_start.gd" id="15_2dg66"]
 [ext_resource type="Script" path="res://Scripts/restart.gd" id="15_hhntj"]
+[ext_resource type="PackedScene" uid="uid://bi4a6dl8q6rnj" path="res://Scenes/draggable_filter_red.tscn" id="16_nxrac"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2e8j"]
 content_margin_top = 14.0
@@ -35,35 +33,18 @@ corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjavo"]
-size = Vector2(160, 185)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ibnru"]
+load_path = "res://.godot/imported/greenFunnel.png-9b31229a6ae861714dea240c0b8a6cd6.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwsvk"]
-content_margin_top = 8.0
-bg_color = Color(0.235294, 0.517647, 0.772549, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ulyt"]
+bg_color = Color(0.47451, 0.701961, 0.376471, 1)
+border_width_top = 9
+border_width_bottom = 4
+border_color = Color(0.47451, 0.701961, 0.376471, 1)
 corner_radius_top_left = 7
 corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1j7t"]
-size = Vector2(160, 185)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qk3t7"]
-content_margin_top = 10.0
-bg_color = Color(0.988235, 0.392157, 0.392157, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cu8a"]
-content_margin_top = 8.0
-bg_color = Color(0.309804, 0.552941, 0.203922, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [node name="multiSink" type="Node2D"]
 script = ExtResource("1_x4ymc")
@@ -141,81 +122,12 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("7_ddj2a")
 boxType = "Green"
 
-[node name="Draggable Filter" type="Area2D" parent="."]
-position = Vector2(78, 89)
+[node name="Draggable Filter4" parent="." instance=ExtResource("13_w7pdg")]
+position = Vector2(79, 91)
 scale = Vector2(0.7, 0.7)
-script = ExtResource("10_oh2sn")
-filterColor = "Blue"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter"]
-position = Vector2(0.333374, -0.5)
+[node name="CollisionShape2D" parent="Draggable Filter4" index="0"]
 scale = Vector2(0.6, 0.6)
-shape = SubResource("RectangleShape2D_sjavo")
-
-[node name="Sprite2D" type="Sprite2D" parent="Draggable Filter"]
-position = Vector2(0.333374, 0.333313)
-texture = ExtResource("11_mf5ap")
-
-[node name="hoverlabel" type="RichTextLabel" parent="Draggable Filter"]
-visible = false
-offset_left = 84.0
-offset_top = -81.0
-offset_right = 211.0
-offset_bottom = -41.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_wwsvk")
-bbcode_enabled = true
-text = "[center][b]FILTER B
-"
-
-[node name="Draggable Filter2" type="Area2D" parent="."]
-position = Vector2(78, 219)
-scale = Vector2(0.7, 0.7)
-script = ExtResource("10_oh2sn")
-filterColor = "Red"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter2"]
-position = Vector2(0.333374, -0.5)
-scale = Vector2(0.6, 0.6)
-shape = SubResource("RectangleShape2D_o1j7t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Draggable Filter2"]
-position = Vector2(0.333374, 0.333313)
-texture = ExtResource("12_2vchf")
-
-[node name="hoverlabel" type="RichTextLabel" parent="Draggable Filter2"]
-visible = false
-offset_left = 86.0
-offset_top = -64.0
-offset_right = 196.0
-offset_bottom = -19.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_qk3t7")
-bbcode_enabled = true
-text = "[center] [b]FILTER R"
-
-[node name="Draggable Filter3" type="Area2D" parent="."]
-position = Vector2(78, 349)
-scale = Vector2(0.7, 0.7)
-script = ExtResource("10_oh2sn")
-filterColor = "Green"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable Filter3"]
-position = Vector2(0.333374, -0.5)
-scale = Vector2(0.6, 0.6)
-shape = SubResource("RectangleShape2D_o1j7t")
-
-[node name="Sprite2D" type="Sprite2D" parent="Draggable Filter3"]
-position = Vector2(0.333374, 0.333313)
-texture = ExtResource("13_fp6xy")
-
-[node name="hoverlabel" type="RichTextLabel" parent="Draggable Filter3"]
-visible = false
-offset_left = 85.7143
-offset_top = -85.7143
-offset_right = 187.714
-offset_bottom = -45.7143
-theme_override_styles/normal = SubResource("StyleBoxFlat_4cu8a")
-bbcode_enabled = true
-text = "[center] [b]FILTER G"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -269,21 +181,36 @@ theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]RESTART"
 
-[connection signal="area_entered" from="Draggable Filter" to="Draggable Filter" method="_on_area_entered"]
-[connection signal="body_shape_exited" from="Draggable Filter" to="Draggable Filter" method="_on_body_shape_exited"]
-[connection signal="mouse_entered" from="Draggable Filter" to="Draggable Filter" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Draggable Filter" to="Draggable Filter" method="_on_mouse_exited"]
-[connection signal="area_entered" from="Draggable Filter2" to="Draggable Filter2" method="_on_area_entered"]
-[connection signal="body_shape_exited" from="Draggable Filter2" to="Draggable Filter2" method="_on_body_shape_exited"]
-[connection signal="mouse_entered" from="Draggable Filter2" to="Draggable Filter2" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Draggable Filter2" to="Draggable Filter2" method="_on_mouse_exited"]
-[connection signal="area_entered" from="Draggable Filter3" to="Draggable Filter3" method="_on_area_entered"]
-[connection signal="body_shape_exited" from="Draggable Filter3" to="Draggable Filter3" method="_on_body_shape_exited"]
-[connection signal="mouse_entered" from="Draggable Filter3" to="Draggable Filter3" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Draggable Filter3" to="Draggable Filter3" method="_on_mouse_exited"]
+[node name="Draggable Filter5" parent="." instance=ExtResource("16_nxrac")]
+position = Vector2(78, 216)
+scale = Vector2(0.7, 0.7)
+filterColor = "Red"
+
+[node name="CollisionShape2D" parent="Draggable Filter5" index="0"]
+scale = Vector2(0.6, 0.6)
+
+[node name="Draggable Filter" parent="." instance=ExtResource("13_w7pdg")]
+position = Vector2(77, 349)
+scale = Vector2(0.7, 0.7)
+filterColor = "Green"
+
+[node name="CollisionShape2D" parent="Draggable Filter" index="0"]
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" parent="Draggable Filter" index="1"]
+texture = SubResource("CompressedTexture2D_ibnru")
+
+[node name="hoverlabel" parent="Draggable Filter" index="2"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ulyt")
+text = "[center][b]FILTER G
+"
+
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
 [connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
 
 [editable path="SinkR"]
 [editable path="SinkG"]
+[editable path="Draggable Filter4"]
+[editable path="Draggable Filter5"]
+[editable path="Draggable Filter"]
