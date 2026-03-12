@@ -1,8 +1,12 @@
 extends Area2D
 # Called when the node enters the scene tree for the first time.
+var isConnected = false
+
 func _input_event(viewport, event, shape_idx):
-	if event.is_pressed() and ConveyerController.selected != null:
-		self.on_click()
+	if isConnected == false:
+		if event.is_pressed() and ConveyerController.selected != null:
+			self.on_click()
+			isConnected = true
 
 func on_click():
 	print("hey")
