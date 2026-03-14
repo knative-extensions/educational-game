@@ -9,6 +9,7 @@ var dragging
 var sendingEnd = false
 var can_send = false
 var started = false
+var dlspos:Vector2
 
 func initialise():
 	self.selected
@@ -41,7 +42,6 @@ func _process(delta: float) -> void:
 	pass
 
 func create_conveyor():
-
 	conveyer[conveyerInd].set_point_position(0, selected.get_position())
 	conveyer[conveyerInd].set_point_position(1, destination[conveyerInd])
 	AudioManager.play_construction()
@@ -54,7 +54,7 @@ func send_event():
 		for n in events.size():
 			events[n].sending = true
 			var tween = get_tree().create_tween()
-			tween.tween_property(events[n], "position", destination[n%conveyerInd], 2).set_trans(tween.TRANS_LINEAR)
+			tween.tween_property(events[n], "position", destination[n%conveyerInd], 2).set_trans(tween.TRANS_EXPO)
 			if n%conveyerInd==conveyerInd-1:
 				await tween.finished
 	Level.next_level()

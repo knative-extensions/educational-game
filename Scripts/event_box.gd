@@ -1,8 +1,8 @@
 extends Sprite2D
-
+@export var brokerpos : Vector2
 @export var boxType: String
 @export var sending = false
-
+@export var retryattempt = 0
 
 
 func _ready() -> void:
@@ -36,10 +36,6 @@ func _ready() -> void:
 			$hoverlabel.set_text("[center][b]EVENT G")
 			
 
-func _input_event(viewport, event, shape_idx) -> void:
-	print(event)
-	if event.is_pressed():
-		self.on_click()
 		
 func on_click():
 	print("hi")

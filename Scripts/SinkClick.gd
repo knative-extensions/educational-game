@@ -19,10 +19,20 @@ func _on_body_entered(node: Node2D) -> void:
 	print("body entered")
 
 func _on_area_entered(area: Area2D) -> void:
-	print("area entered")
+	print("area entered") 
 	if area.is_in_group("Box"):
-		Level.sinkUsed=true
-		print(get_parent().expectedType)
-		if area.get_parent().boxType != get_parent().expectedType:
-			print("Not Expected Box")
-			Level.sinkBoxMatchPresent=false
+		area.get_parent().retryattempt += 1
+		if(self.get_parent().sinkisup):
+			Level.sinkUsed=true
+			print(get_parent().expectedType)
+			if area.get_parent().boxType != get_parent().expectedType:
+				print("Not Expected Box")
+				Level.sinkBoxMatchPresent=false
+		else:
+			var tween = create_tween()
+			tween.tween_property(
+				area.get_parent(),
+				"global_position",
+				area.get_parent().brokerpos,
+				2.0
+			).set_trans(Tween.TRANS_QUAD)
