@@ -60,5 +60,12 @@ func _on_area_2d_area_entered(area):
 
 func _on_retrypoint_area_entered(area):
 	if area.is_in_group("Box") and area.get_parent().retryattempt>0:
-		print("ok")
-		# Replace with function body.
+		var tween = create_tween()
+		tween.tween_property(area.get_parent(),
+			"global_position",
+			ConveyerController.dlspos,
+			2.0
+			).set_trans(Tween.TRANS_QUAD)
+			
+
+	

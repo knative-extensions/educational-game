@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6qtsffyoxg30"]
+[gd_scene load_steps=9 format=3 uid="uid://6qtsffyoxg30"]
 
 [ext_resource type="PackedScene" uid="uid://j8f7p26l8vd6" path="res://Scenes/broker.tscn" id="1_cp5bd"]
 [ext_resource type="Script" path="res://testing_scene.gd" id="1_hic3x"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="4_l7mdt"]
 [ext_resource type="Script" path="res://Scripts/conveyor.gd" id="5_861vx"]
 [ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="7_xfn8q"]
+[ext_resource type="PackedScene" uid="uid://cdog2bwjc5gc6" path="res://Scenes/dls.tscn" id="8_ajiy2"]
 
 [node name="testing_scene" type="Node2D"]
 script = ExtResource("1_hic3x")
@@ -69,5 +70,9 @@ offset_left = 799.0
 offset_top = 180.0
 offset_right = 879.0
 offset_bottom = 255.0
+
+[node name="dls" parent="." instance=ExtResource("8_ajiy2")]
+position = Vector2(166, 268)
+scale = Vector2(0.445, 0.445)
 
 [connection signal="pressed" from="send" to="." method="_on_send_pressed"]
