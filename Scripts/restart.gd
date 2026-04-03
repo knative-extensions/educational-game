@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	print("restart clicked")
+	ToastManager.toast("Restarting...")
 	#if not Level.nextLevel:
 		#Level.levelind-=1
 	Level.initialise()

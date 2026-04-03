@@ -34,21 +34,23 @@ func  next_level():
 	if nextLevel:
 		print("success")
 		AudioManager.play_level_clear() 
+		ToastManager.success("🎉 Level Complete!")
 		message_display.show_message("Success")
 		await message_display.show_message_for_duration(2.0)
 		message_display.visible = false
 		levelind+=1
 		if levelind!=levels.size():
-			# CRITICAL FIXInitialize BEFORE changing scene, not after!
 			ConveyerController.initialise()
 			var next_level_path="res://Scenes/"+levels[levelind]+".tscn"
 			get_tree().change_scene_to_file(next_level_path)
 		else:
 			print("End of Levels.")
+			ToastManager.success("🏆 All Levels Complete!")
 			get_tree().change_scene_to_file("res://Scenes/end_of_all_levels.tscn")
 	else:
 		print("Failed. Try Again")
 		AudioManager.play_level_fail() 
+		ToastManager.error("❌ Wrong destination!")
 		message_display.show_message("Failed. Try Again")
 		await message_display.show_message_for_duration(2.0)
 		message_display.visible = false

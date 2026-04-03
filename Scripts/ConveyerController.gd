@@ -49,6 +49,7 @@ func create_conveyor():
 	
 func send_event():
 	print("sending events!")
+	ToastManager.info("📦 Dispatching...")
 	self.started = true
 	if conveyerInd!=0:
 		for n in events.size():
