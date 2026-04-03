@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8xpl53ms47kf"]
+
+[ext_resource type="Script" path="res://Scripts/glossary.gd" id="1"]
+
+[node name="Glossary" type="Control"]
+script = ExtResource("1")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.85)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+
+[node name="Title" type="Label" parent="Panel"]
+position = Vector2(0, 20)
+size = Vector2(600, 40)
+horizontal_alignment = 1
+text = "Knative Concepts Glossary"
+font_size = 32
+
+[node name="CloseButton" type="Button" parent="Panel"]
+position = Vector2(550, 10)
+size = Vector2(40, 40)
+text = "✕"
+font_size = 24
+
+[connection signal="pressed" from="Panel/CloseButton" to="." method="_on_close_button_pressed"]

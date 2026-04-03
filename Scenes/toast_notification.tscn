@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7vk29f5m14kf"]
+
+[ext_resource type="Script" path="res://Scripts/toast_notification.gd" id="1"]
+
+[node name="ToastNotification" type="Node2D"]
+script = ExtResource("1")
+z_index = 998
+visible = false
+
+[node name="Background" type="ColorRect" parent="."]
+position = Vector2(0, 0)
+size = Vector2(400, 50)
+color = Color(0, 0, 0, 0.85)
+corner_radius = 8
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+font_size = 18
