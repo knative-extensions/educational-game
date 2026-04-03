@@ -10,7 +10,7 @@ func start1():
 		print("i",i)
 		var packed = PackedScene.new()
 		packed.pack(Boxes[i])
-		for m in extra:
+		for m in range(extra):
 			print("m",m)
 			var clone = packed.instantiate()
 			add_child(clone)

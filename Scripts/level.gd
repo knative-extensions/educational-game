@@ -6,7 +6,7 @@ var dlsRequired=[false,false,false,true]
 var dlsUsed
 var totalbox=[2,2,3]
 var nextLevel
-var levels=["basicEventFlow","boxClick","multiSink","dlqPattern"]
+var levels=["basicEventFlow","boxClick","multiSink","dlqPattern","outbox_pattern"]
 var levelind=0
 
 func initialise():
