@@ -43,5 +43,11 @@ func _input_event(viewport, event, shape_idx) -> void:
 		
 func on_click():
 	print("hi")
+	
+	for box in ConveyerController.events:
+		box.modulate = Color(1, 1, 1, 1)
+	
+	self.modulate = Color(1.2, 1.2, 1.5, 1)
+	
 	ConveyerController.selected = self
 	AudioManager.play_click_start()
