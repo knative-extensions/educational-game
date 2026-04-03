@@ -1,6 +1,7 @@
 extends Sprite2D
 
 @export var expectedType: String
+@export var sinkisup: bool
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://j8f7p26l8vd6"]
+
+[ext_resource type="Script" path="res://Scripts/broker.gd" id="1_wptg3"]
+[ext_resource type="Texture2D" uid="uid://26gj8w2ysk8l" path="res://2D Assets/funnels/funnel.png" id="2_upek4"]
+[ext_resource type="Script" path="res://Scripts/broker_click.gd" id="3_bnysc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxcwt"]
+size = Vector2(20, 3.93271)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h3v0"]
+size = Vector2(74, 12)
+
+[node name="broker" type="Node2D"]
+script = ExtResource("1_wptg3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_upek4")
+
+[node name="entrance" type="Area2D" parent="."]
+script = ExtResource("3_bnysc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entrance"]
+position = Vector2(0, -72.825)
+scale = Vector2(9.065, 9.065)
+shape = SubResource("RectangleShape2D_sxcwt")
+
+[node name="event_duplicating point" type="Node2D" parent="."]
+position = Vector2(0, 88)
+
+[node name="retrypoint" type="Area2D" parent="."]
+position = Vector2(0, 88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="retrypoint"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_8h3v0")
+
+[connection signal="area_entered" from="entrance" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="retrypoint" to="." method="_on_retrypoint_area_entered"]

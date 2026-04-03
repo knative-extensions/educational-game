@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://dve03qk7y0ley"]
+
+[ext_resource type="Script" path="res://transformer_test.gd" id="1_3558e"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="1_w4rym"]
+[ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="2_id0ct"]
+[ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="3_npcj8"]
+[ext_resource type="Texture2D" uid="uid://b1a6exyrgtp6b" path="res://2D Assets/boxes/blueBoxPinkRectangle.png" id="3_v1yav"]
+[ext_resource type="PackedScene" uid="uid://umfx2wqklmuo" path="res://Scenes/transformer.tscn" id="4_jswj3"]
+[ext_resource type="PackedScene" uid="uid://j8f7p26l8vd6" path="res://Scenes/broker.tscn" id="5_5elu6"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="8_m2buh"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="9_cb6tn"]
+
+[node name="transformer_test" type="Node2D"]
+script = ExtResource("1_3558e")
+
+[node name="Sink" parent="." instance=ExtResource("1_w4rym")]
+position = Vector2(596, 673)
+
+[node name="BoxA" parent="." instance=ExtResource("3_npcj8")]
+position = Vector2(600, -9)
+eventType = "pinkRectangle"
+
+[node name="BoxB" parent="." instance=ExtResource("2_id0ct")]
+position = Vector2(604, 2)
+texture = ExtResource("3_v1yav")
+eventType = "pinkRectangle"
+
+[node name="transformer" parent="." instance=ExtResource("4_jswj3")]
+position = Vector2(1058, 368)
+transforming_event = "Red"
+
+[node name="broker" parent="." instance=ExtResource("5_5elu6")]
+position = Vector2(638, 230)
+
+[node name="send" type="Button" parent="."]
+offset_left = 799.0
+offset_top = 180.0
+offset_right = 879.0
+offset_bottom = 255.0
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("8_m2buh")
+texture_mode = 1
+script = ExtResource("9_cb6tn")
+
+[connection signal="pressed" from="send" to="." method="_on_send_pressed"]

@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://6qtsffyoxg30"]
+
+[ext_resource type="PackedScene" uid="uid://j8f7p26l8vd6" path="res://Scenes/broker.tscn" id="1_cp5bd"]
+[ext_resource type="Script" path="res://testing_scene.gd" id="1_hic3x"]
+[ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="2_4v5lu"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="3_dtljq"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="4_l7mdt"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="5_861vx"]
+[ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="7_xfn8q"]
+[ext_resource type="PackedScene" uid="uid://cdog2bwjc5gc6" path="res://Scenes/dls.tscn" id="8_ajiy2"]
+
+[node name="testing_scene" type="Node2D"]
+script = ExtResource("1_hic3x")
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 50.0
+texture = ExtResource("4_l7mdt")
+texture_mode = 1
+script = ExtResource("5_861vx")
+
+[node name="Conveyor3" type="Line2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 50.0
+texture = ExtResource("4_l7mdt")
+texture_mode = 1
+script = ExtResource("5_861vx")
+
+[node name="Conveyor2" type="Line2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 50.0
+texture = ExtResource("4_l7mdt")
+texture_mode = 1
+script = ExtResource("5_861vx")
+
+[node name="broker" parent="." instance=ExtResource("1_cp5bd")]
+position = Vector2(446, 254)
+scale = Vector2(0.525, 0.525)
+
+[node name="BoxB" parent="." instance=ExtResource("2_4v5lu")]
+position = Vector2(419, 87)
+scale = Vector2(0.435, 0.435)
+
+[node name="BoxA" parent="." instance=ExtResource("7_xfn8q")]
+position = Vector2(455.833, 103.333)
+scale = Vector2(0.43, 0.43)
+
+[node name="Sink" parent="." instance=ExtResource("3_dtljq")]
+position = Vector2(452, 555)
+scale = Vector2(0.43, 0.43)
+
+[node name="Sink2" parent="." instance=ExtResource("3_dtljq")]
+position = Vector2(859, 527)
+scale = Vector2(0.43, 0.43)
+sinkisup = true
+
+[node name="Sink3" parent="." instance=ExtResource("3_dtljq")]
+position = Vector2(115, 472)
+scale = Vector2(0.43, 0.43)
+sinkisup = true
+
+[node name="send" type="Button" parent="."]
+offset_left = 799.0
+offset_top = 180.0
+offset_right = 879.0
+offset_bottom = 255.0
+
+[node name="dls" parent="." instance=ExtResource("8_ajiy2")]
+position = Vector2(166, 268)
+scale = Vector2(0.445, 0.445)
+
+[connection signal="pressed" from="send" to="." method="_on_send_pressed"]
