@@ -1,5 +1,7 @@
 extends Node2D
 
+signal destination_count_changed(count)
+
 var selected
 var events = []
 var destination = []
@@ -46,7 +48,8 @@ func create_conveyor():
 	conveyer[conveyerInd].set_point_position(1, destination[conveyerInd])
 	AudioManager.play_construction()
 	conveyerInd+=1
-	
+	emit_signal("destination_count_changed", destination.size())
+
 func send_event():
 	print("sending events!")
 	self.started = true
