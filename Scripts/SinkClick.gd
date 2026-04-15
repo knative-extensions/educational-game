@@ -10,8 +10,15 @@ func _input_event(viewport, event, shape_idx):
 
 func on_click():
 	print("hey")
-	AudioManager.play_click_end() 
-	ConveyerController.destination.append(get_parent().get_position())
+	AudioManager.play_click_end()
+	
+	# Prevent duplicate conveyors
+	var position = get_parent().get_position()
+	for dest in ConveyerController.destination:
+		if dest == position:
+			return
+	
+	ConveyerController.destination.append(position)
 	transfer_box()
 
 func transfer_box():
