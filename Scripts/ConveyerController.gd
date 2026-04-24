@@ -9,6 +9,10 @@ var dragging
 var sendingEnd = false
 var can_send = false
 var started = false
+var brokerpos: Vector2
+var secondbrokerclicked = false
+var seqtransformerconnected = false
+var seqsinkconnected = false
 
 func initialise():
 	self.selected
@@ -48,10 +52,12 @@ func create_conveyor():
 	conveyerInd+=1
 	
 func send_event():
-	print("sending events!")
+	print(events)
 	self.started = true
 	if conveyerInd!=0:
+		print("wer here")
 		for n in events.size():
+			print("all_clear")
 			events[n].sending = true
 			var tween = get_tree().create_tween()
 			tween.tween_property(events[n], "position", destination[n%conveyerInd], 2).set_trans(tween.TRANS_LINEAR)

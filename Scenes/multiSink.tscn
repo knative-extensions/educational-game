@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://drhixkbg1n4sa"]
+[gd_scene load_steps=23 format=3 uid="uid://drhixkbg1n4sa"]
 
 [ext_resource type="Script" path="res://Scripts/multi_sink.gd" id="1_x4ymc"]
 [ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_x35ji"]
@@ -14,7 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://bquha0225l1ju" path="res://Scenes/draggable_filter_blue.tscn" id="13_w7pdg"]
 [ext_resource type="Script" path="res://Scripts/restart.gd" id="15_hhntj"]
 [ext_resource type="PackedScene" uid="uid://c1r3b0105y0fm" path="res://Scenes/broker.tscn" id="15_invia"]
+[ext_resource type="PackedScene" uid="uid://cd34jg1k76o78" path="res://Scenes/both_blockage.tscn" id="16_138q7"]
 [ext_resource type="PackedScene" uid="uid://bi4a6dl8q6rnj" path="res://Scenes/draggable_filter_red.tscn" id="16_nxrac"]
+[ext_resource type="Script" path="res://Scripts/both_blockage.gd" id="17_vuohb"]
+[ext_resource type="PackedScene" uid="uid://cdog2bwjc5gc6" path="res://Scenes/dls.tscn" id="18_e2goe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2e8j"]
 content_margin_top = 14.0
@@ -87,11 +90,11 @@ script = ExtResource("9_s7axg")
 
 [node name="SinkB" parent="." instance=ExtResource("2_bxkek")]
 position = Vector2(228, 512)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.5, 0.5)
 
 [node name="SinkR" parent="." instance=ExtResource("2_bxkek")]
 position = Vector2(592, 513)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_73ykg")
 expectedType = "Red"
 
@@ -100,7 +103,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_b2e8j")
 
 [node name="SinkG" parent="." instance=ExtResource("2_bxkek")]
 position = Vector2(974, 514)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_4jj2d")
 expectedType = "Green"
 
@@ -109,17 +112,17 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fcsfa")
 
 [node name="BoxB" parent="." instance=ExtResource("5_2pbu6")]
 position = Vector2(577, 63)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.5, 0.5)
 
 [node name="BoxR" parent="." instance=ExtResource("5_2pbu6")]
 position = Vector2(577, 63)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_s4nqt")
 boxType = "Red"
 
 [node name="BoxG" parent="." instance=ExtResource("5_2pbu6")]
 position = Vector2(577, 63)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_ddj2a")
 boxType = "Green"
 
@@ -129,6 +132,9 @@ scale = Vector2(0.7, 0.7)
 
 [node name="CollisionShape2D" parent="Draggable Filter4" index="0"]
 scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" parent="Draggable Filter4" index="1"]
+scale = Vector2(0.5, 0.5)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -184,7 +190,7 @@ text = "[center]RESTART"
 
 [node name="Draggable Filter5" parent="." instance=ExtResource("16_nxrac")]
 position = Vector2(78, 216)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
 filterColor = "Red"
 
 [node name="CollisionShape2D" parent="Draggable Filter5" index="0"]
@@ -192,7 +198,7 @@ scale = Vector2(0.6, 0.6)
 
 [node name="Draggable Filter" parent="." instance=ExtResource("13_w7pdg")]
 position = Vector2(77, 349)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
 filterColor = "Green"
 
 [node name="CollisionShape2D" parent="Draggable Filter" index="0"]
@@ -208,14 +214,28 @@ text = "[center][b]FILTER G
 
 [node name="broker" parent="." instance=ExtResource("15_invia")]
 position = Vector2(575, 195)
-scale = Vector2(0.885, 0.885)
+scale = Vector2(0.5, 0.5)
+
+[node name="Blockage" parent="." instance=ExtResource("16_138q7")]
+position = Vector2(595, 330)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("17_vuohb")
+
+[node name="CollisionShape2D" parent="Blockage/Area2D" index="0"]
+position = Vector2(0, 0)
+
+[node name="dls" parent="." instance=ExtResource("18_e2goe")]
+position = Vector2(904, 245)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
 [connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
+[connection signal="area_entered" from="Blockage/Area2D" to="Blockage" method="_on_area_2d_area_entered"]
 
 [editable path="SinkR"]
 [editable path="SinkG"]
 [editable path="Draggable Filter4"]
 [editable path="Draggable Filter5"]
 [editable path="Draggable Filter"]
+[editable path="Blockage"]

@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=3 uid="uid://dcx0speopql8l"]
+
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_atg3b"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="1_m5e4w"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="2_18ptq"]
+[ext_resource type="PackedScene" uid="uid://b1bqnamawp7c0" path="res://Scenes/transformer.tscn" id="3_6jpat"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="4_q0n1r"]
+[ext_resource type="PackedScene" uid="uid://c1r3b0105y0fm" path="res://Scenes/broker.tscn" id="5_grh8x"]
+[ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="6_3fr4m"]
+[ext_resource type="Script" path="res://Scripts/event_button.gd" id="7_ubo3h"]
+[ext_resource type="Texture2D" uid="uid://isfnvlbckumn" path="res://2D Assets/boxes/blueBoxYellowRectangle.png" id="8_pn2ri"]
+[ext_resource type="PackedScene" uid="uid://bquha0225l1ju" path="res://Scenes/draggable_filter_blue.tscn" id="8_rkagi"]
+[ext_resource type="PackedScene" uid="uid://bi4a6dl8q6rnj" path="res://Scenes/draggable_filter_red.tscn" id="9_ga4w5"]
+[ext_resource type="Texture2D" uid="uid://bo4kxgbq7723j" path="res://2D Assets/funnels/blueFunnelPinkRectangle.png" id="11_l1dfm"]
+[ext_resource type="Texture2D" uid="uid://bqv0boinhil7v" path="res://2D Assets/funnels/blueFunnelYellowRectangle.png" id="13_gao6l"]
+
+[node name="transformation_level" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(908, 506)
+texture = ExtResource("1_atg3b")
+
+[node name="Conveyor2" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("1_m5e4w")
+texture_mode = 1
+script = ExtResource("2_18ptq")
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("1_m5e4w")
+texture_mode = 1
+script = ExtResource("2_18ptq")
+
+[node name="transformer" parent="." instance=ExtResource("3_6jpat")]
+position = Vector2(878, 318)
+scale = Vector2(0.7, 0.7)
+
+[node name="Sink" parent="." instance=ExtResource("4_q0n1r")]
+position = Vector2(403, 540)
+scale = Vector2(0.5, 0.5)
+
+[node name="broker" parent="." instance=ExtResource("5_grh8x")]
+position = Vector2(393, 154)
+scale = Vector2(0.7, 0.7)
+
+[node name="BoxA" parent="." instance=ExtResource("6_3fr4m")]
+position = Vector2(385, 88)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_pn2ri")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 893.0
+offset_top = 398.0
+offset_right = 933.0
+offset_bottom = 438.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("7_ubo3h")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]START"
+
+[node name="Draggable Filter" parent="." instance=ExtResource("8_rkagi")]
+position = Vector2(388, 347)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" parent="Draggable Filter" index="1"]
+texture = ExtResource("11_l1dfm")
+
+[node name="Draggable Filter3" parent="." instance=ExtResource("9_ga4w5")]
+position = Vector2(697, 283)
+scale = Vector2(0.5, 0.5)
+filterColor = "Red"
+
+[node name="Sprite2D" parent="Draggable Filter3" index="1"]
+texture = ExtResource("13_gao6l")
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+
+[editable path="Draggable Filter"]
+[editable path="Draggable Filter3"]

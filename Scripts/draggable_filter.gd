@@ -36,7 +36,7 @@ func _on_mouse_exited() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Box"):
-		if area.get_parent().boxType != filterColor and area.get_parent().sending == true:
+		if area.get_parent().boxType != filterColor and area.get_parent().sending == true and area.get_parent().returning == false:
 			print("kill it")
 			AudioManager.play_poof()
 			area.get_parent().queue_free()

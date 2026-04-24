@@ -2,6 +2,7 @@ extends Sprite2D
 
 @export var boxType: String
 @export var sending = false
+@export var returning = false
 
 
 

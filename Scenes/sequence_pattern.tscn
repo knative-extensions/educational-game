@@ -1,0 +1,208 @@
+[gd_scene load_steps=24 format=3 uid="uid://bds4cry7qe1wp"]
+
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="1_v06kq"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_jq35m"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="3_f22pq"]
+[ext_resource type="PackedScene" uid="uid://b1bqnamawp7c0" path="res://Scenes/transformer.tscn" id="4_ulxpr"]
+[ext_resource type="Script" path="res://Scripts/event_button.gd" id="5_jbbb1"]
+[ext_resource type="Script" path="res://Scripts/sequence_broker.gd" id="6_bnxfq"]
+[ext_resource type="Script" path="res://Scripts/broker_click.gd" id="7_jfv8s"]
+[ext_resource type="Script" path="res://Scripts/local_transformer.gd" id="8_c5ayq"]
+[ext_resource type="Texture2D" uid="uid://0y2j2aj55dyu" path="res://2D Assets/transformation/transformer_machine.png" id="9_pyo63"]
+[ext_resource type="Script" path="res://Scripts/local_sink.gd" id="10_bx8sg"]
+[ext_resource type="Texture2D" uid="uid://cgnmmfc1l4d5d" path="res://2D Assets/sinks/sink.png" id="11_1318x"]
+[ext_resource type="Texture2D" uid="uid://26gj8w2ysk8l" path="res://2D Assets/funnels/funnel.png" id="12_diwyi"]
+[ext_resource type="PackedScene" uid="uid://c1r3b0105y0fm" path="res://Scenes/broker.tscn" id="13_v3t75"]
+[ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="14_mfsv8"]
+[ext_resource type="Texture2D" uid="uid://isfnvlbckumn" path="res://2D Assets/boxes/blueBoxYellowRectangle.png" id="15_ymbti"]
+[ext_resource type="PackedScene" uid="uid://bquha0225l1ju" path="res://Scenes/draggable_filter_blue.tscn" id="16_gqsyk"]
+[ext_resource type="Texture2D" uid="uid://bqv0boinhil7v" path="res://2D Assets/funnels/blueFunnelYellowRectangle.png" id="17_k84f2"]
+[ext_resource type="Texture2D" uid="uid://bo4kxgbq7723j" path="res://2D Assets/funnels/blueFunnelPinkRectangle.png" id="18_viibw"]
+[ext_resource type="Texture2D" uid="uid://dp8uiyrwalu" path="res://2D Assets/funnels/blueFunnelPinkTriangle.png" id="19_05wtu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hgy4"]
+size = Vector2(63, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27c20"]
+size = Vector2(30.069, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdlid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kgtv"]
+
+[node name="sequence_pattern" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(868, 521)
+texture = ExtResource("1_v06kq")
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("2_jq35m")
+texture_mode = 1
+script = ExtResource("3_f22pq")
+
+[node name="Conveyor3" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("2_jq35m")
+texture_mode = 1
+script = ExtResource("3_f22pq")
+
+[node name="Conveyor4" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("2_jq35m")
+texture_mode = 1
+script = ExtResource("3_f22pq")
+
+[node name="transformer" parent="." instance=ExtResource("4_ulxpr")]
+position = Vector2(862, 273)
+scale = Vector2(0.5, 0.5)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 877.0
+offset_top = 431.0
+offset_right = 917.0
+offset_bottom = 471.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("5_jbbb1")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]START"
+
+[node name="sequence_broker" type="Node2D" parent="."]
+position = Vector2(590, 376)
+script = ExtResource("6_bnxfq")
+
+[node name="anothre" type="Area2D" parent="sequence_broker"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sequence_broker/anothre"]
+position = Vector2(0, -1)
+scale = Vector2(1.215, 1.215)
+shape = SubResource("RectangleShape2D_1hgy4")
+
+[node name="LocalConveyorA" type="Line2D" parent="sequence_broker"]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("2_jq35m")
+texture_mode = 1
+script = ExtResource("3_f22pq")
+
+[node name="LocalConveyorB" type="Line2D" parent="sequence_broker"]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("2_jq35m")
+texture_mode = 1
+script = ExtResource("3_f22pq")
+
+[node name="broker_click" type="Area2D" parent="sequence_broker"]
+script = ExtResource("7_jfv8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sequence_broker/broker_click"]
+position = Vector2(0.5, 0.5)
+scale = Vector2(3.625, 3.625)
+shape = SubResource("RectangleShape2D_27c20")
+
+[node name="LocalTransformer" type="Area2D" parent="sequence_broker"]
+position = Vector2(-367, 59)
+scale = Vector2(0.685, 0.685)
+script = ExtResource("8_c5ayq")
+
+[node name="Sprite2D" type="Sprite2D" parent="sequence_broker/LocalTransformer"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_pyo63")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sequence_broker/LocalTransformer"]
+scale = Vector2(6.245, 6.245)
+shape = SubResource("RectangleShape2D_cdlid")
+
+[node name="LocalSink" type="Area2D" parent="sequence_broker"]
+position = Vector2(4, 207)
+script = ExtResource("10_bx8sg")
+
+[node name="Sprite2D" type="Sprite2D" parent="sequence_broker/LocalSink"]
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("11_1318x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sequence_broker/LocalSink"]
+scale = Vector2(5.975, 5.975)
+shape = SubResource("RectangleShape2D_3kgtv")
+
+[node name="Sprite2D" type="Sprite2D" parent="sequence_broker"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_diwyi")
+
+[node name="broker" parent="." instance=ExtResource("13_v3t75")]
+position = Vector2(592, 155)
+scale = Vector2(0.5, 0.5)
+
+[node name="BoxB" parent="." instance=ExtResource("14_mfsv8")]
+position = Vector2(586.833, 55.333)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_ymbti")
+boxType = "Red"
+
+[node name="Draggable Filter" parent="." instance=ExtResource("16_gqsyk")]
+position = Vector2(173, 120)
+scale = Vector2(0.5, 0.5)
+filterColor = "Red"
+
+[node name="Sprite2D" parent="Draggable Filter" index="1"]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("17_k84f2")
+
+[node name="Draggable Filter4" parent="." instance=ExtResource("16_gqsyk")]
+position = Vector2(66, 122)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" parent="Draggable Filter4" index="1"]
+scale = Vector2(0.795, 0.795)
+texture = ExtResource("18_viibw")
+
+[node name="Draggable Filter2" parent="." instance=ExtResource("16_gqsyk")]
+position = Vector2(65, 235)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" parent="Draggable Filter2" index="1"]
+scale = Vector2(0.795, 0.795)
+texture = ExtResource("18_viibw")
+
+[node name="Draggable Filter3" parent="." instance=ExtResource("16_gqsyk")]
+position = Vector2(174, 230)
+scale = Vector2(0.5, 0.5)
+filterColor = "RedTriangle"
+
+[node name="Sprite2D" parent="Draggable Filter3" index="1"]
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("19_05wtu")
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[connection signal="area_entered" from="sequence_broker/anothre" to="sequence_broker" method="_on_anothre_area_entered"]
+[connection signal="area_entered" from="sequence_broker/broker_click" to="sequence_broker/broker_click" method="_on_area_entered"]
+[connection signal="area_entered" from="sequence_broker/LocalTransformer" to="sequence_broker/LocalTransformer" method="_on_area_entered"]
+
+[editable path="Draggable Filter"]
+[editable path="Draggable Filter4"]
+[editable path="Draggable Filter2"]
+[editable path="Draggable Filter3"]
