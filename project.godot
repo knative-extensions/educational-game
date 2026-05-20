@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="eventing-game"
-run/main_scene="res://Scenes/basicEventFlow.tscn"
+run/main_scene="res://Scenes/datarefcutscene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 ConveyerController="*res://Scripts/ConveyerController.gd"
 Level="*res://Scripts/level.gd"
 AudioManager="*res://Scripts/AudioManager.gd"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [input]
 

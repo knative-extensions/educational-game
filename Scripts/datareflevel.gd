@@ -39,8 +39,9 @@ func _on_storage_area_entered(area):
 				event_box.scale = Vector2(0.2,0.2)
 				
 				
-			get_tree().current_scene.add_child(event_box)
+			get_tree().current_scene.call_deferred("add_child", event_box)
 				
+			area.hide()
 		if noofboxesadded == 2:
 			if area.payloadtype == "Blue":
 
@@ -59,10 +60,10 @@ func _on_storage_area_entered(area):
 				event_box.scale = Vector2(0.2,0.2)
 			
 
-			get_tree().current_scene.add_child(event_box)
+			get_tree().current_scene.call_deferred("add_child", event_box)
 		
 		
-		area.queue_free()
+			area.hide()
 	
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cm55outrc2ux0"]
+[gd_scene load_steps=26 format=3 uid="uid://cm55outrc2ux0"]
 
 [ext_resource type="Script" path="res://Scripts/datarefcutscene.gd" id="1_avps0"]
 [ext_resource type="Texture2D" uid="uid://dv3da6b01nl2w" path="res://Kuack/new1.png" id="2_ayi8l"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bkhtw7281epkv" path="res://Kuack/frame 12.png" id="7_xmej1"]
 [ext_resource type="Texture2D" uid="uid://cnhujr776trse" path="res://2D Assets/misc/500px-Emojione_2757.svg.png" id="8_hk2nd"]
 [ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="9_f0qgt"]
+[ext_resource type="FontFile" uid="uid://bepld0jndq4fw" path="res://2D Assets/misc/Ubuntu-Bold.ttf" id="9_mgt2n"]
 [ext_resource type="Script" path="res://Scripts/conveyor.gd" id="10_1pdyd"]
 [ext_resource type="Texture2D" uid="uid://cgnmmfc1l4d5d" path="res://2D Assets/sinks/sink.png" id="11_ngwml"]
 [ext_resource type="Texture2D" uid="uid://cjn14twvcwa8y" path="res://2D Assets/boxes/blueBox.png" id="12_krul4"]
@@ -152,6 +153,45 @@ _data = {
 "suprised": SubResource("Animation_g4nrw")
 }
 
+[sub_resource type="Animation" id="Animation_iy5oy"]
+resource_name = "textanim"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_gxv4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jik0c"]
+_data = {
+"RESET": SubResource("Animation_gxv4f"),
+"textanim": SubResource("Animation_iy5oy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3nqs"]
+
 [sub_resource type="Animation" id="Animation_wxewv"]
 length = 0.001
 tracks/0/type = "value"
@@ -294,6 +334,7 @@ offset_left = -102.0
 offset_top = -89.0
 offset_right = 1235.0
 offset_bottom = 748.0
+mouse_filter = 2
 color = Color(0.886129, 0.929237, 0.998334, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -322,6 +363,29 @@ position = Vector2(115.152, -390.909)
 rotation = -0.654498
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_hk2nd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AnimatedSprite2D"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 227.0
+offset_top = -345.0
+offset_right = 1342.0
+offset_bottom = -154.0
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("9_mgt2n")
+theme_override_font_sizes/normal_font_size = 77
+text = "this payload is too heavvy !!"
+
+[node name="text" type="AnimationPlayer" parent="AnimatedSprite2D/RichTextLabel"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_jik0c")
+}
+
+[node name="kuack_dataref_area" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/kuack_dataref_area"]
+scale = Vector2(35.465, 35.465)
+shape = SubResource("RectangleShape2D_p3nqs")
 
 [node name="Conveyor" type="Line2D" parent="."]
 texture_repeat = 2
@@ -370,5 +434,11 @@ wait_time = 4.0
 one_shot = true
 autostart = true
 
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 2.9
+one_shot = true
+
+[connection signal="input_event" from="AnimatedSprite2D/kuack_dataref_area" to="." method="_on_kuack_dataref_area_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]

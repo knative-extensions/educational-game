@@ -1,21 +1,25 @@
-[gd_scene load_steps=16 format=3 uid="uid://6dku3e8x1pkq"]
+[gd_scene load_steps=18 format=3 uid="uid://6dku3e8x1pkq"]
 
 [ext_resource type="Script" path="res://Scripts/datareflevel.gd" id="1_eo13o"]
 [ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_isqbi"]
 [ext_resource type="Script" path="res://Scripts/conveyor.gd" id="3_l0h0p"]
 [ext_resource type="Texture2D" uid="uid://ccjrh3bnnjito" path="res://2D Assets/vers2.png" id="4_wv30e"]
-[ext_resource type="Script" path="res://Scenes/storage.gd" id="5_u6yoe"]
+[ext_resource type="Script" path="res://Scripts/storage.gd" id="5_u6yoe"]
 [ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="6_7u1ea"]
 [ext_resource type="PackedScene" uid="uid://c1r3b0105y0fm" path="res://Scenes/broker.tscn" id="7_jswqh"]
 [ext_resource type="Texture2D" uid="uid://cjn14twvcwa8y" path="res://2D Assets/boxes/blueBox.png" id="8_w0nl7"]
 [ext_resource type="Texture2D" uid="uid://b00w453hqw7wx" path="res://2D Assets/boxes/redBox.png" id="9_y2arg"]
-[ext_resource type="PackedScene" uid="uid://bigvjpm4cgje3" path="res://Scenes/largepayload.tscn" id="10_gfoei"]
+[ext_resource type="Script" path="res://Scripts/largepayload.gd" id="10_3t833"]
 [ext_resource type="Texture2D" uid="uid://drxk5sc2venos" path="res://2D Assets/misc/baseswitchver2closed.png" id="11_d62m1"]
 [ext_resource type="Texture2D" uid="uid://3cdhiehanwww" path="res://2D Assets/misc/baseswitch.png" id="12_ctu3q"]
 [ext_resource type="Script" path="res://Scripts/event_button.gd" id="13_m02j0"]
+[ext_resource type="Script" path="res://Scripts/restart.gd" id="14_uca8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysdv2"]
 size = Vector2(478, 329.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltbgl"]
+size = Vector2(180, 195)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o4bda"]
 animations = [{
@@ -40,7 +44,13 @@ offset_top = -16.0
 offset_right = 1302.0
 offset_bottom = 687.0
 mouse_filter = 2
-color = Color(0.741598, 0.854518, 1, 1)
+color = Color(0.886275, 0.929412, 1, 1)
+
+[node name="Vers2" type="Sprite2D" parent="."]
+position = Vector2(844, 297)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_wv30e")
+script = ExtResource("5_u6yoe")
 
 [node name="Conveyor" type="Line2D" parent="."]
 texture_repeat = 2
@@ -49,12 +59,6 @@ width = 100.0
 texture = ExtResource("2_isqbi")
 texture_mode = 1
 script = ExtResource("3_l0h0p")
-
-[node name="Vers2" type="Sprite2D" parent="."]
-position = Vector2(844, 297)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_wv30e")
-script = ExtResource("5_u6yoe")
 
 [node name="Sink" parent="." instance=ExtResource("6_7u1ea")]
 position = Vector2(288, 552)
@@ -67,7 +71,6 @@ scale = Vector2(0.5, 0.5)
 [node name="storage" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="storage"]
-visible = false
 position = Vector2(858, 303.25)
 shape = SubResource("RectangleShape2D_ysdv2")
 
@@ -83,20 +86,33 @@ position = Vector2(970, 217)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_y2arg")
 
-[node name="largepayload2" parent="." instance=ExtResource("10_gfoei")]
+[node name="largepayload2" type="Area2D" parent="." groups=["largepayload"]]
 z_index = 3
 position = Vector2(810, 66)
 scale = Vector2(0.6, 0.6)
+script = ExtResource("10_3t833")
 payloadtype = "Blue"
 
-[node name="largepayload" parent="." instance=ExtResource("10_gfoei")]
+[node name="Sprite2D" type="Sprite2D" parent="largepayload2"]
+texture = ExtResource("8_w0nl7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="largepayload2"]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_ltbgl")
+
+[node name="largepayload" type="Area2D" parent="." groups=["largepayload"]]
 z_index = 3
 position = Vector2(674, 63)
 scale = Vector2(0.6, 0.6)
+script = ExtResource("10_3t833")
 payloadtype = "Red"
 
-[node name="Sprite2D" parent="largepayload" index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="largepayload"]
 texture = ExtResource("9_y2arg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="largepayload"]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_ltbgl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(996, 603)
@@ -133,9 +149,40 @@ bbcode_enabled = true
 [node name="opendatarefletterpoint" type="Node2D" parent="."]
 position = Vector2(262, 112)
 
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 893.0
+offset_top = 517.0
+offset_right = 933.0
+offset_bottom = 557.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("14_uca8w")
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_left = -321.429
+offset_top = 35.7143
+offset_right = 20.5714
+offset_bottom = 167.714
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]RESTART"
+
 [connection signal="area_entered" from="storage" to="." method="_on_storage_area_entered"]
-[connection signal="area_exited" from="storage" to="." method="_on_storage_area_exited"]
+[connection signal="input_event" from="largepayload2" to="largepayload2" method="_on_input_event"]
+[connection signal="mouse_entered" from="largepayload2" to="largepayload2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="largepayload2" to="largepayload2" method="_on_mouse_exited"]
+[connection signal="input_event" from="largepayload" to="largepayload" method="_on_input_event"]
+[connection signal="mouse_entered" from="largepayload" to="largepayload" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="largepayload" to="largepayload" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
-
-[editable path="largepayload"]
+[connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
