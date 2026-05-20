@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bigvjpm4cgje3"]
+
+[ext_resource type="Script" path="res://Scripts/largepayload.gd" id="1_ekada"]
+[ext_resource type="Texture2D" uid="uid://cjn14twvcwa8y" path="res://2D Assets/boxes/blueBox.png" id="2_y371r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltbgl"]
+size = Vector2(180, 195)
+
+[node name="largepayload" type="Area2D" groups=["largepayload"]]
+script = ExtResource("1_ekada")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_y371r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_ltbgl")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

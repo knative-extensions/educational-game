@@ -1,0 +1,141 @@
+[gd_scene load_steps=16 format=3 uid="uid://6dku3e8x1pkq"]
+
+[ext_resource type="Script" path="res://Scripts/datareflevel.gd" id="1_eo13o"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_isqbi"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="3_l0h0p"]
+[ext_resource type="Texture2D" uid="uid://ccjrh3bnnjito" path="res://2D Assets/vers2.png" id="4_wv30e"]
+[ext_resource type="Script" path="res://Scenes/storage.gd" id="5_u6yoe"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="6_7u1ea"]
+[ext_resource type="PackedScene" uid="uid://c1r3b0105y0fm" path="res://Scenes/broker.tscn" id="7_jswqh"]
+[ext_resource type="Texture2D" uid="uid://cjn14twvcwa8y" path="res://2D Assets/boxes/blueBox.png" id="8_w0nl7"]
+[ext_resource type="Texture2D" uid="uid://b00w453hqw7wx" path="res://2D Assets/boxes/redBox.png" id="9_y2arg"]
+[ext_resource type="PackedScene" uid="uid://bigvjpm4cgje3" path="res://Scenes/largepayload.tscn" id="10_gfoei"]
+[ext_resource type="Texture2D" uid="uid://drxk5sc2venos" path="res://2D Assets/misc/baseswitchver2closed.png" id="11_d62m1"]
+[ext_resource type="Texture2D" uid="uid://3cdhiehanwww" path="res://2D Assets/misc/baseswitch.png" id="12_ctu3q"]
+[ext_resource type="Script" path="res://Scripts/event_button.gd" id="13_m02j0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysdv2"]
+size = Vector2(478, 329.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o4bda"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_d62m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ctu3q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="datareflevel" type="Node2D"]
+script = ExtResource("1_eo13o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -17.0
+offset_top = -16.0
+offset_right = 1302.0
+offset_bottom = 687.0
+mouse_filter = 2
+color = Color(0.741598, 0.854518, 1, 1)
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("2_isqbi")
+texture_mode = 1
+script = ExtResource("3_l0h0p")
+
+[node name="Vers2" type="Sprite2D" parent="."]
+position = Vector2(844, 297)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_wv30e")
+script = ExtResource("5_u6yoe")
+
+[node name="Sink" parent="." instance=ExtResource("6_7u1ea")]
+position = Vector2(288, 552)
+scale = Vector2(0.5, 0.5)
+
+[node name="broker" parent="." instance=ExtResource("7_jswqh")]
+position = Vector2(279, 227)
+scale = Vector2(0.5, 0.5)
+
+[node name="storage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="storage"]
+visible = false
+position = Vector2(858, 303.25)
+shape = SubResource("RectangleShape2D_ysdv2")
+
+[node name="BlueBox" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(727, 215)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("8_w0nl7")
+
+[node name="RedBox" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(970, 217)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_y2arg")
+
+[node name="largepayload2" parent="." instance=ExtResource("10_gfoei")]
+z_index = 3
+position = Vector2(810, 66)
+scale = Vector2(0.6, 0.6)
+payloadtype = "Blue"
+
+[node name="largepayload" parent="." instance=ExtResource("10_gfoei")]
+z_index = 3
+position = Vector2(674, 63)
+scale = Vector2(0.6, 0.6)
+payloadtype = "Red"
+
+[node name="Sprite2D" parent="largepayload" index="0"]
+texture = ExtResource("9_y2arg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(996, 603)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_o4bda")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 889.0
+offset_top = 524.0
+offset_right = 929.0
+offset_bottom = 564.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("13_m02j0")
+
+[node name="Button" type="Button" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -1.42857
+offset_top = -20.0
+offset_right = 340.571
+offset_bottom = 112.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+
+[node name="opendatarefletterpoint" type="Node2D" parent="."]
+position = Vector2(262, 112)
+
+[connection signal="area_entered" from="storage" to="." method="_on_storage_area_entered"]
+[connection signal="area_exited" from="storage" to="." method="_on_storage_area_exited"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+
+[editable path="largepayload"]

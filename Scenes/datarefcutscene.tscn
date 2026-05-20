@@ -1,0 +1,374 @@
+[gd_scene load_steps=21 format=3 uid="uid://cm55outrc2ux0"]
+
+[ext_resource type="Script" path="res://Scripts/datarefcutscene.gd" id="1_avps0"]
+[ext_resource type="Texture2D" uid="uid://dv3da6b01nl2w" path="res://Kuack/new1.png" id="2_ayi8l"]
+[ext_resource type="Texture2D" uid="uid://dtgwf6uqr3o48" path="res://Kuack/new2.png" id="3_hbo6o"]
+[ext_resource type="Texture2D" uid="uid://bqrvhjba3vjnl" path="res://Kuack/new3.png" id="4_xkvev"]
+[ext_resource type="Texture2D" uid="uid://bvkuwfvfpssar" path="res://Kuack/new4.png" id="5_wrtmi"]
+[ext_resource type="Texture2D" uid="uid://cht6baxtlwur1" path="res://Kuack/frame 11.png" id="6_odrk1"]
+[ext_resource type="Texture2D" uid="uid://bkhtw7281epkv" path="res://Kuack/frame 12.png" id="7_xmej1"]
+[ext_resource type="Texture2D" uid="uid://cnhujr776trse" path="res://2D Assets/misc/500px-Emojione_2757.svg.png" id="8_hk2nd"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="9_f0qgt"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="10_1pdyd"]
+[ext_resource type="Texture2D" uid="uid://cgnmmfc1l4d5d" path="res://2D Assets/sinks/sink.png" id="11_ngwml"]
+[ext_resource type="Texture2D" uid="uid://cjn14twvcwa8y" path="res://2D Assets/boxes/blueBox.png" id="12_krul4"]
+[ext_resource type="Texture2D" uid="uid://26gj8w2ysk8l" path="res://2D Assets/funnels/funnel.png" id="13_nh72d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sto8n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ayi8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hbo6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xkvev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wrtmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_odrk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xmej1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ayi8l")
+}],
+"loop": false,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="Animation" id="Animation_3da4n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("500Px-emojione2757_svg2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("500Px-emojione2757_svg:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("500Px-emojione2757_svg2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.654498]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("500Px-emojione2757_svg:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.392699]
+}
+
+[sub_resource type="Animation" id="Animation_g4nrw"]
+resource_name = "suprised"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("500Px-emojione2757_svg2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3.0303e-05, 3.0303e-05), Vector2(0.28, 0.28)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("500Px-emojione2757_svg:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.33, 0.33)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("500Px-emojione2757_svg2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.654498, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("500Px-emojione2757_svg:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.392699, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sfoap"]
+_data = {
+"RESET": SubResource("Animation_3da4n"),
+"suprised": SubResource("Animation_g4nrw")
+}
+
+[sub_resource type="Animation" id="Animation_wxewv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlueBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(606, 70.0001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlueBox2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(612, 56)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlueBox2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.255, 0.255)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlueBox2:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlueBox:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_v2kww"]
+resource_name = "movingblocks"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlueBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(606, 70.0001), Vector2(604, 555)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlueBox2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.73333, 1.9, 3.33333, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(612, 56), Vector2(612, 56), Vector2(605, 131), Vector2(604, 222), Vector2(604, 306), Vector2(604, 366)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlueBox2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.46667, 1.73333, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.515, 0.515), Vector2(0.515, 0.515), Vector2(0.255, 0.255), Vector2(0.515, 0.515)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlueBox2:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.46667, 1.73333, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, -1, 0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlueBox:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, -1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dn4h2"]
+_data = {
+"RESET": SubResource("Animation_wxewv"),
+"movingblocks": SubResource("Animation_v2kww")
+}
+
+[node name="datarefcutscene" type="Node2D"]
+script = ExtResource("1_avps0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+offset_left = -102.0
+offset_top = -89.0
+offset_right = 1235.0
+offset_bottom = 748.0
+color = Color(0.886129, 0.929237, 0.998334, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(143, 536)
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_sto8n")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+
+[node name="500Px-emojione2757_svg" type="Sprite2D" parent="AnimatedSprite2D"]
+modulate = Color(0.0355037, 0.0956119, 0.258774, 1)
+position = Vector2(196.97, -360.606)
+rotation = -0.392699
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("8_hk2nd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_sfoap")
+}
+
+[node name="500Px-emojione2757_svg2" type="Sprite2D" parent="AnimatedSprite2D"]
+modulate = Color(0.0352941, 0.0313726, 0.121569, 1)
+position = Vector2(115.152, -390.909)
+rotation = -0.654498
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("8_hk2nd")
+
+[node name="Conveyor" type="Line2D" parent="."]
+texture_repeat = 2
+position = Vector2(605, 120)
+points = PackedVector2Array(0, 485, 0, 0)
+width = 61.715
+texture = ExtResource("9_f0qgt")
+texture_mode = 1
+script = ExtResource("10_1pdyd")
+
+[node name="Sink" type="Sprite2D" parent="."]
+position = Vector2(604, 547)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_ngwml")
+
+[node name="BlueBox" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(606, 70.0001)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("12_krul4")
+
+[node name="Funnel" type="Sprite2D" parent="."]
+position = Vector2(605, 144)
+scale = Vector2(0.745, 0.745)
+texture = ExtResource("13_nh72d")
+
+[node name="BlueBox2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(612, 56)
+scale = Vector2(0.255, 0.255)
+texture = ExtResource("12_krul4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="maincutsceneanim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dn4h2")
+}
+autoplay = "movingblocks"
+speed_scale = 0.7
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
