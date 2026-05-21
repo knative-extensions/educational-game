@@ -27,7 +27,7 @@ func _on_storage_area_entered(area):
 				$BlueBox.texture = preload("res://2D Assets/boxes/blueBox.png")
 				$BlueBox.visible = true
 				event_box.boxType = "Blue"
-				event_box.texture = preload("res://2D Assets/dataref/blue_1A.png")
+				event_box.texture = preload("res://2D Assets/dataref/blue_1a.png")
 				event_box.scale = Vector2(0.2,0.2)
 
 			else:
@@ -48,7 +48,7 @@ func _on_storage_area_entered(area):
 				$RedBox.texture = preload("res://2D Assets/boxes/blueBox.png")
 				$RedBox.visible = true
 				event_box.boxType = "Blue"
-				event_box.texture = preload("res://2D Assets/dataref/blue_1B.png")
+				event_box.texture = preload("res://2D Assets/dataref/blue_1b.png")
 				event_box.scale = Vector2(0.2,0.2)
 
 			else:
