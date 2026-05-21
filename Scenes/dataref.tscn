@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://6dku3e8x1pkq"]
+[gd_scene load_steps=15 format=3 uid="uid://du4i102rkdlmb"]
 
 [ext_resource type="Script" path="res://Scripts/datareflevel.gd" id="1_eo13o"]
 [ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="2_isqbi"]
@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cjn14twvcwa8y" path="res://2D Assets/boxes/blueBox.png" id="8_w0nl7"]
 [ext_resource type="Texture2D" uid="uid://b00w453hqw7wx" path="res://2D Assets/boxes/redBox.png" id="9_y2arg"]
 [ext_resource type="Script" path="res://Scripts/largepayload.gd" id="10_3t833"]
-[ext_resource type="Texture2D" uid="uid://drxk5sc2venos" path="res://2D Assets/misc/baseswitchver2closed.png" id="11_d62m1"]
-[ext_resource type="Texture2D" uid="uid://3cdhiehanwww" path="res://2D Assets/misc/baseswitch.png" id="12_ctu3q"]
 [ext_resource type="Script" path="res://Scripts/event_button.gd" id="13_m02j0"]
 [ext_resource type="Script" path="res://Scripts/restart.gd" id="14_uca8w"]
 
@@ -20,20 +18,6 @@ size = Vector2(478, 329.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltbgl"]
 size = Vector2(180, 195)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_o4bda"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_d62m1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_ctu3q")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="datareflevel" type="Node2D"]
 script = ExtResource("1_eo13o")
@@ -114,11 +98,6 @@ texture = ExtResource("9_y2arg")
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_ltbgl")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(996, 603)
-scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_o4bda")
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -130,12 +109,11 @@ scale = Vector2(0.7, 0.7)
 script = ExtResource("13_m02j0")
 
 [node name="Button" type="Button" parent="Control"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -1.42857
-offset_top = -20.0
-offset_right = 340.571
-offset_bottom = 112.0
+offset_left = -5.71428
+offset_top = 21.4286
+offset_right = 336.285
+offset_bottom = 153.429
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
 layout_mode = 0
@@ -145,6 +123,7 @@ offset_bottom = 110.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
+text = "[center]START"
 
 [node name="opendatarefletterpoint" type="Node2D" parent="."]
 position = Vector2(262, 112)
@@ -161,10 +140,10 @@ script = ExtResource("14_uca8w")
 
 [node name="Button" type="Button" parent="Control2"]
 layout_mode = 0
-offset_left = -321.429
-offset_top = 35.7143
-offset_right = 20.5714
-offset_bottom = 167.714
+offset_left = -458.571
+offset_top = 31.4286
+offset_right = -116.571
+offset_bottom = 163.428
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
 layout_mode = 0

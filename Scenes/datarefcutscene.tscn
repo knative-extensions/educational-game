@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cm55outrc2ux0"]
+[gd_scene load_steps=26 format=3 uid="uid://d4hmprm00x0df"]
 
 [ext_resource type="Script" path="res://Scripts/datarefcutscene.gd" id="1_avps0"]
 [ext_resource type="Texture2D" uid="uid://dv3da6b01nl2w" path="res://Kuack/new1.png" id="2_ayi8l"]
@@ -153,6 +153,21 @@ _data = {
 "suprised": SubResource("Animation_g4nrw")
 }
 
+[sub_resource type="Animation" id="Animation_gxv4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
 [sub_resource type="Animation" id="Animation_iy5oy"]
 resource_name = "textanim"
 length = 1.7
@@ -167,21 +182,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_gxv4f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D/RichTextLabel:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jik0c"]
