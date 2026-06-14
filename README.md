@@ -31,6 +31,10 @@ This game teaches fundamental Event Driven Architecture (EDA) patterns through h
 3. **Run the game**
    - Press **F5** or click the **▶️ Play** button in the top-right corner
 
+## How to Play
+
+New to the game? See [HOW_TO_PLAY.md](./HOW_TO_PLAY.md) for a walkthrough of gameplay mechanics, level objectives, and EDA concepts used in the game.
+
 ## Contributing
 
 If you are interested in contributing, see [CONTRIBUTING.md](./CONTRIBUTING.md).
