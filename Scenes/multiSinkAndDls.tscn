@@ -1,0 +1,215 @@
+[gd_scene load_steps=20 format=3 uid="uid://dsi8b2h2tphpt"]
+
+[ext_resource type="Script" path="res://Scripts/multisinkkanddls.gd" id="1_7l5bd"]
+[ext_resource type="Texture2D" uid="uid://crbbdu26tlg2k" path="res://2D Assets/background.png" id="2_ysay2"]
+[ext_resource type="PackedScene" uid="uid://bquha0225l1ju" path="res://Scenes/draggable_filter_blue.tscn" id="3_ol7xl"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="3_v2igg"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="4_a2iqn"]
+[ext_resource type="PackedScene" uid="uid://bi4a6dl8q6rnj" path="res://Scenes/draggable_filter_red.tscn" id="4_sptjv"]
+[ext_resource type="PackedScene" uid="uid://cg1qlr4r42xs6" path="res://Scenes/box_b.tscn" id="5_7h5vs"]
+[ext_resource type="PackedScene" uid="uid://whu4rwgsyl8u" path="res://Scenes/sink.tscn" id="6_l2okc"]
+[ext_resource type="PackedScene" uid="uid://cdog2bwjc5gc6" path="res://Scenes/dls.tscn" id="7_dnjt8"]
+[ext_resource type="PackedScene" uid="uid://cd34jg1k76o78" path="res://Scenes/both_blockage.tscn" id="8_u8al4"]
+[ext_resource type="Script" path="res://Scripts/event_button.gd" id="9_g1mxc"]
+[ext_resource type="Script" path="res://Scripts/restart.gd" id="10_6cd2o"]
+[ext_resource type="Texture2D" uid="uid://w1o1bf6t5054" path="res://2D Assets/sinks/greenSink.png" id="11_8w2oy"]
+[ext_resource type="PackedScene" uid="uid://p2kk0a6bpmai" path="res://Scenes/event_box.tscn" id="11_bjnfu"]
+[ext_resource type="Texture2D" uid="uid://dehcuwck0lv0e" path="res://2D Assets/sinks/redSink.png" id="12_qaurq"]
+[ext_resource type="PackedScene" uid="uid://c1r3b0105y0fm" path="res://Scenes/broker.tscn" id="12_qesp3"]
+[ext_resource type="Texture2D" uid="uid://bdn2dphqbqnhh" path="res://2D Assets/boxes/greenBox.png" id="13_m02ai"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ao7jl"]
+load_path = "res://.godot/imported/greenFunnel.png-9b31229a6ae861714dea240c0b8a6cd6.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wsqk"]
+bg_color = Color(0.47451, 0.701961, 0.376471, 1)
+border_width_top = 9
+border_width_bottom = 4
+border_color = Color(0.47451, 0.701961, 0.376471, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="multisinkanddls" type="Node2D"]
+script = ExtResource("1_7l5bd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.600807, 0.597976)
+texture = ExtResource("2_ysay2")
+
+[node name="Conveyor4" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("3_v2igg")
+texture_mode = 1
+script = ExtResource("4_a2iqn")
+
+[node name="Conveyor3" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("3_v2igg")
+texture_mode = 1
+script = ExtResource("4_a2iqn")
+
+[node name="Conveyor2" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("3_v2igg")
+texture_mode = 1
+script = ExtResource("4_a2iqn")
+
+[node name="dlsConveyor" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+texture = ExtResource("3_v2igg")
+texture_mode = 1
+
+[node name="dls" parent="." instance=ExtResource("7_dnjt8")]
+position = Vector2(358, 440)
+scale = Vector2(0.500001, 0.500001)
+
+[node name="Sink" parent="." instance=ExtResource("6_l2okc")]
+position = Vector2(145, 265)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("11_8w2oy")
+expectedType = "Green"
+
+[node name="Sink2" parent="." instance=ExtResource("6_l2okc")]
+position = Vector2(983, 391)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("12_qaurq")
+expectedType = "Red"
+
+[node name="Sink3" parent="." instance=ExtResource("6_l2okc")]
+position = Vector2(582, 521)
+scale = Vector2(0.33, 0.33)
+
+[node name="BoxA" parent="." instance=ExtResource("11_bjnfu")]
+position = Vector2(582, 82)
+scale = Vector2(0.33, 0.33)
+
+[node name="BoxB" parent="." instance=ExtResource("5_7h5vs")]
+position = Vector2(582, 86)
+scale = Vector2(0.33, 0.33)
+
+[node name="BoxB2" parent="." instance=ExtResource("5_7h5vs")]
+position = Vector2(582, 86)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("13_m02ai")
+boxType = "Green"
+
+[node name="Draggable Filter4" parent="." instance=ExtResource("3_ol7xl")]
+position = Vector2(47.4638, 54.4158)
+scale = Vector2(0.420565, 0.418583)
+
+[node name="CollisionShape2D" parent="Draggable Filter4" index="0"]
+scale = Vector2(0.6, 0.6)
+
+[node name="Draggable Filter5" parent="." instance=ExtResource("4_sptjv")]
+position = Vector2(46.8629, 129.163)
+scale = Vector2(0.420565, 0.418583)
+filterColor = "Red"
+
+[node name="CollisionShape2D" parent="Draggable Filter5" index="0"]
+scale = Vector2(0.6, 0.6)
+
+[node name="Draggable Filter" parent="." instance=ExtResource("3_ol7xl")]
+position = Vector2(46.2621, 208.694)
+scale = Vector2(0.420565, 0.418583)
+filterColor = "Green"
+
+[node name="CollisionShape2D" parent="Draggable Filter" index="0"]
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" parent="Draggable Filter" index="1"]
+texture = SubResource("CompressedTexture2D_ao7jl")
+
+[node name="hoverlabel" parent="Draggable Filter" index="2"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_7wsqk")
+text = "[center][b]FILTER G
+"
+
+[node name="Blockage" parent="." instance=ExtResource("8_u8al4")]
+position = Vector2(581, 291)
+scale = Vector2(0.5, 0.5)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 895.0
+offset_top = 28.0
+offset_right = 935.0
+offset_bottom = 68.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("9_g1mxc")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+scale = Vector2(0.9, 0.9)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]START"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 896.0
+offset_top = 137.0
+offset_right = 936.0
+offset_bottom = 177.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("10_6cd2o")
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 132.0
+scale = Vector2(0.9, 0.9)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2/Button"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 338.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]RESTART"
+
+[node name="broker" parent="." instance=ExtResource("12_qesp3")]
+position = Vector2(591, 173)
+scale = Vector2(0.5, 0.5)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.337
+one_shot = true
+
+[connection signal="area_entered" from="dls" to="." method="_on_dls_area_entered"]
+[connection signal="input_event" from="dls" to="." method="_on_dls_input_event"]
+[connection signal="area_entered" from="Blockage/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="dls"]
+[editable path="Sink"]
+[editable path="Draggable Filter4"]
+[editable path="Draggable Filter5"]
+[editable path="Draggable Filter"]
+[editable path="Blockage"]

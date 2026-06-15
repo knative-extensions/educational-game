@@ -52,6 +52,8 @@ func _on_area_2d_area_entered(area):
 				var tween = get_tree().create_tween()
 				tween.tween_property(event, "position", blockagepoint.position, 2).set_trans(Tween.TRANS_LINEAR)
 				await tween.finished
+				
+		
 			
 
 	 # Replace with function body.

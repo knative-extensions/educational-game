@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cgnmmfc1l4d5d" path="res://2D Assets/sinks/sink.png" id="1_0ywo5"]
 [ext_resource type="Script" path="res://Scripts/SinkClick.gd" id="2_16xt0"]
 [ext_resource type="Script" path="res://Scripts/sink.gd" id="2_jjj2o"]
+[ext_resource type="FontFile" uid="uid://btxwuo5y3bcni" path="res://Fonts/Sigmar-Regular.ttf" id="4_0xkgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3ci"]
 size = Vector2(443.333, 408.333)

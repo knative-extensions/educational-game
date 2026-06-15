@@ -1,14 +1,14 @@
 extends Node
-var sinkBoxMatchNeeded=[false,true,true,false,true]
+var sinkBoxMatchNeeded=[false,true,true,false,true,true]
 var sinkBoxMatchPresent
 var sinkUsed
-var dlsRequired=[false,false,false,true,false]
+var dlsRequired=[false,false,false,true,false,true]
 var dlsUsed
-var transformerRequired = [false,false,false,false,true]
+var transformerRequired = [false,false,false,false,true,false]
 var transformerUsed
 var totalbox=[2,2,3]
 var nextLevel
-var levels=["basicEventFlow","boxClick","multiSink","dlqPattern","transformation_level"]
+var levels=["basicEventFlow","boxClick","multiSink","dlqPattern","transformation_level","multiSinkAndDls"]
 var levelind=0
 
 func initialise():
@@ -24,10 +24,12 @@ func  next_level():
 		if not sinkBoxMatchNeeded[levelind] and not dlsRequired[levelind]:
 			print("if next level entered",sinkBoxMatchNeeded,dlsRequired)
 			nextLevel=true
-		elif sinkBoxMatchNeeded[levelind] and sinkBoxMatchPresent:
+		elif dlsRequired[levelind] and sinkBoxMatchNeeded[levelind] and dlsUsed and sinkBoxMatchPresent:
+			nextLevel=true
+		elif sinkBoxMatchNeeded[levelind] and sinkBoxMatchPresent and not dlsRequired[levelind]:
 			print("elif next level entered",sinkBoxMatchNeeded,sinkBoxMatchPresent)
 			nextLevel=true
-		elif dlsRequired[levelind] and dlsUsed:
+		elif dlsRequired[levelind] and dlsUsed and not sinkBoxMatchNeeded[levelind]:
 			print("elif dls",dlsUsed)
 			nextLevel=true
 		elif transformerRequired[levelind] and transformerUsed and sinkBoxMatchPresent:
