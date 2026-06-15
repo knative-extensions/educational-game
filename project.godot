@@ -21,6 +21,11 @@ ConveyerController="*res://Scripts/ConveyerController.gd"
 Level="*res://Scripts/level.gd"
 AudioManager="*res://Scripts/AudioManager.gd"
 
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
+
 [input]
 
 click={
