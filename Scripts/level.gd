@@ -55,7 +55,14 @@ func  next_level():
 			get_tree().change_scene_to_file("res://Scenes/end_of_all_levels.tscn")
 	else:
 		print("Failed. Try Again")
-		AudioManager.play_level_fail() 
-		message_display.show_message("Failed. Try Again")
+		AudioManager.play_level_fail()
+		
+		var failure_reason = "Failed. Try Again"
+		if sinkBoxMatchNeeded[levelind] and not sinkBoxMatchPresent:
+			failure_reason = "Wrong event type delivered to sink!"
+		elif dlsRequired[levelind] and not dlsUsed:
+			failure_reason = "Failed events must go through DLQ!"
+		
+		message_display.show_message(failure_reason)
 		await message_display.show_message_for_duration(2.0)
 		message_display.visible = false

@@ -1,0 +1,10 @@
+extends = "gdlint:recommended"
+
+rules = {
+  "no-trailing-whitespace" = "error",
+  "indent" = ["error", 4],
+  "max-line-length" = ["error", 120],
+  "no-undef" = "error",
+  "no-unused-vars" = "warn",
+  "camelcase" = "warn"
+}
