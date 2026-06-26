@@ -5,6 +5,9 @@ var inlevelrefbox = null
 var inlevelrefbox2 = null
 var event_boxes = []
 
+func _ready():
+	Level.levelind = 6
+
 func _on_storage_area_entered(area):
 
 	if area.is_in_group("largepayload"):
@@ -83,3 +86,7 @@ func _on_button_pressed():
 
 	else:
 		print("we dont got any!!")
+
+
+func _on_timer_timeout():
+	Level.next_level() # Replace with function body.

@@ -1,43 +1,43 @@
 [gd_scene load_steps=26 format=3 uid="uid://d4hmprm00x0df"]
 
-[ext_resource type="Script" path="res://Scripts/datarefcutscene.gd" id="1_avps0"]
-[ext_resource type="Texture2D" uid="uid://dv3da6b01nl2w" path="res://Kuack/new1.png" id="2_ayi8l"]
-[ext_resource type="Texture2D" uid="uid://dtgwf6uqr3o48" path="res://Kuack/new2.png" id="3_hbo6o"]
-[ext_resource type="Texture2D" uid="uid://bqrvhjba3vjnl" path="res://Kuack/new3.png" id="4_xkvev"]
-[ext_resource type="Texture2D" uid="uid://bvkuwfvfpssar" path="res://Kuack/new4.png" id="5_wrtmi"]
-[ext_resource type="Texture2D" uid="uid://cht6baxtlwur1" path="res://Kuack/frame 11.png" id="6_odrk1"]
-[ext_resource type="Texture2D" uid="uid://bkhtw7281epkv" path="res://Kuack/frame 12.png" id="7_xmej1"]
-[ext_resource type="Texture2D" uid="uid://cnhujr776trse" path="res://2D Assets/misc/500px-Emojione_2757.svg.png" id="8_hk2nd"]
-[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="9_f0qgt"]
-[ext_resource type="FontFile" uid="uid://bepld0jndq4fw" path="res://2D Assets/misc/Ubuntu-Bold.ttf" id="9_mgt2n"]
-[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="10_1pdyd"]
-[ext_resource type="Texture2D" uid="uid://cgnmmfc1l4d5d" path="res://2D Assets/sinks/sink.png" id="11_ngwml"]
-[ext_resource type="Texture2D" uid="uid://cjn14twvcwa8y" path="res://2D Assets/boxes/blueBox.png" id="12_krul4"]
-[ext_resource type="Texture2D" uid="uid://26gj8w2ysk8l" path="res://2D Assets/funnels/funnel.png" id="13_nh72d"]
+[ext_resource type="Script" path="res://Scripts/datarefcutscene.gd" id="1_omuul"]
+[ext_resource type="Texture2D" uid="uid://dv3da6b01nl2w" path="res://Kuack/new1.png" id="2_cpw1e"]
+[ext_resource type="Texture2D" uid="uid://dtgwf6uqr3o48" path="res://Kuack/new2.png" id="3_e4bx8"]
+[ext_resource type="Texture2D" uid="uid://bqrvhjba3vjnl" path="res://Kuack/new3.png" id="4_va0i0"]
+[ext_resource type="Texture2D" uid="uid://bvkuwfvfpssar" path="res://Kuack/new4.png" id="5_8th01"]
+[ext_resource type="Texture2D" uid="uid://cht6baxtlwur1" path="res://Kuack/frame 11.png" id="6_pjiqj"]
+[ext_resource type="Texture2D" uid="uid://bkhtw7281epkv" path="res://Kuack/frame 12.png" id="7_fk5g4"]
+[ext_resource type="Texture2D" uid="uid://cnhujr776trse" path="res://2D Assets/misc/500px-Emojione_2757.svg.png" id="8_r35kd"]
+[ext_resource type="FontFile" uid="uid://bepld0jndq4fw" path="res://2D Assets/misc/Ubuntu-Bold.ttf" id="9_n2kne"]
+[ext_resource type="Texture2D" uid="uid://dlnjpu1sbekqf" path="res://2D Assets/conveyer texture.png" id="10_t3v4y"]
+[ext_resource type="Script" path="res://Scripts/conveyor.gd" id="11_5cv74"]
+[ext_resource type="Texture2D" uid="uid://cgnmmfc1l4d5d" path="res://2D Assets/sinks/sink.png" id="12_u6twg"]
+[ext_resource type="Texture2D" uid="uid://cjn14twvcwa8y" path="res://2D Assets/boxes/blueBox.png" id="13_18pr6"]
+[ext_resource type="Texture2D" uid="uid://26gj8w2ysk8l" path="res://2D Assets/funnels/funnel.png" id="14_xg3vb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sto8n"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ayi8l")
+"texture": ExtResource("2_cpw1e")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_hbo6o")
+"texture": ExtResource("3_e4bx8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_xkvev")
+"texture": ExtResource("4_va0i0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_wrtmi")
+"texture": ExtResource("5_8th01")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_odrk1")
+"texture": ExtResource("6_pjiqj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_xmej1")
+"texture": ExtResource("7_fk5g4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_ayi8l")
+"texture": ExtResource("2_cpw1e")
 }],
 "loop": false,
 "name": &"default",
@@ -326,7 +326,7 @@ _data = {
 }
 
 [node name="datarefcutscene" type="Node2D"]
-script = ExtResource("1_avps0")
+script = ExtResource("1_omuul")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -2
@@ -350,7 +350,7 @@ modulate = Color(0.0355037, 0.0956119, 0.258774, 1)
 position = Vector2(196.97, -360.606)
 rotation = -0.392699
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("8_hk2nd")
+texture = ExtResource("8_r35kd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
@@ -362,7 +362,7 @@ modulate = Color(0.0352941, 0.0313726, 0.121569, 1)
 position = Vector2(115.152, -390.909)
 rotation = -0.654498
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("8_hk2nd")
+texture = ExtResource("8_r35kd")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="AnimatedSprite2D"]
 modulate = Color(0, 0, 0, 1)
@@ -371,7 +371,7 @@ offset_top = -345.0
 offset_right = 1342.0
 offset_bottom = -154.0
 theme_override_colors/table_border = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("9_mgt2n")
+theme_override_fonts/normal_font = ExtResource("9_n2kne")
 theme_override_font_sizes/normal_font_size = 77
 text = "this payload is too heavvy !!"
 
@@ -392,31 +392,31 @@ texture_repeat = 2
 position = Vector2(605, 120)
 points = PackedVector2Array(0, 485, 0, 0)
 width = 61.715
-texture = ExtResource("9_f0qgt")
+texture = ExtResource("10_t3v4y")
 texture_mode = 1
-script = ExtResource("10_1pdyd")
+script = ExtResource("11_5cv74")
 
 [node name="Sink" type="Sprite2D" parent="."]
 position = Vector2(604, 547)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("11_ngwml")
+texture = ExtResource("12_u6twg")
 
 [node name="BlueBox" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(606, 70.0001)
 scale = Vector2(0.33, 0.33)
-texture = ExtResource("12_krul4")
+texture = ExtResource("13_18pr6")
 
 [node name="Funnel" type="Sprite2D" parent="."]
 position = Vector2(605, 144)
 scale = Vector2(0.745, 0.745)
-texture = ExtResource("13_nh72d")
+texture = ExtResource("14_xg3vb")
 
 [node name="BlueBox2" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(612, 56)
 scale = Vector2(0.255, 0.255)
-texture = ExtResource("12_krul4")
+texture = ExtResource("13_18pr6")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

@@ -3,6 +3,7 @@ extends Node2D
 var readyfordataref:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Level.levelind  = 6
 	$AnimatedSprite2D/RichTextLabel.visible_ratio  = 0 # Replace with function body.
 
 

@@ -155,6 +155,8 @@ theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]RESTART"
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="storage" to="." method="_on_storage_area_entered"]
 [connection signal="input_event" from="largepayload2" to="largepayload2" method="_on_input_event"]
 [connection signal="mouse_entered" from="largepayload2" to="largepayload2" method="_on_mouse_entered"]
@@ -165,3 +167,4 @@ text = "[center]RESTART"
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
 [connection signal="pressed" from="Control2/Button" to="Control2" method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
