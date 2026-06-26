@@ -26,6 +26,7 @@ func _on_area_entered(area: Area2D) -> void:
 	print("area entered")
 	if area.is_in_group("Box"):
 		Level.sinkUsed=true
+		Level.totalbox += 1
 		print(get_parent().expectedType)
 		if area.get_parent().boxType != get_parent().expectedType:
 			print("Not Expected Box")

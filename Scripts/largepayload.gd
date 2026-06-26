@@ -2,7 +2,7 @@ extends Area2D
 
 var draggable = false
 var bodyref
-@export var filterColor: String
+@export var payloadtype: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,19 +24,15 @@ func _on_mouse_entered() -> void:
 	if not ConveyerController.dragging:
 		draggable = true
 		#scale = Vector2(1.05, 1.05)
-		$hoverlabel.visible = true
+
 	
 
 func _on_mouse_exited() -> void:
 	if not ConveyerController.dragging:
 		draggable = false
 		#scale = Vector2(1, 1)
-	$hoverlabel.visible = false
+	
 
 
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Box"):
-		if area.get_parent().boxType != filterColor and area.get_parent().sending == true and area.get_parent().returning == false:
-			print("kill it")
-			AudioManager.play_poof()
-			area.get_parent().queue_free()
+func _on_input_event(viewport, event, shape_idx):
+	pass # Replace with function body.

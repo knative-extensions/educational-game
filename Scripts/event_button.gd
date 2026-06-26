@@ -22,3 +22,6 @@ func _on_button_pressed() -> void:
 		print("i was here!!!")
 		$"../Timer".start()
 	Level.initialise()
+	if $"../AnimatedSprite2D":
+		
+		$"../AnimatedSprite2D".frame = 1
