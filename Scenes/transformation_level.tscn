@@ -20,7 +20,6 @@ script/source = "extends Node2D
 
 func _ready():
 	Level.levelind = 4
-	get_tree().paused = false
 	ConveyerController.olderlevels = false
 
 

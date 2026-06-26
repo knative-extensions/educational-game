@@ -3,7 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS # Replace with function body.
+	pass # Replace with function body.
 
 
 
