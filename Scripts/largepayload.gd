@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 			
 func _on_mouse_entered() -> void:
 	if not ConveyerController.dragging:
-		print("datarefdragggin")
 		draggable = true
 		#scale = Vector2(1.05, 1.05)
 
