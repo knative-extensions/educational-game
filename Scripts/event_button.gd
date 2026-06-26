@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
+	
 	print("dest_size:",ConveyerController.destination.size())
 	$"../broker".duplicate_events()
 	print(ConveyerController.conveyerInd)

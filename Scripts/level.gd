@@ -18,6 +18,12 @@ func initialise():
 	nextLevel=false
 	dlsUsed=false
 	transformerUsed = false
+	for child in get_children():
+		if child is CanvasLayer and child.layer == 10:
+			child.queue_free()   
+	
+	
+
 
 func  next_level():
 	if sinkUsed:
@@ -56,6 +62,22 @@ func  next_level():
 	else:
 		print("Failed. Try Again")
 		AudioManager.play_level_fail() 
+		apply_fail_effect()
+		ConveyerController.set_process(false)
 		message_display.show_message("Failed. Try Again")
 		await message_display.show_message_for_duration(2.0)
 		message_display.visible = false
+		
+		
+
+
+func apply_fail_effect():
+	var canvas = CanvasLayer.new()
+	canvas.layer = 10
+	add_child(canvas)
+	
+	var overlay = ColorRect.new()
+	overlay.color = Color(0, 0, 0, 0.6)
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	canvas.add_child(overlay)

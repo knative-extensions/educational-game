@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/message_display.gd" id="1_y0tj3"]
 
 [node name="MessageDisplay" type="Control"]
+visibility_layer = 3073
+z_index = 11
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

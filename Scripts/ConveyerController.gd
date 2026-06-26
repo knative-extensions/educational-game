@@ -13,6 +13,7 @@ var olderlevels = true
 var brokerpos: Vector2
 
 func initialise():
+	self.set_process(true)
 	self.selected
 	self.events = []
 	self.destination = []
