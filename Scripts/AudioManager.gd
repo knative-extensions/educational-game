@@ -16,6 +16,12 @@ var construction_normal_volume = -10
 var construction_ducked_volume = -20
 var is_construction_playing = false
 
+# ---------------------------------------------------------------------------
+# Pre-mute volume snapshot — populated by mute_all(), cleared by unmute_all().
+# Stored as a Dictionary so that per-player volumes are preserved exactly.
+# ---------------------------------------------------------------------------
+var _pre_mute_volumes: Dictionary = {}
+
 func _ready():
 	# Create audio players
 	click_start_player = AudioStreamPlayer.new()
@@ -146,3 +152,65 @@ func set_volume(db: float):
 	poof_player.volume_db = db
 	level_clear_player.volume_db = db + 5
 	level_fail_player.volume_db = db + 5
+
+# ---------------------------------------------------------------------------
+# mute_all / unmute_all
+#
+# Silences every AudioStreamPlayer managed by this singleton instantly by
+# driving their volume_db to -80 dB (effectively silent without stopping
+# playback position).  The pre-mute volumes are snapshotted so that
+# unmute_all() can restore the exact levels rather than resetting to
+# hard-coded defaults.  Both functions are idempotent: calling mute_all()
+# twice or unmute_all() when already unmuted is safe.
+# ---------------------------------------------------------------------------
+
+## Instantly mutes all audio players without stopping playback.
+## Snapshot of current volumes is stored so unmute_all() can restore them.
+func mute_all() -> void:
+	if not sound_enabled:
+		# Already muted via toggle_sound(); nothing to do.
+		return
+
+	# Stop the construction loop so it does not restart itself silently.
+	stop_construction_loop()
+
+	# Snapshot volumes before clamping to -80 dB.
+	_pre_mute_volumes = {
+		"click_start": click_start_player.volume_db,
+		"click_end":   click_end_player.volume_db,
+		"poof":        poof_player.volume_db,
+		"level_clear": level_clear_player.volume_db,
+		"level_fail":  level_fail_player.volume_db,
+	}
+
+	click_start_player.volume_db  = -80.0
+	click_end_player.volume_db    = -80.0
+	poof_player.volume_db         = -80.0
+	level_clear_player.volume_db  = -80.0
+	level_fail_player.volume_db   = -80.0
+
+	sound_enabled = false
+	print("AudioManager: all audio muted")
+
+
+## Restores the volume levels captured by the last mute_all() call.
+## If mute_all() was never called, restores the startup defaults.
+func unmute_all() -> void:
+	sound_enabled = true
+
+	if _pre_mute_volumes.is_empty():
+		# No snapshot available; restore startup defaults.
+		click_start_player.volume_db  = -5.0
+		click_end_player.volume_db    = -5.0
+		poof_player.volume_db         = 0.0
+		level_clear_player.volume_db  = 5.0
+		level_fail_player.volume_db   = 5.0
+	else:
+		click_start_player.volume_db  = _pre_mute_volumes.get("click_start", -5.0)
+		click_end_player.volume_db    = _pre_mute_volumes.get("click_end",   -5.0)
+		poof_player.volume_db         = _pre_mute_volumes.get("poof",         0.0)
+		level_clear_player.volume_db  = _pre_mute_volumes.get("level_clear",  5.0)
+		level_fail_player.volume_db   = _pre_mute_volumes.get("level_fail",   5.0)
+		_pre_mute_volumes.clear()
+
+	print("AudioManager: all audio unmuted")
